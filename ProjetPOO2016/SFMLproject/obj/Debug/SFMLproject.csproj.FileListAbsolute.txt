@@ -19,3 +19,6 @@ C:\Users\Badass Motherfucker\Source\Workspaces\Workspace\Projet POO 2016\ProjetP
 I:\Projet POO 2016\Projet-POO-2016\ProjetPOO2016\SFMLproject\bin\Debug\SFMLproject.exe.config
 I:\Projet POO 2016\Projet-POO-2016\ProjetPOO2016\SFMLproject\obj\Debug\SFMLproject.exe
 I:\Projet POO 2016\Projet-POO-2016\ProjetPOO2016\SFMLproject\obj\Debug\SFMLproject.pdb
+C:\Users\Clovis\Documents\GitHub\Projet-POO-2016\ProjetPOO2016\SFMLproject\bin\Debug\SFMLproject.exe.config
+C:\Users\Clovis\Documents\GitHub\Projet-POO-2016\ProjetPOO2016\SFMLproject\obj\Debug\SFMLproject.exe
+C:\Users\Clovis\Documents\GitHub\Projet-POO-2016\ProjetPOO2016\SFMLproject\obj\Debug\SFMLproject.pdb
