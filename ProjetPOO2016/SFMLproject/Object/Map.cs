@@ -18,10 +18,11 @@ namespace SFMLproject.Object
         private Tile[,] tiles;
         uint columns, rows, columnsPrint, rowsPrint;
         Vector2i camera;
+        SpriteEnum spr;
 
         public Map(Character c,uint x,uint y)
         {
-            SpriteEnum spr = new SpriteEnum();
+            spr = new SpriteEnum();
             camera = new Vector2i(0, 0);
             rowsPrint = x;
             columnsPrint = y;
@@ -35,9 +36,9 @@ namespace SFMLproject.Object
                 for(uint j = 0; j < rows; j++)
                 {
                     if (j == 0 || i == 0 || i == columns-1 || j == rows-1)
-                        tiles[j,i] = new TileObstacle(new Vector2f(i * 30, j * 30),spr.getObstacle());
+                        tiles[j,i] = new TileObstacle(new Vector2f(i * 30, j * 30), spr.getObstacle());
                     else
-                        tiles[j,i] = new TileEmpty(new Vector2f(i * 30, j * 30),spr.getBackground());
+                        tiles[j,i] = new TileEmpty(new Vector2f(i * 30, j * 30));
                 }
             }
 
@@ -57,6 +58,12 @@ namespace SFMLproject.Object
         public Tile getTile(Vector2i pos)
         {
             return tiles[pos.X,pos.Y];
+        }
+
+        public void moveCamera(Vector2i add)
+        {
+            camera.X += add.Y;
+            camera.Y += add.X;
         }
 
 

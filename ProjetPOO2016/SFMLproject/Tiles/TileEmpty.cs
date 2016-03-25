@@ -15,6 +15,7 @@ namespace SFMLproject.Tiles
 {
     class TileEmpty : Tile
     {
+        public TileEmpty(Vector2f pos) : base(pos) { }
 
         public TileEmpty(Vector2f pos,Sprite spr) : base(pos,spr) { }
 
