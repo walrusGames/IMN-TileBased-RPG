@@ -3,7 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
+using SFML.Audio;
+using SFML.Graphics;
 using SFML.System;
+using SFML.Window;
+
 using SFMLproject.Object;
 
 namespace SFMLproject.Tiles
@@ -13,7 +18,7 @@ namespace SFMLproject.Tiles
         private Character character;
         private Tile currentTile;
 
-        public TileCharacter(Character c,Tile cur, Vector2f pos) : base(pos)
+        public TileCharacter(Character c,Tile cur, Vector2f pos) :  base(pos)
         {
             character = c;
             currentTile = cur;

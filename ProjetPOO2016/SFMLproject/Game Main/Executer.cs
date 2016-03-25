@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 using SFMLproject.Input;
 using SFMLproject.Object;
+using SFMLproject.Tiles;
 
 using SFML.Audio;
 using SFML.Graphics;
 using SFML.System;
 using SFML.Window;
-using SFMLproject.Tiles;
 
 namespace SFMLproject
 {
@@ -32,7 +32,7 @@ namespace SFMLproject
 
         static Character charc = new Character();
 
-        static Map map = new Map(charc);
+        static Map map = new Map(charc,10,5);
 
         static void initWindow()
         {

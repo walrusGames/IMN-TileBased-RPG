@@ -58,13 +58,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Camera\Camera.cs" />
     <Compile Include="Input\Controller.cs" />
     <Compile Include="Object\Background.cs" />
     <Compile Include="Object\Character.cs" />
     <Compile Include="Game Main\Executer.cs" />
     <Compile Include="Object\Map.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TextureFolder\SpriteEnum.cs" />
     <Compile Include="Tiles\Tile.cs" />
     <Compile Include="Tiles\TileCharacter.cs" />
     <Compile Include="Tiles\TileEmpty.cs" />

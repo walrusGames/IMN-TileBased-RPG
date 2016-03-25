@@ -3,20 +3,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 using SFMLproject.Tiles;
 using SFML.Graphics;
 using SFML.System;
+
+using SFMLproject.TextureFolder;
 
 namespace SFMLproject.Object
 {
     class Map
     {
-        private Tile[,] tiles;
-        uint columns, rows;
 
-        public Map(Character c)
+        private Tile[,] tiles;
+        uint columns, rows, columnsPrint, rowsPrint;
+        Vector2i camera;
+
+        public Map(Character c,uint x,uint y)
         {
-            columns = 45;
+            SpriteEnum spr = new SpriteEnum();
+            camera = new Vector2i(0, 0);
+            rowsPrint = x;
+            columnsPrint = y;
+            columns = 25;
             rows = 15;
 
             tiles = new Tile[rows, columns];
@@ -26,9 +35,9 @@ namespace SFMLproject.Object
                 for(uint j = 0; j < rows; j++)
                 {
                     if (j == 0 || i == 0 || i == columns-1 || j == rows-1)
-                        tiles[j,i] = new TileObstacle(new Vector2f(i * 30, j * 30));
+                        tiles[j,i] = new TileObstacle(new Vector2f(i * 30, j * 30),spr.getObstacle());
                     else
-                        tiles[j,i] = new TileEmpty(new Vector2f(i * 30, j * 30));
+                        tiles[j,i] = new TileEmpty(new Vector2f(i * 30, j * 30),spr.getBackground());
                 }
             }
 
@@ -53,9 +62,9 @@ namespace SFMLproject.Object
 
         public void draw(RenderWindow window)
         {
-            for (uint row = 0; row < columns; row++)
+            for (uint row = (uint)camera.Y; row < (uint)camera.Y + rowsPrint + 1; row++)
             {
-                for (uint column = 0; column < rows; column++)
+                for (uint column = (uint)camera.X; column < (uint)camera.X + columnsPrint + 1; column++)
                 {
                     tiles[column, row].draw(window);
                 }

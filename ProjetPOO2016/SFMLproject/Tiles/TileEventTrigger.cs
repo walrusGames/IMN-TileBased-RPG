@@ -3,7 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
+using SFML.Audio;
+using SFML.Graphics;
 using SFML.System;
+using SFML.Window;
+
 using SFMLproject.Object;
 
 namespace SFMLproject.Tiles
@@ -11,7 +16,7 @@ namespace SFMLproject.Tiles
     class TileEventTrigger : Tile
     {
 
-        public TileEventTrigger(Vector2f pos) : base(pos) { }
+        public TileEventTrigger(Vector2f pos,Sprite spr) : base(pos,spr) { }
 
         public override Tile occupy(Character c)
         {
