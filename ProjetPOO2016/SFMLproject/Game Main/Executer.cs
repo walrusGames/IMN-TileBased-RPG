@@ -51,9 +51,6 @@ namespace SFMLproject
         {
             initWindow();
 
-            music.Loop = true;
-            music.Play();
-
             while (window.IsOpen)
             {
                 window.DispatchEvents();

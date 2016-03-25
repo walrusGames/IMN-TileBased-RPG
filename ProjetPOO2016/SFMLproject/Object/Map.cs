@@ -21,14 +21,14 @@ namespace SFMLproject.Object
 
             tiles = new Tile[rows, columns];
 
-            for(uint row = 0; row < rows; row++)
+            for(uint i = 0; i < rows; i++)
             {
-                for(uint column = 0; column < columns; column++)
+                for(uint j = 0; j < columns; j++)
                 {
-                    if (column == 0 || row == 0)
-                        tiles[row,column] = new TileObstacle(new Vector2f(row * 30, column * 30));
+                    if (j == 0 || i == 0 || i == rows-1 || j == columns-1)
+                        tiles[i,j] = new TileObstacle(new Vector2f(i * 30, j * 30));
                     else
-                        tiles[row,column] = new TileEmpty(new Vector2f(row * 30, column * 30));
+                        tiles[i,j] = new TileEmpty(new Vector2f(i * 30, j * 30));
                 }
             }
 
@@ -49,6 +49,7 @@ namespace SFMLproject.Object
         {
             return tiles[pos.X,pos.Y];
         }
+
 
         public void draw(RenderWindow window)
         {
