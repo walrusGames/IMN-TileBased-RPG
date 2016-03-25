@@ -18,8 +18,8 @@ namespace SFMLproject
    
     class Executer
     {
-        const uint hauteur = 500;
-        const uint largeur = 500;
+        const uint hauteur = 1280;
+        const uint largeur = 720;
         static ContextSettings context = new ContextSettings();
         static RenderWindow window;
         

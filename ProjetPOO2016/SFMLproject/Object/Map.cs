@@ -12,23 +12,23 @@ namespace SFMLproject.Object
     class Map
     {
         private Tile[,] tiles;
-        uint rows, columns;
+        uint columns, rows;
 
         public Map(Character c)
         {
-            rows = 20;
-            columns = 15;
+            columns = 45;
+            rows = 15;
 
             tiles = new Tile[rows, columns];
 
-            for(uint i = 0; i < rows; i++)
+            for(uint i = 0; i < columns; i++)
             {
-                for(uint j = 0; j < columns; j++)
+                for(uint j = 0; j < rows; j++)
                 {
-                    if (j == 0 || i == 0 || i == rows-1 || j == columns-1)
-                        tiles[i,j] = new TileObstacle(new Vector2f(i * 30, j * 30));
+                    if (j == 0 || i == 0 || i == columns-1 || j == rows-1)
+                        tiles[j,i] = new TileObstacle(new Vector2f(i * 30, j * 30));
                     else
-                        tiles[i,j] = new TileEmpty(new Vector2f(i * 30, j * 30));
+                        tiles[j,i] = new TileEmpty(new Vector2f(i * 30, j * 30));
                 }
             }
 
@@ -53,11 +53,11 @@ namespace SFMLproject.Object
 
         public void draw(RenderWindow window)
         {
-            for (uint row = 0; row < rows; row++)
+            for (uint row = 0; row < columns; row++)
             {
-                for (uint column = 0; column < columns; column++)
+                for (uint column = 0; column < rows; column++)
                 {
-                    tiles[row,column].draw(window);
+                    tiles[column, row].draw(window);
                 }
             }
 
