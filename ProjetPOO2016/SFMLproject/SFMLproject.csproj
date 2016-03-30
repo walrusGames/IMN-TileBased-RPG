@@ -58,6 +58,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Constt\constante.cs" />
     <Compile Include="Input\Controller.cs" />
     <Compile Include="Object\Background.cs" />
     <Compile Include="Object\Character.cs" />

@@ -23,10 +23,10 @@ namespace SFMLproject.Tiles
         }
         public TileObstacle(Vector2f pos, Sprite spr)
         {
+            sprite = spr;
             sprite.TextureRect = new IntRect(0, 0, 32, 32);
             sprite.Scale += new Vector2f(1f, 1f);
             sprite.Position = pos;
-            sprite = spr;
         }
 
         public override Tile occupy(Character c)

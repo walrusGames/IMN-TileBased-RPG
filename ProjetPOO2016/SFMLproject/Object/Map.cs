@@ -9,6 +9,7 @@ using SFML.Graphics;
 using SFML.System;
 
 using SFMLproject.TextureFolder;
+using SFMLproject.Constt;
 
 namespace SFMLproject.Object
 {
@@ -36,9 +37,9 @@ namespace SFMLproject.Object
                 for(uint j = 0; j < rows; j++)
                 {
                     if (j == 0 || i == 0 || i == columns-1 || j == rows-1)
-                        tiles[j,i] = new TileObstacle(new Vector2f(i * 30, j * 30), spr.getObstacle());
+                        tiles[j, i] = new TileObstacle(new Vector2f(i * Constants.tileSize, j * Constants.tileSize),spr.getObstacle());
                     else
-                        tiles[j,i] = new TileEmpty(new Vector2f(i * 30, j * 30));
+                        tiles[j, i] = new TileEmpty(new Vector2f(i * Constants.tileSize, j * Constants.tileSize), spr.getBackground());
                 }
             }
 
@@ -63,7 +64,6 @@ namespace SFMLproject.Object
         public void moveCamera(Vector2i add)
         {
             camera.X += add.Y;
-
             camera.Y += add.X;
         }
 

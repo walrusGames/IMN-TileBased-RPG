@@ -15,24 +15,19 @@ namespace SFMLproject.TextureFolder
     {
         Texture back;
         Texture ob;
-        Sprite background;
-        Sprite obstacle;
 
         public SpriteEnum()
         {
             back = new Texture("File\\Background\\back.png");
             ob = new Texture("File\\Background\\ob.png");
-
-            background = new Sprite(back);
-            obstacle = new Sprite(ob);
         }
         public Sprite getBackground()
         {
-            return background;
+            return new Sprite(back);
         }
         public Sprite getObstacle()
         {
-            return obstacle;
+            return new Sprite(ob);
         }
     }
 }
