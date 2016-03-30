@@ -13,13 +13,12 @@ using SFML.Graphics;
 using SFML.System;
 using SFML.Window;
 
+using SFMLproject.Constt;
 namespace SFMLproject
 {
    
     class Executer
     {
-        const uint hauteur = 1280;
-        const uint largeur = 720;
         static ContextSettings context = new ContextSettings();
         static RenderWindow window;
         
@@ -36,7 +35,7 @@ namespace SFMLproject
 
         static void initWindow()
         {
-            window = new RenderWindow(new VideoMode(hauteur, largeur), "Project IFT 232", Styles.Default, context);
+            window = new RenderWindow(new VideoMode(1280, 720), "Project IFT 232", Styles.Default, context);
             window.Closed += window_Closed;
             window.GainedFocus += window_GainedFocus;
             window.LostFocus += window_LostFocus;
@@ -59,6 +58,8 @@ namespace SFMLproject
                 if (controller.ControllerPlugged)
                     charc.moveCharacter(controller.getMovementLeftJoystick() / 20);
 
+
+                window.Clear();
                 map.draw(window);
                 window.Draw(charc.sprite);
 

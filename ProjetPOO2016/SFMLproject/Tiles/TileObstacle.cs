@@ -8,30 +8,33 @@ using SFML.System;
 
 using SFML.Audio;
 using SFML.Graphics;
-using SFML.System;
 using SFML.Window;
+
+using SFMLproject.Constt;
 
 namespace SFMLproject.Tiles
 {
     class TileObstacle : Tile
     {
-        public TileObstacle(Vector2f pos) {
-            sprite.Texture = new Texture("File\\Background\\ob.png");
-            sprite.TextureRect = new IntRect(0, 0, 32, 32);
-            sprite.Scale += new Vector2f(1f, 1f);
-            sprite.Position = pos;
-        }
         public TileObstacle(Vector2f pos, Sprite spr)
         {
             sprite = spr;
-            sprite.TextureRect = new IntRect(0, 0, 32, 32);
+            sprite.TextureRect = new IntRect(0, 0, Constants.tileSize, Constants.tileSize);
             sprite.Scale += new Vector2f(1f, 1f);
             sprite.Position = pos;
         }
 
         public override Tile occupy(Character c)
         {
-            return this;
+           return this;
+        }
+        public override bool isHere(Character c)
+        {
+            if (sprite.Position.X / 32 == c.getMapPos().X && sprite.Position.Y / 32 == c.getMapPos().Y)
+            {
+                return true;
+            }
+            return false;
         }
 
         public override Tile onLeave()

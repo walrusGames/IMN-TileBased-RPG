@@ -9,6 +9,8 @@ using SFML.Graphics;
 using SFML.System;
 using SFML.Window;
 
+using SFMLproject.Constt;
+
 namespace SFMLproject.Object
 {
     class Character
@@ -20,7 +22,7 @@ namespace SFMLproject.Object
         static String stateCharact = "Down";
         static Texture perso;
         public Sprite sprite;
-        private Vector2i mapPos = new Vector2i(1, 1);
+        private Vector2i mapPos = new Vector2i(5, 2);
 
         public Character(){
             perso = new Texture("File\\Perso\\perso 4.png");
@@ -70,7 +72,7 @@ namespace SFMLproject.Object
             else if (posi.Y > 0)
                 changePostureCharacter("Down");
             /*sprite.Position += posi;*/
-            sprite.Position = (Vector2f)mapPos * (float)30;
+            sprite.Position = (Vector2f)mapPos * (float)Constants.tileSize;
         }
 
         public void moveMapPos(Vector2i pos)

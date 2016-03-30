@@ -20,6 +20,7 @@ namespace SFMLproject.Object
         uint columns, rows, columnsPrint, rowsPrint;
         Vector2i camera;
         SpriteEnum spr;
+        Character c;
 
         public Map(Character c,uint x,uint y)
         {
@@ -27,23 +28,22 @@ namespace SFMLproject.Object
             camera = new Vector2i(0, 0);
             rowsPrint = x;
             columnsPrint = y;
-            columns = 25;
-            rows = 15;
+            columns = 45;
+            rows = 45;
 
             tiles = new Tile[rows, columns];
 
-            for(uint i = 0; i < columns; i++)
+            for(uint j = 0; j < columns; j++)
             {
-                for(uint j = 0; j < rows; j++)
+                for(uint i = 0; i < rows; i++)
                 {
-                    if (j == 0 || i == 0 || i == columns-1 || j == rows-1)
-                        tiles[j, i] = new TileObstacle(new Vector2f(i * Constants.tileSize, j * Constants.tileSize),spr.getObstacle());
+                    if (j == 0 || i == 0 || j == columns-1 || i == rows-1)
+                        tiles[i, j] = new TileObstacle(new Vector2f(i * Constants.tileSize, j * Constants.tileSize),spr.getObstacle());
                     else
-                        tiles[j, i] = new TileEmpty(new Vector2f(i * Constants.tileSize, j * Constants.tileSize), spr.getBackground());
+                        tiles[i, j] = new TileEmpty(new Vector2f(i * Constants.tileSize, j * Constants.tileSize), spr.getBackground());
                 }
             }
-
-            tiles[1,1].occupy(c);
+            this.c = c;
         }
 
         public Map(string filePath)
@@ -63,8 +63,11 @@ namespace SFMLproject.Object
 
         public void moveCamera(Vector2i add)
         {
-            camera.X += add.Y;
-            camera.Y += add.X;
+            if (tiles[2, 1].isHere(c))
+            {
+                camera.X += add.Y;
+                camera.Y += add.X;
+            }
         }
 
 
@@ -74,10 +77,17 @@ namespace SFMLproject.Object
             {
                 for (uint column = (uint)camera.X; column < (uint)camera.X + columnsPrint + 1; column++)
                 {
-                    tiles[column, row].draw(window);
+                    tiles[row, column].draw(window);
                 }
             }
-
+            /*
+            for (uint row = 0; row < rows; row++)
+            {
+                for (uint column = 0; column < columns; column++)
+                {
+                    tiles[row, column].draw(window);
+                }
+            }*/
         }
     }
 }

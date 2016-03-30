@@ -8,6 +8,9 @@ namespace SFMLproject.Constt
 {
     static class Constants
     {
-        public const int tileSize = 30;
+        public const int tileSize = 45;
+
+        public const uint hauteur = 1280;
+        public const uint largeur = 720;
     }
 }
