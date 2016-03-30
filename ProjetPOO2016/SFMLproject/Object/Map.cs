@@ -30,7 +30,6 @@ namespace SFMLproject.Object
             columnsPrint = y;
             columns = 25;
             rows = 25;
-
             tiles = new Tile[rows, columns];
 
             for(uint j = 0; j < columns; j++)
