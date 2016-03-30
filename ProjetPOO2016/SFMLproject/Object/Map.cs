@@ -25,11 +25,11 @@ namespace SFMLproject.Object
         public Map(Character c,uint x,uint y)
         {
             spr = new SpriteEnum();
-            camera = new Vector2i(0, 0);
+            camera = new Vector2i(c.getMapPos().X - 5, c.getMapPos().Y - 5);
             rowsPrint = x;
             columnsPrint = y;
-            columns = 45;
-            rows = 45;
+            columns = 25;
+            rows = 25;
 
             tiles = new Tile[rows, columns];
 
@@ -61,15 +61,28 @@ namespace SFMLproject.Object
             return tiles[pos.X,pos.Y];
         }
 
-        public void moveCamera(Vector2i add)
+        public void setCamera(Vector2i add)
         {
-            if (tiles[2, 1].isHere(c))
+            camera.Y = add.X;
+            camera.X = add.Y;
+            if (camera.Y < 0)
             {
-                camera.X += add.Y;
-                camera.Y += add.X;
+                camera.Y = 0;
+            }
+            if (camera.X < 0)
+            {
+                camera.X = 0;
+            }
+            if (camera.Y > columns - columnsPrint-1)
+            {
+                camera.Y = (int)(columns - columnsPrint-1);
+            }
+            if (camera.X > rows - rowsPrint-1)
+            {
+                camera.X = (int)(rows - rowsPrint-1);
             }
         }
-
+       
 
         public void draw(RenderWindow window)
         {

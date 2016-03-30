@@ -31,7 +31,7 @@ namespace SFMLproject
 
         static Character charc = new Character();
 
-        static Map map = new Map(charc,10,5);
+        static Map map = new Map(charc,10,10);
 
         static void initWindow()
         {
@@ -74,11 +74,12 @@ namespace SFMLproject
                 case Keyboard.Key.D:
                     map.setTile(charc.getMapPos(), map.getTile(charc.getMapPos()).onLeave());
                     charc.moveMapPos(new Vector2i(1, 0));
-                    map.moveCamera(new Vector2i(1, 0));
+                    
                     depl = map.getTile(charc.getMapPos()).occupy(charc);
                     if (depl is TileCharacter)
                     {
                         charc.moveCharacter(new Vector2f(30, 0));
+                        map.setCamera(new Vector2i(charc.getMapPos().X - 5, charc.getMapPos().Y - 5));
                         return true;
                     }
                     else {
@@ -88,11 +89,11 @@ namespace SFMLproject
                 case Keyboard.Key.A:
                     map.setTile(charc.getMapPos(), map.getTile(charc.getMapPos()).onLeave());
                     charc.moveMapPos(new Vector2i(-1, 0));
-                    map.moveCamera(new Vector2i(-1, 0));
                     depl = map.getTile(charc.getMapPos()).occupy(charc);
                     if (depl is TileCharacter)
                     {
                         charc.moveCharacter(new Vector2f(-30, 0));
+                        map.setCamera(new Vector2i(charc.getMapPos().X - 5, charc.getMapPos().Y - 5));
                         return true;
                     }
                     else {
@@ -102,11 +103,11 @@ namespace SFMLproject
                 case Keyboard.Key.S:
                     map.setTile(charc.getMapPos(), map.getTile(charc.getMapPos()).onLeave());
                     charc.moveMapPos(new Vector2i(0, 1));
-                    map.moveCamera(new Vector2i(0, 1));
                     depl = map.getTile(charc.getMapPos()).occupy(charc);
                     if (depl is TileCharacter)
                     {
                         charc.moveCharacter(new Vector2f(0, 30));
+                        map.setCamera(new Vector2i(charc.getMapPos().X - 5, charc.getMapPos().Y - 5));
                         return true;
                     }
                     else {
@@ -116,11 +117,11 @@ namespace SFMLproject
                 case Keyboard.Key.W:
                     map.setTile(charc.getMapPos(), map.getTile(charc.getMapPos()).onLeave());
                     charc.moveMapPos(new Vector2i(0, -1));
-                    map.moveCamera(new Vector2i(0, -1));
                     depl = map.getTile(charc.getMapPos()).occupy(charc);
                     if (depl is TileCharacter)
                     {
                         charc.moveCharacter(new Vector2f(0, -30));
+                        map.setCamera(new Vector2i(charc.getMapPos().X - 5, charc.getMapPos().Y - 5));
                         return true;
                     }
                     else {

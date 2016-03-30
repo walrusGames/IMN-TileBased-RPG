@@ -30,7 +30,7 @@ namespace SFMLproject.Tiles
         }
         public override bool isHere(Character c)
         {
-            if (sprite.Position.X / 32 == c.getMapPos().X && sprite.Position.Y / 32 == c.getMapPos().Y)
+            if (sprite.Position.X / 45 == c.getMapPos().X && sprite.Position.Y / 45 == c.getMapPos().Y)
             {
                 return true;
             }

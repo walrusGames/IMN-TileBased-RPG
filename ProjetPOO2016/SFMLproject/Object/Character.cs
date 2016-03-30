@@ -22,7 +22,7 @@ namespace SFMLproject.Object
         static String stateCharact = "Down";
         static Texture perso;
         public Sprite sprite;
-        private Vector2i mapPos = new Vector2i(5, 2);
+        private Vector2i mapPos = new Vector2i(10, 10);
 
         public Character(){
             perso = new Texture("File\\Perso\\perso 4.png");
