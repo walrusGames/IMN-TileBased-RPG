@@ -63,6 +63,7 @@ namespace SFMLproject.Object
         public void moveCamera(Vector2i add)
         {
             camera.X += add.Y;
+
             camera.Y += add.X;
         }
 
