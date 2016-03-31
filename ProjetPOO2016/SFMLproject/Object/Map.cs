@@ -26,6 +26,7 @@ namespace SFMLproject.Object
         {
             spr = new SpriteEnum();
             camera = new Vector2i(c.getMapPos().X - (int)x/2, c.getMapPos().Y - (int)y/2);
+
             rowsPrint = x;
             columnsPrint = y;
             columns = 25;
