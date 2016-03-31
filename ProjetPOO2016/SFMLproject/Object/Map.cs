@@ -25,11 +25,11 @@ namespace SFMLproject.Object
         public Map(Character c,uint x,uint y)
         {
             spr = new SpriteEnum();
-            camera = new Vector2i(c.getMapPos().X - 5, c.getMapPos().Y - 5);
+            camera = new Vector2i(c.getMapPos().X - (int)x/2, c.getMapPos().Y - (int)y/2);
             rowsPrint = x;
             columnsPrint = y;
             columns = 25;
-            rows = 25;
+            rows = 40;
             tiles = new Tile[rows, columns];
 
             for(uint j = 0; j < columns; j++)
@@ -85,21 +85,13 @@ namespace SFMLproject.Object
 
         public void draw(RenderWindow window)
         {
-            for (uint row = (uint)camera.Y; row < (uint)camera.Y + rowsPrint + 1; row++)
+            for (uint row = (uint)camera.Y; row < (uint)camera.Y + rowsPrint - 1; row++)
             {
-                for (uint column = (uint)camera.X; column < (uint)camera.X + columnsPrint + 1; column++)
+                for (uint column = (uint)camera.X; column < (uint)camera.X + columnsPrint - 1; column++)
                 {
-                    tiles[row, column].draw(window);
+                    tiles[row, column].draw(window, new Vector2f((row - (uint)camera.Y) * Constants.tileSize, (column - (uint)camera.X)* Constants.tileSize));
                 }
             }
-            /*
-            for (uint row = 0; row < rows; row++)
-            {
-                for (uint column = 0; column < columns; column++)
-                {
-                    tiles[row, column].draw(window);
-                }
-            }*/
         }
     }
 }

@@ -21,7 +21,7 @@ namespace SFMLproject.Tiles
             sprite = spr;
             sprite.TextureRect = new IntRect(0, 0, Constants.tileSize, Constants.tileSize);
             sprite.Scale += new Vector2f(1f, 1f);
-            sprite.Position = pos;
+            //sprite.Position = pos;
         }
 
         public override Tile occupy(Character c)

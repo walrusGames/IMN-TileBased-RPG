@@ -23,7 +23,7 @@ namespace SFMLproject.Tiles
             sprite = spr;
             sprite.TextureRect = new IntRect(0, 0, Constants.tileSize, Constants.tileSize);
             sprite.Scale += new Vector2f(1f, 1f);
-            sprite.Position = pos;
+            //sprite.Position = pos;
         }
 
         abstract public Tile occupy(Character c);
@@ -33,6 +33,11 @@ namespace SFMLproject.Tiles
         abstract public Tile onLeave();
         public void draw(RenderWindow window)
         {
+            window.Draw(sprite);
+        }
+        public void draw(RenderWindow window,Vector2f add)
+        {
+            sprite.Position = add;
             window.Draw(sprite);
         }
     }

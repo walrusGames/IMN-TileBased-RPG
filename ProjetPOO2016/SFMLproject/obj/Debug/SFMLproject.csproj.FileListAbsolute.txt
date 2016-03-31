@@ -36,4 +36,3 @@ C:\Users\Clovis\Documents\GitHub\Projet-POO-2016\ProjetPOO2016\SFMLproject\bin\D
 C:\Users\Clovis\Documents\GitHub\Projet-POO-2016\ProjetPOO2016\SFMLproject\bin\Debug\sfmlnet-graphics-2.dll
 C:\Users\Clovis\Documents\GitHub\Projet-POO-2016\ProjetPOO2016\SFMLproject\bin\Debug\sfmlnet-system-2.dll
 C:\Users\Clovis\Documents\GitHub\Projet-POO-2016\ProjetPOO2016\SFMLproject\bin\Debug\sfmlnet-window-2.dll
-C:\Users\Clovis\Documents\GitHub\Projet-POO-2016\ProjetPOO2016\SFMLproject\obj\Debug\SFMLproject.csprojResolveAssemblyReference.cache
