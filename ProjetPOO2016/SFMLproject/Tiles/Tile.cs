@@ -18,7 +18,7 @@ namespace SFMLproject.Tiles
         {
 
         }
-        public Tile(Vector2f pos,Sprite spr)
+        public Tile(Vector2f pos, Sprite spr)
         {
             sprite = spr;
             sprite.TextureRect = new IntRect(0, 0, Constants.tileSize, Constants.tileSize);
@@ -27,7 +27,6 @@ namespace SFMLproject.Tiles
         }
 
         abstract public Tile occupy(Character c);
-        abstract public bool isHere(Character c);
         abstract public void tileEvent();
 
         abstract public Tile onLeave();

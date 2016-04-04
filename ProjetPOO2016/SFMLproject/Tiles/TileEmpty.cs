@@ -16,19 +16,11 @@ namespace SFMLproject.Tiles
     class TileEmpty : Tile
     {
 
-        public TileEmpty(Vector2f pos,Sprite spr) : base(pos,spr) { }
+        public TileEmpty(Vector2f pos, Sprite spr) : base(pos, spr) { }
 
         public override Tile occupy(Character c)
         {
             return new TileCharacter(c, this, sprite.Position);
-        }
-        public override bool isHere(Character c)
-        {
-            if (sprite.Position.X / 45 == c.getMapPos().X && sprite.Position.Y / 45 == c.getMapPos().Y)
-            {
-                return true;
-            }
-            return false;
         }
 
         public override Tile onLeave()

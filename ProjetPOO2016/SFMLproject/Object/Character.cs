@@ -22,23 +22,25 @@ namespace SFMLproject.Object
         static String stateCharact = "Down";
         static Texture perso;
         public Sprite sprite;
-        private Vector2i mapPos = new Vector2i(10, 10);
+        private Vector2i mapPos = new Vector2i(3, 3);
 
-        public Character(){
+        public Character()
+        {
             perso = new Texture("File\\Perso\\perso 4.png");
             sprite = new Sprite(perso);
             sprite.TextureRect = new IntRect(0, 0, 32, 48);
             sprite.Scale += new Vector2f(1f, 1f);
-            sprite.Position = (Vector2f)mapPos * (float)30;
+            sprite.Position = (Vector2f)mapPos * (float)Constants.tileSize;
         }
-        
-        public Character(String filePath, String state){
+
+        public Character(String filePath, String state)
+        {
             perso = new Texture(filePath);
             sprite = new Sprite(perso);
             sprite.TextureRect = new IntRect(0, 0, 32, 48);
             sprite.Scale += new Vector2f(1f, 1f);
             stateCharact = state;
-            sprite.Position = (Vector2f)mapPos * (float)30;
+            sprite.Position = (Vector2f)mapPos * (float)Constants.tileSize;
         }
 
         private void changePostureCharacter(String position)
@@ -49,8 +51,9 @@ namespace SFMLproject.Object
                 stateCharact = position;
             }
         }
-       
-        private void changeSpriteShow(String position){
+
+        private void changeSpriteShow(String position)
+        {
             if (position == "Down")
                 sprite.TextureRect = new IntRect(0, 0, 32, 48);
             if (position == "Left")
@@ -61,7 +64,8 @@ namespace SFMLproject.Object
                 sprite.TextureRect = new IntRect(0, 144, 32, 48);
         }
 
-        public void moveCharacter(Vector2f posi){
+        public void moveCharacter(Vector2f posi)
+        {
             Vector2f temp = sprite.Position;
             if (posi.X > 0)
                 changePostureCharacter("Right");

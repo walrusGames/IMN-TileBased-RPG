@@ -16,7 +16,8 @@ namespace SFMLproject.Object
         static Texture background;
         public Sprite sprite;
 
-        public Background(String filePath){
+        public Background(String filePath)
+        {
             background = new Texture(filePath);
             sprite = new Sprite(background);
         }

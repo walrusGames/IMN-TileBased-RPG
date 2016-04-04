@@ -23,23 +23,23 @@ namespace SFMLproject.Object
         SpriteEnum spr;
         Character c;
 
-        public Map(Character c,uint x,uint y)
+        public Map(Character c, uint x, uint y)
         {
             spr = new SpriteEnum();
-            camera = new Vector2i(c.getMapPos().X - 5, c.getMapPos().Y - 5);
+            camera = new Vector2i(c.getMapPos().X - Constants.camCol / 2, (int)c.getMapPos().Y - Constants.camRow / 2);
             rowsPrint = x;
             columnsPrint = y;
-            columns = 25;
+            columns = 30;
             rows = 25;
 
             tiles = new Tile[rows, columns];
 
-            for(uint j = 0; j < columns; j++)
+            for (uint j = 0; j < columns; j++)
             {
-                for(uint i = 0; i < rows; i++)
+                for (uint i = 0; i < rows; i++)
                 {
-                    if (j == 0 || i == 0 || j == columns-1 || i == rows-1)
-                        tiles[i, j] = new TileObstacle(new Vector2f(i * Constants.tileSize, j * Constants.tileSize),spr.getObstacle());
+                    if (j == 0 || i == 0 || j == columns - 1 || i == rows - 1)
+                        tiles[i, j] = new TileObstacle(new Vector2f(i * Constants.tileSize, j * Constants.tileSize), spr.getObstacle());
                     else
                         tiles[i, j] = new TileEmpty(new Vector2f(i * Constants.tileSize, j * Constants.tileSize), spr.getBackground());
                 }
@@ -105,18 +105,18 @@ namespace SFMLproject.Object
 
         public void setTile(Vector2i pos, Tile tile)
         {
-            tiles[pos.X,pos.Y] = tile;
+            tiles[pos.X, pos.Y] = tile;
         }
 
         public Tile getTile(Vector2i pos)
         {
-            return tiles[pos.X,pos.Y];
+            return tiles[pos.X, pos.Y];
         }
 
         public void setCamera(Vector2i add)
         {
-            camera.Y = add.X;
             camera.X = add.Y;
+            camera.Y = add.X;
             if (camera.Y < 0)
             {
                 camera.Y = 0;
@@ -125,34 +125,26 @@ namespace SFMLproject.Object
             {
                 camera.X = 0;
             }
-            if (camera.Y > columns - columnsPrint-1)
+            if (camera.X > columns - columnsPrint)
             {
-                camera.Y = (int)(columns - columnsPrint-1);
+                camera.X = (int)(columns - columnsPrint);
             }
-            if (camera.X > rows - rowsPrint-1)
+            if (camera.Y > rows - rowsPrint)
             {
-                camera.X = (int)(rows - rowsPrint-1);
+                camera.Y = (int)(rows - rowsPrint);
             }
         }
-       
+
 
         public void draw(RenderWindow window)
         {
-            for (uint row = (uint)camera.Y; row < (uint)camera.Y + rowsPrint + 1; row++)
+            for (uint row = (uint)camera.Y; row < (uint)camera.Y + rowsPrint; row++)
             {
-                for (uint column = (uint)camera.X; column < (uint)camera.X + columnsPrint + 1; column++)
+                for (uint column = (uint)camera.X; column < (uint)camera.X + columnsPrint; column++)
                 {
                     tiles[row, column].draw(window);
                 }
             }
-            /*
-            for (uint row = 0; row < rows; row++)
-            {
-                for (uint column = 0; column < columns; column++)
-                {
-                    tiles[row, column].draw(window);
-                }
-            }*/
         }
     }
 }

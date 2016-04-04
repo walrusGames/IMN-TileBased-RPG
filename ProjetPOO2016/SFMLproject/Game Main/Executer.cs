@@ -16,12 +16,12 @@ using SFML.Window;
 using SFMLproject.Constt;
 namespace SFMLproject
 {
-   
+
     class Executer
     {
         static ContextSettings context = new ContextSettings();
         static RenderWindow window;
-        
+
         //Audio State
         static bool Playing = true;
 
@@ -74,7 +74,7 @@ namespace SFMLproject
                 case Keyboard.Key.D:
                     map.setTile(charc.getMapPos(), map.getTile(charc.getMapPos()).onLeave());
                     charc.moveMapPos(new Vector2i(1, 0));
-                    
+
                     depl = map.getTile(charc.getMapPos()).occupy(charc);
                     if (depl is TileCharacter)
                     {
@@ -93,7 +93,7 @@ namespace SFMLproject
                     if (depl is TileCharacter)
                     {
                         charc.moveCharacter(new Vector2f(-30, 0));
-                        map.setCamera(new Vector2i(charc.getMapPos().X - 5, charc.getMapPos().Y - 5));
+                        map.setCamera(new Vector2i(charc.getMapPos().X - Constants.camCol / 2, charc.getMapPos().Y - Constants.camRow / 2));
                         return true;
                     }
                     else {
@@ -107,7 +107,7 @@ namespace SFMLproject
                     if (depl is TileCharacter)
                     {
                         charc.moveCharacter(new Vector2f(0, 30));
-                        map.setCamera(new Vector2i(charc.getMapPos().X - 5, charc.getMapPos().Y - 5));
+                        map.setCamera(new Vector2i(charc.getMapPos().X - Constants.camCol / 2, charc.getMapPos().Y - Constants.camRow / 2));
                         return true;
                     }
                     else {
@@ -121,7 +121,7 @@ namespace SFMLproject
                     if (depl is TileCharacter)
                     {
                         charc.moveCharacter(new Vector2f(0, -30));
-                        map.setCamera(new Vector2i(charc.getMapPos().X - 5, charc.getMapPos().Y - 5));
+                        map.setCamera(new Vector2i(charc.getMapPos().X - Constants.camCol / 2, charc.getMapPos().Y - Constants.camRow / 2));
                         return true;
                     }
                     else {
@@ -131,7 +131,7 @@ namespace SFMLproject
             }
             return false;
         }
-        
+
         /*Mouse
          Action on the mouse:
          * Mouse.IsButtonPressed(Mouse.Button.XXXXX) retourne un bool
@@ -144,7 +144,8 @@ namespace SFMLproject
         //Call when a key is pressed
         static void window_KeyReleased(object sender, KeyEventArgs e)
         {
-            switch(e.Code){
+            switch (e.Code)
+            {
                 case Keyboard.Key.Escape: window.Close(); break;
                 default: break;
             }
@@ -158,11 +159,12 @@ namespace SFMLproject
             switch (e.Code)
             {
                 case Keyboard.Key.P:
-                    if (Playing){
+                    if (Playing)
+                    {
                         music.Pause();
                         Playing = false;
                     }
-                    else{
+                    else {
                         music.Play();
                         Playing = true;
                     }
@@ -181,12 +183,13 @@ namespace SFMLproject
         //Call when the window has LostFocus
         static void window_LostFocus(object sender, EventArgs e)
         {
-            
+
         }
 
         //Call when the window has GainedFocus
-        static void window_GainedFocus(object sender, EventArgs e){
-            
+        static void window_GainedFocus(object sender, EventArgs e)
+        {
+
         }
 
         //Call when the window is closed

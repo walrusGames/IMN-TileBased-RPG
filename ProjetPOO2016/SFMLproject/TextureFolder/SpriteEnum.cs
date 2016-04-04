@@ -19,7 +19,7 @@ namespace SFMLproject.TextureFolder
         public SpriteEnum()
         {
             back = new Texture("File\\Background\\back.png");
-            ob = new Texture("File\\Background\\back.png");
+            ob = new Texture("File\\Background\\OB.png");
         }
         public Sprite getBackground()
         {

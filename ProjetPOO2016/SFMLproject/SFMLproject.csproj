@@ -79,6 +79,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="bin\Debug\File\Background\back.png" />
+    <Content Include="bin\Debug\File\Background\ob.png" />
     <Content Include="bin\Debug\File\Map\test.txt" />
     <Content Include="bin\Debug\File\Music\Student Life.ogg" />
     <Content Include="bin\Debug\File\Perso\Perso 1.png" />
