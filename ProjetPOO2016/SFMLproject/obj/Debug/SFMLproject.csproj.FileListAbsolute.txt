@@ -55,3 +55,21 @@ C:\Users\Badass Motherfucker\Source\Repos\IMN-TileBased-RPG\ProjetPOO2016\SFMLpr
 C:\Users\Badass Motherfucker\Source\Repos\IMN-TileBased-RPG\ProjetPOO2016\SFMLproject\bin\Debug\sfmlnet-system-2.dll
 C:\Users\Badass Motherfucker\Source\Repos\IMN-TileBased-RPG\ProjetPOO2016\SFMLproject\bin\Debug\sfmlnet-window-2.dll
 C:\Users\Badass Motherfucker\Source\Repos\IMN-TileBased-RPG\ProjetPOO2016\SFMLproject\obj\Debug\SFMLproject.csprojResolveAssemblyReference.cache
+C:\Users\Alienware\Source\Repos\IMN-TileBased-RPG\ProjetPOO2016\SFMLproject\bin\Debug\SFMLproject.exe.config
+C:\Users\Alienware\Source\Repos\IMN-TileBased-RPG\ProjetPOO2016\SFMLproject\obj\Debug\SFMLproject.exe
+C:\Users\Alienware\Source\Repos\IMN-TileBased-RPG\ProjetPOO2016\SFMLproject\obj\Debug\SFMLproject.pdb
+C:\Users\Alienware\Source\Repos\IMN-TileBased-RPG\ProjetPOO2016\SFMLproject\bin\Debug\csfml-audio-2.dll
+C:\Users\Alienware\Source\Repos\IMN-TileBased-RPG\ProjetPOO2016\SFMLproject\bin\Debug\csfml-graphics-2.dll
+C:\Users\Alienware\Source\Repos\IMN-TileBased-RPG\ProjetPOO2016\SFMLproject\bin\Debug\csfml-system-2.dll
+C:\Users\Alienware\Source\Repos\IMN-TileBased-RPG\ProjetPOO2016\SFMLproject\bin\Debug\csfml-window-2.dll
+C:\Users\Alienware\Source\Repos\IMN-TileBased-RPG\ProjetPOO2016\SFMLproject\bin\Debug\libsndfile-1.dll
+C:\Users\Alienware\Source\Repos\IMN-TileBased-RPG\ProjetPOO2016\SFMLproject\bin\Debug\openal32.dll
+C:\Users\Alienware\Source\Repos\IMN-TileBased-RPG\ProjetPOO2016\SFMLproject\bin\Debug\OpenTK.Compatibility.dll
+C:\Users\Alienware\Source\Repos\IMN-TileBased-RPG\ProjetPOO2016\SFMLproject\bin\Debug\OpenTK.dll
+C:\Users\Alienware\Source\Repos\IMN-TileBased-RPG\ProjetPOO2016\SFMLproject\bin\Debug\SFMLproject.exe
+C:\Users\Alienware\Source\Repos\IMN-TileBased-RPG\ProjetPOO2016\SFMLproject\bin\Debug\SFMLproject.pdb
+C:\Users\Alienware\Source\Repos\IMN-TileBased-RPG\ProjetPOO2016\SFMLproject\bin\Debug\sfmlnet-audio-2.dll
+C:\Users\Alienware\Source\Repos\IMN-TileBased-RPG\ProjetPOO2016\SFMLproject\bin\Debug\sfmlnet-graphics-2.dll
+C:\Users\Alienware\Source\Repos\IMN-TileBased-RPG\ProjetPOO2016\SFMLproject\bin\Debug\sfmlnet-system-2.dll
+C:\Users\Alienware\Source\Repos\IMN-TileBased-RPG\ProjetPOO2016\SFMLproject\bin\Debug\sfmlnet-window-2.dll
+C:\Users\Alienware\Source\Repos\IMN-TileBased-RPG\ProjetPOO2016\SFMLproject\obj\Debug\SFMLproject.csprojResolveAssemblyReference.cache
