@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 using SFMLproject.Tiles;
 using SFML.Graphics;
@@ -46,9 +47,60 @@ namespace SFMLproject.Object
             this.c = c;
         }
 
-        public Map(string filePath)
+        public Map(Character c, string filePath, uint entryX, uint entryY)
         {
-            /* A implementer */
+
+            spr = new SpriteEnum();
+            camera = new Vector2i(c.getMapPos().X - Constants.camCol / 2, (int)c.getMapPos().Y - Constants.camRow / 2);
+            rowsPrint = Constants.camRow;
+            columnsPrint = Constants.camCol;
+
+            char buffer;
+            string stringBuffer = "";
+            var fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read);
+            using (var streamReader = new StreamReader(fileStream, Encoding.ASCII))
+            {
+                // COLUMN
+                do
+                {
+                    buffer = (char)streamReader.Read();
+                    stringBuffer += buffer;
+                } while (buffer != '\n');
+
+                columns = uint.Parse(stringBuffer);
+                stringBuffer = "";
+                // ROW
+                do
+                {
+                    buffer = (char)streamReader.Read();
+                    stringBuffer += buffer;
+                } while (buffer != '\n');
+
+                rows = uint.Parse(stringBuffer);
+                tiles = new Tile[rows, columns];
+
+                // Reading map
+                for (uint j = 0; j < columns; j++)
+                {
+                    for (uint i = 0; i < rows; i++)
+                    {
+                        buffer = (char)streamReader.Read();
+                        switch (buffer)
+                        {
+                            // An empty space
+                            case '0':
+                                tiles[i, j] = new TileEmpty(new Vector2f(i * Constants.tileSize, j * Constants.tileSize), spr.getBackground());
+                                break;
+
+                            //  An Obstacle
+                            case '1':
+                                tiles[i, j] = new TileObstacle(new Vector2f(i * Constants.tileSize, j * Constants.tileSize), spr.getObstacle());
+                                break;
+                        }
+                    }
+                }
+            }
+            this.c = c;
         }
 
         public void setTile(Vector2i pos, Tile tile)

@@ -31,7 +31,7 @@ namespace SFMLproject
 
         static Character charc = new Character();
 
-        static Map map = new Map(charc,10,10);
+        static Map map = new Map(charc, "File\\Map\\test.txt", 10, 10);
 
         static void initWindow()
         {

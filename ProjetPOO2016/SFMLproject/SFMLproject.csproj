@@ -74,8 +74,17 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="bin\Debug\File\Background\Thumbs.db" />
+    <None Include="bin\Debug\File\Perso\Thumbs.db" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\Debug\File\Background\back.png" />
+    <Content Include="bin\Debug\File\Map\test.txt" />
+    <Content Include="bin\Debug\File\Music\Student Life.ogg" />
+    <Content Include="bin\Debug\File\Perso\Perso 1.png" />
+    <Content Include="bin\Debug\File\Perso\Perso 2.png" />
+    <Content Include="bin\Debug\File\Perso\Perso 3.png" />
+    <Content Include="bin\Debug\File\Perso\Perso 4.png" />
     <Content Include="csfml-audio-2.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
