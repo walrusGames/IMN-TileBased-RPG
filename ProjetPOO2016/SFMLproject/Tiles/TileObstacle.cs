@@ -16,12 +16,11 @@ namespace SFMLproject.Tiles
 {
     class TileObstacle : Tile
     {
-        public TileObstacle(Vector2f pos, Sprite spr)
+        public TileObstacle(Sprite spr)
         {
             sprite = spr;
             sprite.TextureRect = new IntRect(0, 0, Constants.tileSize, Constants.tileSize);
             sprite.Scale += new Vector2f(1f, 1f);
-            sprite.Position = pos;
         }
 
         public override Tile occupy(Character c)

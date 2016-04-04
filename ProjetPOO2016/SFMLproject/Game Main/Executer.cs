@@ -55,82 +55,82 @@ namespace SFMLproject
                 window.DispatchEvents();
                 window.Display();
 
-                if (controller.ControllerPlugged)
-                    charc.moveCharacter(controller.getMovementLeftJoystick() / 20);
+                //if (controller.ControllerPlugged)
+                //    charc.moveCharacter(controller.getMovementLeftJoystick() / 20);
 
 
                 window.Clear();
                 map.draw(window);
-                window.Draw(charc.sprite);
+                //window.Draw(charc.sprite);
 
             }
         }
 
-        static bool moveCharac(Keyboard.Key e)
-        {
-            Tile depl;
-            switch (e)
-            {
-                case Keyboard.Key.D:
-                    map.setTile(charc.getMapPos(), map.getTile(charc.getMapPos()).onLeave());
-                    charc.moveMapPos(new Vector2i(1, 0));
+        //static bool moveCharac(Keyboard.Key e)
+        //{
+        //    Tile depl;
+        //    switch (e)
+        //    {
+        //        case Keyboard.Key.D:
+        //            map.setTile(charc.getMapPos(), map.getTile(charc.getMapPos()).onLeave());
+        //            charc.moveMapPos(new Vector2i(1, 0));
 
-                    depl = map.getTile(charc.getMapPos()).occupy(charc);
-                    if (depl is TileCharacter)
-                    {
-                        charc.moveCharacter(new Vector2f(30, 0));
-                        map.setCamera(new Vector2i(charc.getMapPos().X - 5, charc.getMapPos().Y - 5));
-                        return true;
-                    }
-                    else {
-                        charc.moveMapPos(new Vector2i(-1, 0));
-                        return false;
-                    }
-                case Keyboard.Key.A:
-                    map.setTile(charc.getMapPos(), map.getTile(charc.getMapPos()).onLeave());
-                    charc.moveMapPos(new Vector2i(-1, 0));
-                    depl = map.getTile(charc.getMapPos()).occupy(charc);
-                    if (depl is TileCharacter)
-                    {
-                        charc.moveCharacter(new Vector2f(-30, 0));
-                        map.setCamera(new Vector2i(charc.getMapPos().X - Constants.camCol / 2, charc.getMapPos().Y - Constants.camRow / 2));
-                        return true;
-                    }
-                    else {
-                        charc.moveMapPos(new Vector2i(1, 0));
-                        return false;
-                    }
-                case Keyboard.Key.S:
-                    map.setTile(charc.getMapPos(), map.getTile(charc.getMapPos()).onLeave());
-                    charc.moveMapPos(new Vector2i(0, 1));
-                    depl = map.getTile(charc.getMapPos()).occupy(charc);
-                    if (depl is TileCharacter)
-                    {
-                        charc.moveCharacter(new Vector2f(0, 30));
-                        map.setCamera(new Vector2i(charc.getMapPos().X - Constants.camCol / 2, charc.getMapPos().Y - Constants.camRow / 2));
-                        return true;
-                    }
-                    else {
-                        charc.moveMapPos(new Vector2i(0, -1));
-                        return false;
-                    }
-                case Keyboard.Key.W:
-                    map.setTile(charc.getMapPos(), map.getTile(charc.getMapPos()).onLeave());
-                    charc.moveMapPos(new Vector2i(0, -1));
-                    depl = map.getTile(charc.getMapPos()).occupy(charc);
-                    if (depl is TileCharacter)
-                    {
-                        charc.moveCharacter(new Vector2f(0, -30));
-                        map.setCamera(new Vector2i(charc.getMapPos().X - Constants.camCol / 2, charc.getMapPos().Y - Constants.camRow / 2));
-                        return true;
-                    }
-                    else {
-                        charc.moveMapPos(new Vector2i(0, 1));
-                        return false;
-                    }
-            }
-            return false;
-        }
+        //            depl = map.getTile(charc.getMapPos()).occupy(charc);
+        //            if (depl is TileCharacter)
+        //            {
+        //                charc.moveCharacter(new Vector2f(30, 0));
+        //                map.setCamera(new Vector2i(charc.getMapPos().X - 5, charc.getMapPos().Y - 5));
+        //                return true;
+        //            }
+        //            else {
+        //                charc.moveMapPos(new Vector2i(-1, 0));
+        //                return false;
+        //            }
+        //        case Keyboard.Key.A:
+        //            map.setTile(charc.getMapPos(), map.getTile(charc.getMapPos()).onLeave());
+        //            charc.moveMapPos(new Vector2i(-1, 0));
+        //            depl = map.getTile(charc.getMapPos()).occupy(charc);
+        //            if (depl is TileCharacter)
+        //            {
+        //                charc.moveCharacter(new Vector2f(-30, 0));
+        //                map.setCamera(new Vector2i(charc.getMapPos().X - Constants.camCol / 2, charc.getMapPos().Y - Constants.camRow / 2));
+        //                return true;
+        //            }
+        //            else {
+        //                charc.moveMapPos(new Vector2i(1, 0));
+        //                return false;
+        //            }
+        //        case Keyboard.Key.S:
+        //            map.setTile(charc.getMapPos(), map.getTile(charc.getMapPos()).onLeave());
+        //            charc.moveMapPos(new Vector2i(0, 1));
+        //            depl = map.getTile(charc.getMapPos()).occupy(charc);
+        //            if (depl is TileCharacter)
+        //            {
+        //                charc.moveCharacter(new Vector2f(0, 30));
+        //                map.setCamera(new Vector2i(charc.getMapPos().X - Constants.camCol / 2, charc.getMapPos().Y - Constants.camRow / 2));
+        //                return true;
+        //            }
+        //            else {
+        //                charc.moveMapPos(new Vector2i(0, -1));
+        //                return false;
+        //            }
+        //        case Keyboard.Key.W:
+        //            map.setTile(charc.getMapPos(), map.getTile(charc.getMapPos()).onLeave());
+        //            charc.moveMapPos(new Vector2i(0, -1));
+        //            depl = map.getTile(charc.getMapPos()).occupy(charc);
+        //            if (depl is TileCharacter)
+        //            {
+        //                charc.moveCharacter(new Vector2f(0, -30));
+        //                map.setCamera(new Vector2i(charc.getMapPos().X - Constants.camCol / 2, charc.getMapPos().Y - Constants.camRow / 2));
+        //                return true;
+        //            }
+        //            else {
+        //                charc.moveMapPos(new Vector2i(0, 1));
+        //                return false;
+        //            }
+        //    }
+        //    return false;
+        //}
 
         /*Mouse
          Action on the mouse:
@@ -154,7 +154,7 @@ namespace SFMLproject
         //Call when a key is pressed
         static void window_KeyPressed(object sender, KeyEventArgs e)
         {
-            if (moveCharac(e.Code))
+            if (map.moveCharac(e.Code))
                 return;
             switch (e.Code)
             {

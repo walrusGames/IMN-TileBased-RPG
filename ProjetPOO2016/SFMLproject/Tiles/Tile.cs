@@ -18,19 +18,24 @@ namespace SFMLproject.Tiles
         {
 
         }
-        public Tile(Vector2f pos, Sprite spr)
+        public Tile(Sprite spr)
         {
             sprite = spr;
             sprite.TextureRect = new IntRect(0, 0, Constants.tileSize, Constants.tileSize);
-            sprite.Scale += new Vector2f(1f, 1f);
-            sprite.Position = pos;
+            sprite.Scale = new Vector2f(1f, 1f);
         }
 
+      
+        public virtual void moveSprite(Vector2f newPos)
+        {
+            sprite.Position = newPos;
+        }
         abstract public Tile occupy(Character c);
         abstract public void tileEvent();
 
         abstract public Tile onLeave();
-        public void draw(RenderWindow window)
+
+        public virtual void draw(RenderWindow window)
         {
             window.Draw(sprite);
         }

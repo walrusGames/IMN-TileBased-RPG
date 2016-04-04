@@ -76,7 +76,7 @@ namespace SFMLproject.Object
             else if (posi.Y > 0)
                 changePostureCharacter("Down");
             /*sprite.Position += posi;*/
-            sprite.Position = (Vector2f)mapPos * (float)Constants.tileSize;
+           // sprite.Position = (Vector2f)mapPos * (float)Constants.tileSize;
         }
 
         public void moveMapPos(Vector2i pos)

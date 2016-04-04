@@ -17,16 +17,37 @@ namespace SFMLproject.Tiles
     class TileCharacter : Tile
     {
         private Character character;
+
         private Tile currentTile;
         static private SpriteEnum spr = new SpriteEnum();
+        private Vector2i pos;
 
-        public TileCharacter(Character c, Tile cur, Vector2f pos) : base(pos, spr.getBackground())
+        public Character getCharacter()
+        {
+            return character;
+        }
+
+        public Vector2i getPos()
+        {
+            return pos;
+        }
+        public void movePos(Vector2i position)
+        {
+            this.pos += position;
+            character.moveCharacter((Vector2f)position);
+        }
+
+        public void setPos(Vector2i position) {
+            this.pos = position;
+        }
+
+        public TileCharacter(Character c, Tile cur) : base(spr.getBackground())
         {
             character = c;
             currentTile = cur;
         }
         public override Tile occupy(Character c)
-        { return this; }
+        { return new TileObstacle(spr.getBackground()); }
 
 
         public override Tile onLeave()
@@ -34,9 +55,40 @@ namespace SFMLproject.Tiles
             return currentTile;
         }
 
+
         public override void tileEvent()
         { /*Provoque dialog du character*/
           /* A implementer*/
         }
+
+        public override void moveSprite(Vector2f newPos)
+        {
+            sprite.Position = newPos;
+            character.sprite.Position = newPos;
+        }
+
+        public override void draw(RenderWindow window)
+        {
+            window.Draw(sprite);
+            window.Draw(character.sprite);
+        }
+
+
+        /*
+            Transfer this to destination Tile, similar to map.transfer
+        */
+        //public TileCharacter transfer(Tile destination, Vector2i move)
+        //{
+        //    Tile temp = this;
+        //    if (destination.occupy(character) is TileCharacter)
+        //    {
+        //        movePos(move);
+        //        temp = destination.onLeave();
+        //        return (TileCharacter)destination.occupy(character);
+
+        //    }
+
+        //    return this;
+        //}
     }
 }

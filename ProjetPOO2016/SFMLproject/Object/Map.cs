@@ -11,6 +11,7 @@ using SFML.System;
 
 using SFMLproject.TextureFolder;
 using SFMLproject.Constt;
+using SFML.Window;
 
 namespace SFMLproject.Object
 {
@@ -18,89 +19,80 @@ namespace SFMLproject.Object
     {
 
         private Tile[,] tiles;
-        uint columns, rows, columnsPrint, rowsPrint;
+        //TODO: change row / column for x/y
+        uint mapX, mapY, cameraPrintX, cameraPrintY;
         Vector2i camera;
         SpriteEnum spr;
-        Character c;
+        TileCharacter player;
+        private Vector2i position;
 
-        public Map(Character c, uint x, uint y)
-        {
-            spr = new SpriteEnum();
-            camera = new Vector2i(c.getMapPos().X - Constants.camCol / 2, (int)c.getMapPos().Y - Constants.camRow / 2);
-            rowsPrint = x;
-            columnsPrint = y;
-            columns = 30;
-            rows = 25;
-
-            tiles = new Tile[rows, columns];
-
-            for (uint j = 0; j < columns; j++)
-            {
-                for (uint i = 0; i < rows; i++)
-                {
-                    if (j == 0 || i == 0 || j == columns - 1 || i == rows - 1)
-                        tiles[i, j] = new TileObstacle(new Vector2f(i * Constants.tileSize, j * Constants.tileSize), spr.getObstacle());
-                    else
-                        tiles[i, j] = new TileEmpty(new Vector2f(i * Constants.tileSize, j * Constants.tileSize), spr.getBackground());
-                }
-            }
-            this.c = c;
-        }
-
+        /*
+            Load map from textfile
+            EntryX, EntryY are character initial position
+        */
         public Map(Character c, string filePath, uint entryX, uint entryY)
         {
-
+            
             spr = new SpriteEnum();
             camera = new Vector2i(c.getMapPos().X - Constants.camCol / 2, (int)c.getMapPos().Y - Constants.camRow / 2);
-            rowsPrint = Constants.camRow;
-            columnsPrint = Constants.camCol;
+      
+            cameraPrintY = Constants.camRow;
+            cameraPrintX = Constants.camCol;
 
             char buffer;
             string stringBuffer = "";
             var fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read);
             using (var streamReader = new StreamReader(fileStream, Encoding.ASCII))
             {
-                // COLUMN
+                // X
                 do
                 {
                     buffer = (char)streamReader.Read();
                     stringBuffer += buffer;
                 } while (buffer != '\n');
 
-                columns = uint.Parse(stringBuffer);
+                mapX = uint.Parse(stringBuffer);
                 stringBuffer = "";
-                // ROW
+                // Y
                 do
                 {
                     buffer = (char)streamReader.Read();
                     stringBuffer += buffer;
                 } while (buffer != '\n');
 
-                rows = uint.Parse(stringBuffer);
-                tiles = new Tile[rows, columns];
+                mapY = uint.Parse(stringBuffer);
+                tiles = new Tile[mapX, mapY];
 
                 // Reading map
-                for (uint j = 0; j < columns; j++)
+                for (uint j = 0; j < mapY; j++)
                 {
-                    for (uint i = 0; i < rows; i++)
+                    for (uint i = 0; i < mapX; i++)
                     {
                         buffer = (char)streamReader.Read();
                         switch (buffer)
                         {
                             // An empty space
                             case '0':
-                                tiles[i, j] = new TileEmpty(new Vector2f(i * Constants.tileSize, j * Constants.tileSize), spr.getBackground());
+                                tiles[i, j] = new TileEmpty(spr.getBackground());
                                 break;
 
                             //  An Obstacle
                             case '1':
-                                tiles[i, j] = new TileObstacle(new Vector2f(i * Constants.tileSize, j * Constants.tileSize), spr.getObstacle());
+                                tiles[i, j] = new TileObstacle(spr.getObstacle());
                                 break;
                         }
                     }
                 }
             }
-            this.c = c;
+            /*
+                TODO
+                Init a changer
+            */
+            player = new TileCharacter(c, new TileEmpty(spr.getBackground()));
+            player.setPos(new Vector2i(4, 4));
+
+            position = new Vector2i(4, 4);
+            tiles[player.getPos().X, player.getPos().Y] = player;
         }
 
         public void setTile(Vector2i pos, Tile tile)
@@ -113,10 +105,13 @@ namespace SFMLproject.Object
             return tiles[pos.X, pos.Y];
         }
 
-        public void setCamera(Vector2i add)
+        /*
+            Set camera position
+        */
+        public void setCamera(Vector2i newPos)
         {
-            camera.X = add.Y;
-            camera.Y = add.X;
+            camera.X = newPos.X;
+            camera.Y = newPos.Y;
             if (camera.Y < 0)
             {
                 camera.Y = 0;
@@ -125,26 +120,105 @@ namespace SFMLproject.Object
             {
                 camera.X = 0;
             }
-            if (camera.X > columns - columnsPrint)
+            if (camera.X > mapX - cameraPrintX )
             {
-                camera.X = (int)(columns - columnsPrint);
+                camera.X = (int)(mapX - cameraPrintX );
             }
-            if (camera.Y > rows - rowsPrint)
+            if (camera.Y > mapY - cameraPrintY  )
             {
-                camera.Y = (int)(rows - rowsPrint);
+                camera.Y = (int)(mapY - cameraPrintY );
+            }
+            /*
+                TODO
+                A changer de place
+            */
+            centerScreen();
+        }
+
+        /*
+           Center de scene at top left of screen 
+           TODO
+           Seems to not properly work
+        */
+        public void centerScreen()
+        {
+            for (uint x = (uint)camera.X; x < (uint)camera.X + cameraPrintX ; x++)
+            {
+                for (uint y = (uint)camera.Y; y < (uint)camera.Y + cameraPrintY; y++)
+                {
+                    /*
+                        TODO
+                        ARRANGER CA CALISSE (X et Y) 
+                    */
+                    Vector2f temp = new Vector2f((x-camera.X)*Constants.tileSize, (y - camera.Y) * Constants.tileSize);
+                    tiles[x, y].moveSprite(temp);
+                }
             }
         }
 
+        /*
+            Attempt to transfer a character from one tile to another
+            If fail, doesn't move
+        */
+        public void transfer(Tile character, Vector2i move)
+        {
+            //Verify if can
+            if (tiles[player.getPos().X + move.X, player.getPos().Y + move.Y].occupy(((TileCharacter)character).getCharacter()) is TileCharacter) // Ask Phil for details
+            {
+                tiles[player.getPos().X, player.getPos().Y] = tiles[player.getPos().X + move.X, player.getPos().Y + move.Y].onLeave();
+                player.movePos(move);
 
+                tiles[player.getPos().X, player.getPos().Y] = player;
+
+            }
+
+        }
+
+        /*
+           Move character WASD
+        */
+        public bool moveCharac(Keyboard.Key e)
+        {
+
+            switch (e)
+            {
+                case Keyboard.Key.D:
+                    transfer(player, new Vector2i(1, 0));
+                    //player = player.transfer(tiles[player.getPos().X +1, player.getPos().Y], new Vector2i(1, 0));
+                    break;
+
+                case Keyboard.Key.A:
+                    transfer(player, new Vector2i(-1, 0));
+                    //player = player.transfer(tiles[player.getPos().X - 1, player.getPos().Y], new Vector2i(-1, 0));
+                    break;
+
+                case Keyboard.Key.W:
+                    transfer(player, new Vector2i(0, -1));
+                   // player = player.transfer(tiles[player.getPos().X, player.getPos().Y - 1], new Vector2i(0, -1));
+                    break;
+
+                case Keyboard.Key.S:
+                    transfer(player, new Vector2i(0, 1));
+                    //player = player.transfer(tiles[player.getPos().X, player.getPos().Y + 1], new Vector2i(0, 1));
+                    break;
+            }
+            setCamera(player.getPos() - new Vector2i(Constants.camRow / 2, Constants.camCol / 2));
+            return false;
+        }
+
+        /*
+            Draw all tile in camera sight
+        */
         public void draw(RenderWindow window)
         {
-            for (uint row = (uint)camera.Y; row < (uint)camera.Y + rowsPrint; row++)
+            for (uint x = (uint)camera.X; x < (uint)camera.X + cameraPrintX; x++)
             {
-                for (uint column = (uint)camera.X; column < (uint)camera.X + columnsPrint; column++)
+                for (uint y = (uint)camera.Y; y < (uint)camera.Y + cameraPrintY; y++)
                 {
-                    tiles[row, column].draw(window);
+                    tiles[x, y].draw(window);
                 }
             }
+            player.draw(window);
         }
     }
 }
