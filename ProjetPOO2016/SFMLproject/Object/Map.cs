@@ -20,11 +20,10 @@ namespace SFMLproject.Object
 
         private Tile[,] tiles;
         //TODO: change row / column for x/y
-        uint mapX, mapY, cameraPrintX, cameraPrintY;
-        Vector2i camera;
-        SpriteEnum spr;
-        TileCharacter player;
-        private Vector2i position;
+        private uint mapX, mapY, cameraPrintX, cameraPrintY;
+        private Vector2i camera;
+        private SpriteEnum spr;
+        private TileCharacter player;
 
         /*
             Load map from textfile
@@ -91,7 +90,6 @@ namespace SFMLproject.Object
             player = new TileCharacter(c, new TileEmpty(spr.getBackground()));
             player.setPos(new Vector2i(4, 4));
 
-            position = new Vector2i(4, 4);
             tiles[player.getPos().X, player.getPos().Y] = player;
         }
 
@@ -132,7 +130,6 @@ namespace SFMLproject.Object
                 TODO
                 A changer de place
             */
-            centerScreen();
         }
 
         /*
@@ -140,7 +137,7 @@ namespace SFMLproject.Object
            TODO
            Seems to not properly work
         */
-        public void centerScreen()
+        public void centerScreen(uint winStartX, uint winStartY)
         {
             for (uint x = (uint)camera.X; x < (uint)camera.X + cameraPrintX ; x++)
             {
@@ -150,7 +147,7 @@ namespace SFMLproject.Object
                         TODO
                         ARRANGER CA CALISSE (X et Y) 
                     */
-                    Vector2f temp = new Vector2f((x-camera.X)*Constants.tileSize, (y - camera.Y) * Constants.tileSize);
+                    Vector2f temp = new Vector2f((winStartX + x - camera.X)*Constants.tileSize, (winStartY + y - camera.Y) * Constants.tileSize);
                     tiles[x, y].moveSprite(temp);
                 }
             }
@@ -211,6 +208,12 @@ namespace SFMLproject.Object
         */
         public void draw(RenderWindow window)
         {
+            Vector2u win = window.Size;
+            uint centerX = win.X / Constants.tileSize,
+                 centerY = win.Y / Constants.tileSize;
+
+            centerScreen((centerX - cameraPrintX) / 2, (centerY - cameraPrintY) / 2);
+
             for (uint x = (uint)camera.X; x < (uint)camera.X + cameraPrintX; x++)
             {
                 for (uint y = (uint)camera.Y; y < (uint)camera.Y + cameraPrintY; y++)

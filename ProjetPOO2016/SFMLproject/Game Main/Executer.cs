@@ -44,6 +44,7 @@ namespace SFMLproject
             window.KeyReleased += window_KeyReleased;
             window.SetActive(true);
             window.SetFramerateLimit(60);
+            map.draw(window);
         }
 
         static void Main(string[] args)
@@ -52,17 +53,16 @@ namespace SFMLproject
 
             while (window.IsOpen)
             {
-                window.DispatchEvents();
-                window.Display();
+                
 
                 //if (controller.ControllerPlugged)
                 //    charc.moveCharacter(controller.getMovementLeftJoystick() / 20);
 
-
-                window.Clear();
                 map.draw(window);
                 //window.Draw(charc.sprite);
-
+                window.Display();
+                window.DispatchEvents();
+                window.Clear();
             }
         }
 
