@@ -18,7 +18,7 @@ namespace SFMLproject.Tiles
 
         public TileEmpty(Sprite spr) : base(spr) { }
 
-        public override Tile occupy(Character c)
+        public override Tile occupy(Object.Character c)
         {
             return new TileCharacter(c, this);
         }

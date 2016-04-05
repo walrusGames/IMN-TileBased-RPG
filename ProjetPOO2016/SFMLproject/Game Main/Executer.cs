@@ -12,8 +12,10 @@ using SFML.Audio;
 using SFML.Graphics;
 using SFML.System;
 using SFML.Window;
+using SFMLproject.Map;
 
 using SFMLproject.Constt;
+
 namespace SFMLproject
 {
 
@@ -29,9 +31,9 @@ namespace SFMLproject
 
         static Controller controller = new Controller();
 
-        static Character charc = new Character();
+        static Object.Character charc = new Object.Character();
 
-        static Map map = new Map(charc, "File\\Map\\test.txt", 10, 10);
+        static Map.Map map = new Map.Map(charc, "File\\Map\\test.txt", 10, 10);
 
         static void initWindow()
         {
@@ -76,7 +78,7 @@ namespace SFMLproject
         //            charc.moveMapPos(new Vector2i(1, 0));
 
         //            depl = map.getTile(charc.getMapPos()).occupy(charc);
-        //            if (depl is TileCharacter)
+        //            if (depl is Character)
         //            {
         //                charc.moveCharacter(new Vector2f(30, 0));
         //                map.setCamera(new Vector2i(charc.getMapPos().X - 5, charc.getMapPos().Y - 5));
@@ -90,7 +92,7 @@ namespace SFMLproject
         //            map.setTile(charc.getMapPos(), map.getTile(charc.getMapPos()).onLeave());
         //            charc.moveMapPos(new Vector2i(-1, 0));
         //            depl = map.getTile(charc.getMapPos()).occupy(charc);
-        //            if (depl is TileCharacter)
+        //            if (depl is Character)
         //            {
         //                charc.moveCharacter(new Vector2f(-30, 0));
         //                map.setCamera(new Vector2i(charc.getMapPos().X - Constants.camCol / 2, charc.getMapPos().Y - Constants.camRow / 2));
@@ -104,7 +106,7 @@ namespace SFMLproject
         //            map.setTile(charc.getMapPos(), map.getTile(charc.getMapPos()).onLeave());
         //            charc.moveMapPos(new Vector2i(0, 1));
         //            depl = map.getTile(charc.getMapPos()).occupy(charc);
-        //            if (depl is TileCharacter)
+        //            if (depl is Character)
         //            {
         //                charc.moveCharacter(new Vector2f(0, 30));
         //                map.setCamera(new Vector2i(charc.getMapPos().X - Constants.camCol / 2, charc.getMapPos().Y - Constants.camRow / 2));
@@ -118,7 +120,7 @@ namespace SFMLproject
         //            map.setTile(charc.getMapPos(), map.getTile(charc.getMapPos()).onLeave());
         //            charc.moveMapPos(new Vector2i(0, -1));
         //            depl = map.getTile(charc.getMapPos()).occupy(charc);
-        //            if (depl is TileCharacter)
+        //            if (depl is Character)
         //            {
         //                charc.moveCharacter(new Vector2f(0, -30));
         //                map.setCamera(new Vector2i(charc.getMapPos().X - Constants.camCol / 2, charc.getMapPos().Y - Constants.camRow / 2));

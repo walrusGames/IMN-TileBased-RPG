@@ -12,10 +12,11 @@ using SFML.System;
 using SFMLproject.TextureFolder;
 using SFMLproject.Constt;
 using SFML.Window;
+using SFMLproject.Object;
 
-namespace SFMLproject.Object
+namespace SFMLproject.Map
 {
-    class Map
+    class Map : Source
     {
 
         private Tile[,] tiles;
@@ -31,10 +32,10 @@ namespace SFMLproject.Object
         */
         public Map(Character c, string filePath, uint entryX, uint entryY)
         {
-            
+
             spr = new SpriteEnum();
             camera = new Vector2i(c.getMapPos().X - Constants.camCol / 2, (int)c.getMapPos().Y - Constants.camRow / 2);
-      
+
             cameraPrintY = Constants.camRow;
             cameraPrintX = Constants.camCol;
 
@@ -72,12 +73,12 @@ namespace SFMLproject.Object
                         {
                             // An empty space
                             case '0':
-                                tiles[i, j] = new TileEmpty(spr.getBackground());
+                                Attach(new TileEmpty(spr.getBackground()));
                                 break;
 
                             //  An Obstacle
                             case '1':
-                                tiles[i, j] = new TileObstacle(spr.getObstacle());
+                                Attach(new TileEmpty(spr.getBackground()));
                                 break;
                         }
                     }
@@ -118,13 +119,13 @@ namespace SFMLproject.Object
             {
                 camera.X = 0;
             }
-            if (camera.X > mapX - cameraPrintX )
+            if (camera.X > mapX - cameraPrintX)
             {
-                camera.X = (int)(mapX - cameraPrintX );
+                camera.X = (int)(mapX - cameraPrintX);
             }
-            if (camera.Y > mapY - cameraPrintY  )
+            if (camera.Y > mapY - cameraPrintY)
             {
-                camera.Y = (int)(mapY - cameraPrintY );
+                camera.Y = (int)(mapY - cameraPrintY);
             }
             /*
                 TODO
@@ -139,7 +140,7 @@ namespace SFMLproject.Object
         */
         public void centerScreen(uint winStartX, uint winStartY)
         {
-            for (uint x = (uint)camera.X; x < (uint)camera.X + cameraPrintX ; x++)
+            for (uint x = (uint)camera.X; x < (uint)camera.X + cameraPrintX; x++)
             {
                 for (uint y = (uint)camera.Y; y < (uint)camera.Y + cameraPrintY; y++)
                 {
@@ -147,7 +148,7 @@ namespace SFMLproject.Object
                         TODO
                         ARRANGER CA CALISSE (X et Y) 
                     */
-                    Vector2f temp = new Vector2f((winStartX + x - camera.X)*Constants.tileSize, (winStartY + y - camera.Y) * Constants.tileSize);
+                    Vector2f temp = new Vector2f((winStartX + x - camera.X) * Constants.tileSize, (winStartY + y - camera.Y) * Constants.tileSize);
                     tiles[x, y].moveSprite(temp);
                 }
             }
@@ -160,7 +161,7 @@ namespace SFMLproject.Object
         public void transfer(Tile character, Vector2i move)
         {
             //Verify if can
-            if (tiles[player.getPos().X + move.X, player.getPos().Y + move.Y].occupy(((TileCharacter)character).getCharacter()) is TileCharacter) // Ask Phil for details
+            if (tiles[player.getPos().X + move.X, player.getPos().Y + move.Y].occupy(((TileCharacter)character).getCharacter()) is Character) // Ask Phil for details
             {
                 tiles[player.getPos().X, player.getPos().Y] = tiles[player.getPos().X + move.X, player.getPos().Y + move.Y].onLeave();
                 player.movePos(move);
@@ -168,7 +169,6 @@ namespace SFMLproject.Object
                 tiles[player.getPos().X, player.getPos().Y] = player;
 
             }
-
         }
 
         /*
@@ -191,7 +191,7 @@ namespace SFMLproject.Object
 
                 case Keyboard.Key.W:
                     transfer(player, new Vector2i(0, -1));
-                   // player = player.transfer(tiles[player.getPos().X, player.getPos().Y - 1], new Vector2i(0, -1));
+                    // player = player.transfer(tiles[player.getPos().X, player.getPos().Y - 1], new Vector2i(0, -1));
                     break;
 
                 case Keyboard.Key.S:
@@ -223,5 +223,11 @@ namespace SFMLproject.Object
             }
             player.draw(window);
         }
+
+        public override void notify(Observer ob)
+        {
+            ob.updateOnOccupy(player);
+        }
+    
     }
 }

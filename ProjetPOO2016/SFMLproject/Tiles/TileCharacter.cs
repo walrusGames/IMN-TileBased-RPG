@@ -22,6 +22,11 @@ namespace SFMLproject.Tiles
         static private SpriteEnum spr = new SpriteEnum();
         private Vector2i pos;
 
+        public TileCharacter(Character c, Tile cur) : base(spr.getBackground())
+        {
+            character = c;
+            currentTile = cur;
+        }
         public Character getCharacter()
         {
             return character;
@@ -41,16 +46,16 @@ namespace SFMLproject.Tiles
             this.pos = position;
         }
 
-        public TileCharacter(Character c, Tile cur) : base(spr.getBackground())
-        {
-            character = c;
-            currentTile = cur;
-        }
-        public override Tile occupy(Character c)
+        public override Tile occupy(Object.Character c)
         { return new TileObstacle(spr.getBackground()); }
 
 
         public override Tile onLeave()
+        {
+            return currentTile;
+        }
+
+        public Tile replaceTile()
         {
             return currentTile;
         }
@@ -77,14 +82,14 @@ namespace SFMLproject.Tiles
         /*
             Transfer this to destination Tile, similar to map.transfer
         */
-        //public TileCharacter transfer(Tile destination, Vector2i move)
+        //public Character transfer(Tile destination, Vector2i move)
         //{
         //    Tile temp = this;
-        //    if (destination.occupy(character) is TileCharacter)
+        //    if (destination.occupy(character) is Character)
         //    {
         //        movePos(move);
         //        temp = destination.onLeave();
-        //        return (TileCharacter)destination.occupy(character);
+        //        return (Character)destination.occupy(character);
 
         //    }
 

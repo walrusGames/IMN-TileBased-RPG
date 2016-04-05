@@ -23,13 +23,18 @@ namespace SFMLproject.Tiles
             sprite.Scale += new Vector2f(1f, 1f);
         }
 
-        public override Tile occupy(Character c)
+        public override Tile occupy(Object.Character c)
         {
             return this;
         }
         public override Tile onLeave()
         {
             return this;
+        }
+
+        public bool canOccupy()
+        {
+            return false;
         }
 
         public override void tileEvent()
