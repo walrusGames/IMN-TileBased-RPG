@@ -15,11 +15,15 @@ namespace SFMLproject.TextureFolder
     {
         Texture back;
         Texture ob;
+        Texture blank;
+        Texture encounterBkgr;
 
         public SpriteEnum()
         {
             back = new Texture("File\\Background\\back.png");
-            ob = new Texture("File\\Background\\back.png");
+            ob = new Texture("File\\Background\\OB.png");
+            blank = new Texture("File\\Background\\test.png");
+
         }
         public Sprite getBackground()
         {
@@ -28,6 +32,21 @@ namespace SFMLproject.TextureFolder
         public Sprite getObstacle()
         {
             return new Sprite(ob);
+        }
+
+        internal Sprite getMenuBkgr()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Sprite getBlank()
+        {
+            return new Sprite(blank);
+        }
+
+        public Sprite getEncounterBkgr()
+        {
+            return new Sprite(encounterBkgr);
         }
     }
 }

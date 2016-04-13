@@ -33,7 +33,8 @@ namespace SFMLproject.Input
         static uint buttonCount;
         static uint controllerIndice;
 
-        public Controller(){
+        public Controller()
+        {
             ControllerPlugged = isJoystickConnect();
         }
 
@@ -80,8 +81,9 @@ namespace SFMLproject.Input
             return new Vector2f((int)Joystick.GetAxisPosition(controllerIndice, Joystick.Axis.PovX),
                    (int)Joystick.GetAxisPosition(controllerIndice, Joystick.Axis.PovY));
         }
-        
-        public uint getNumberButton(){
+
+        public uint getNumberButton()
+        {
             return buttonCount;
         }
 
@@ -92,8 +94,10 @@ namespace SFMLproject.Input
          * 
          * If no button is pressed, it returns +2 of the buttonCount
         */
-        public uint buttonPressed(){
-            for (uint i = 0; i < buttonCount + 1; i++){
+        public uint buttonPressed()
+        {
+            for (uint i = 0; i < buttonCount + 1; i++)
+            {
                 if (Joystick.IsButtonPressed(controllerIndice, i))
                     return i;
             }

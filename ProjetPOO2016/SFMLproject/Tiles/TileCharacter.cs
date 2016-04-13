@@ -11,39 +11,75 @@ using SFML.Window;
 
 using SFMLproject.Object;
 using SFMLproject.TextureFolder;
+using SFMLproject.StaticFields;
+using System.Runtime.InteropServices;
 
 namespace SFMLproject.Tiles
 {
     class TileCharacter : Tile
     {
         private Character character;
+
         private Tile currentTile;
         static private SpriteEnum spr = new SpriteEnum();
 
-        public TileCharacter(Character c,Tile cur, Vector2f pos) :  base(pos,spr.getBackground())
+        public TileCharacter(Character c, Tile cur) : base(spr.getBackground())
         {
             character = c;
             currentTile = cur;
+            sprite.Position = cur.getSpritePos();
         }
-        public override Tile occupy(Character c)
-        { return this; }
-        public override bool isHere(Character c)
-        {
-            if (sprite.Position.X / 32 == c.getMapPos().X && sprite.Position.Y / 32 == c.getMapPos().Y)
-            {
-                return true;
-            }
-            return false;
-        }
+ 
 
-        public override Tile onLeave()
+        public Vector2i getPos()
         {
-            return currentTile;
+            return character.getMapPos();
         }
+       
 
         public override void tileEvent()
         { /*Provoque dialog du character*/
           /* A implementer*/
         }
+
+        public override void draw(RenderWindow window)
+        {
+            currentTile.draw(window);
+            window.Draw(character.sprite);
+        }
+
+        public override bool updateOnOccupy() { return false; }
+
+        public override void updateOnLeave(Vector2i move)
+        {
+            mapState = Map.Map.getState();
+            if (mapState.getTile(getPos() + move).updateOnOccupy())
+            {
+                mapState.setTile(getPos(), currentTile);
+                mapState.setTile(getPos() + move, tileFactory.generateTile(new Character(character, move), mapState.getTile(getPos() + move)));
+                mapState.Queue(mapState.getTile(getPos() + move));
+                mapState.moveMapView(new Vector2f(move.X, move.Y) * Constants.tileSize);
+                mapState.setState(mapState);
+            }
+            else mapState.Queue(mapState.getTile(getPos())); 
+        }
+
+
+        /*
+            Transfer this to destination Tile, similar to map.transfer
+        */
+        //public Character transfer(Tile destination, Vector2i move)
+        //{
+        //    Tile temp = this;
+        //    if (destination.occupy(character) is Character)
+        //    {
+        //        movePos(move);
+        //        temp = destination.onLeave();
+        //        return (Character)destination.occupy(character);
+
+        //    }
+
+        //    return this;
+        //}
     }
 }

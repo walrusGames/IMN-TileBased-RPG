@@ -7,31 +7,45 @@ using SFMLproject.Object;
 using SFML.Graphics;
 using SFML.System;
 
-using SFMLproject.Constt;
+using SFMLproject.StaticFields;
+using System.Runtime.InteropServices;
 
 namespace SFMLproject.Tiles
 {
-    abstract class Tile
+
+ 
+    abstract class Tile: Observer
     {
         protected Sprite sprite = new Sprite();
+        protected TileFactory tileFactory;
+        protected Map.Map mapState;
+
         public Tile()
         {
-
+            tileFactory = TileFactory.getInstance();
+            mapState = Map.Map.getState();
         }
-        public Tile(Vector2f pos,Sprite spr)
+        public Tile(Sprite spr)
         {
+            tileFactory = TileFactory.getInstance();
             sprite = spr;
             sprite.TextureRect = new IntRect(0, 0, Constants.tileSize, Constants.tileSize);
-            sprite.Scale += new Vector2f(1f, 1f);
-            sprite.Position = pos;
+            sprite.Scale = new Vector2f(1f, 1f);
         }
 
-        abstract public Tile occupy(Character c);
-        abstract public bool isHere(Character c);
+        public Vector2f getSpritePos()
+        {
+            return sprite.Position;
+        }
+
+        public virtual void moveSprite(Vector2f newPos)
+        {
+            sprite.Position = newPos;
+        }
+
         abstract public void tileEvent();
 
-        abstract public Tile onLeave();
-        public void draw(RenderWindow window)
+        public virtual void draw(RenderWindow window)
         {
             window.Draw(sprite);
         }

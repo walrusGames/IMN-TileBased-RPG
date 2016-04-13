@@ -10,31 +10,23 @@ using SFML.System;
 using SFML.Window;
 
 using SFMLproject.Object;
+using System.Runtime.InteropServices;
 
 namespace SFMLproject.Tiles
 {
+
+
     class TileEmpty : Tile
     {
 
-        public TileEmpty(Vector2f pos,Sprite spr) : base(pos,spr) { }
+        public TileEmpty(Sprite spr) : base(spr) { }
 
-        public override Tile occupy(Character c)
+        public override bool updateOnOccupy()
         {
-            return new TileCharacter(c, this, sprite.Position);
-        }
-        public override bool isHere(Character c)
-        {
-            if (sprite.Position.X / 45 == c.getMapPos().X && sprite.Position.Y / 45 == c.getMapPos().Y)
-            {
-                return true;
-            }
-            return false;
+            return true;
         }
 
-        public override Tile onLeave()
-        {
-            return this;
-        }
+        public override void updateOnLeave(Vector2i move) { }
 
         public override void tileEvent()
         { /*Ne ait rien*/}

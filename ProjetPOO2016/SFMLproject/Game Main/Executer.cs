@@ -12,16 +12,18 @@ using SFML.Audio;
 using SFML.Graphics;
 using SFML.System;
 using SFML.Window;
+using SFMLproject.Map;
 
-using SFMLproject.Constt;
+using SFMLproject.StaticFields;
+
 namespace SFMLproject
 {
-   
+
     class Executer
     {
         static ContextSettings context = new ContextSettings();
         static RenderWindow window;
-        
+
         //Audio State
         static bool Playing = true;
 
@@ -29,9 +31,15 @@ namespace SFMLproject
 
         static Controller controller = new Controller();
 
-        static Character charc = new Character();
+        static Object.Character charc = new Object.Character(new Vector2i(3,3));
 
-        static Map map = new Map(charc, "File\\Map\\test.txt", 10, 10);
+        static Map.Map map = new Map.Map(charc, "File\\Map\\test.txt");
+
+        static View wholeView;
+
+        static View mapView = map.getMapview();
+
+        static bool keypressed = false;
 
         static void initWindow()
         {
@@ -44,6 +52,9 @@ namespace SFMLproject
             window.KeyReleased += window_KeyReleased;
             window.SetActive(true);
             window.SetFramerateLimit(60);
+            window.SetView(map.getMapview());
+            map.draw(window);
+            window.Display();
         }
 
         static void Main(string[] args)
@@ -53,85 +64,87 @@ namespace SFMLproject
             while (window.IsOpen)
             {
                 window.DispatchEvents();
-                window.Display();
-
-                if (controller.ControllerPlugged)
-                    charc.moveCharacter(controller.getMovementLeftJoystick() / 20);
-
-
-                window.Clear();
-                map.draw(window);
-                window.Draw(charc.sprite);
+                if (keypressed)
+                {
+                    window.Clear();
+                    window.SetView(map.getMapview());
+                    //if (controller.ControllerPlugged)
+                    //    charc.moveCharacter(controller.getMovementLeftJoystick() / 20);
+                    map.draw(window);
+                    //window.Draw(charc.sprite);
+                    window.Display();
+                    keypressed = false;
+                }
 
             }
         }
 
-        static bool moveCharac(Keyboard.Key e)
-        {
-            Tile depl;
-            switch (e)
-            {
-                case Keyboard.Key.D:
-                    map.setTile(charc.getMapPos(), map.getTile(charc.getMapPos()).onLeave());
-                    charc.moveMapPos(new Vector2i(1, 0));
-                    
-                    depl = map.getTile(charc.getMapPos()).occupy(charc);
-                    if (depl is TileCharacter)
-                    {
-                        charc.moveCharacter(new Vector2f(30, 0));
-                        map.setCamera(new Vector2i(charc.getMapPos().X - 5, charc.getMapPos().Y - 5));
-                        return true;
-                    }
-                    else {
-                        charc.moveMapPos(new Vector2i(-1, 0));
-                        return false;
-                    }
-                case Keyboard.Key.A:
-                    map.setTile(charc.getMapPos(), map.getTile(charc.getMapPos()).onLeave());
-                    charc.moveMapPos(new Vector2i(-1, 0));
-                    depl = map.getTile(charc.getMapPos()).occupy(charc);
-                    if (depl is TileCharacter)
-                    {
-                        charc.moveCharacter(new Vector2f(-30, 0));
-                        map.setCamera(new Vector2i(charc.getMapPos().X - 5, charc.getMapPos().Y - 5));
-                        return true;
-                    }
-                    else {
-                        charc.moveMapPos(new Vector2i(1, 0));
-                        return false;
-                    }
-                case Keyboard.Key.S:
-                    map.setTile(charc.getMapPos(), map.getTile(charc.getMapPos()).onLeave());
-                    charc.moveMapPos(new Vector2i(0, 1));
-                    depl = map.getTile(charc.getMapPos()).occupy(charc);
-                    if (depl is TileCharacter)
-                    {
-                        charc.moveCharacter(new Vector2f(0, 30));
-                        map.setCamera(new Vector2i(charc.getMapPos().X - 5, charc.getMapPos().Y - 5));
-                        return true;
-                    }
-                    else {
-                        charc.moveMapPos(new Vector2i(0, -1));
-                        return false;
-                    }
-                case Keyboard.Key.W:
-                    map.setTile(charc.getMapPos(), map.getTile(charc.getMapPos()).onLeave());
-                    charc.moveMapPos(new Vector2i(0, -1));
-                    depl = map.getTile(charc.getMapPos()).occupy(charc);
-                    if (depl is TileCharacter)
-                    {
-                        charc.moveCharacter(new Vector2f(0, -30));
-                        map.setCamera(new Vector2i(charc.getMapPos().X - 5, charc.getMapPos().Y - 5));
-                        return true;
-                    }
-                    else {
-                        charc.moveMapPos(new Vector2i(0, 1));
-                        return false;
-                    }
-            }
-            return false;
-        }
-        
+        //static bool moveCharac(Keyboard.Key e)
+        //{
+        //    Tile depl;
+        //    switch (e)
+        //    {
+        //        case Keyboard.Key.D:
+        //            map.setTile(charc.getMapPos(), map.getTile(charc.getMapPos()).onLeave());
+        //            charc.moveMapPos(new Vector2i(1, 0));
+
+        //            depl = map.getTile(charc.getMapPos()).occupy(charc);
+        //            if (depl is Character)
+        //            {
+        //                charc.moveCharacter(new Vector2f(30, 0));
+        //                map.setCamera(new Vector2i(charc.getMapPos().X - 5, charc.getMapPos().Y - 5));
+        //                return true;
+        //            }
+        //            else {
+        //                charc.moveMapPos(new Vector2i(-1, 0));
+        //                return false;
+        //            }
+        //        case Keyboard.Key.A:
+        //            map.setTile(charc.getMapPos(), map.getTile(charc.getMapPos()).onLeave());
+        //            charc.moveMapPos(new Vector2i(-1, 0));
+        //            depl = map.getTile(charc.getMapPos()).occupy(charc);
+        //            if (depl is Character)
+        //            {
+        //                charc.moveCharacter(new Vector2f(-30, 0));
+        //                map.setCamera(new Vector2i(charc.getMapPos().X - Constants.camCol / 2, charc.getMapPos().Y - Constants.camRow / 2));
+        //                return true;
+        //            }
+        //            else {
+        //                charc.moveMapPos(new Vector2i(1, 0));
+        //                return false;
+        //            }
+        //        case Keyboard.Key.S:
+        //            map.setTile(charc.getMapPos(), map.getTile(charc.getMapPos()).onLeave());
+        //            charc.moveMapPos(new Vector2i(0, 1));
+        //            depl = map.getTile(charc.getMapPos()).occupy(charc);
+        //            if (depl is Character)
+        //            {
+        //                charc.moveCharacter(new Vector2f(0, 30));
+        //                map.setCamera(new Vector2i(charc.getMapPos().X - Constants.camCol / 2, charc.getMapPos().Y - Constants.camRow / 2));
+        //                return true;
+        //            }
+        //            else {
+        //                charc.moveMapPos(new Vector2i(0, -1));
+        //                return false;
+        //            }
+        //        case Keyboard.Key.W:
+        //            map.setTile(charc.getMapPos(), map.getTile(charc.getMapPos()).onLeave());
+        //            charc.moveMapPos(new Vector2i(0, -1));
+        //            depl = map.getTile(charc.getMapPos()).occupy(charc);
+        //            if (depl is Character)
+        //            {
+        //                charc.moveCharacter(new Vector2f(0, -30));
+        //                map.setCamera(new Vector2i(charc.getMapPos().X - Constants.camCol / 2, charc.getMapPos().Y - Constants.camRow / 2));
+        //                return true;
+        //            }
+        //            else {
+        //                charc.moveMapPos(new Vector2i(0, 1));
+        //                return false;
+        //            }
+        //    }
+        //    return false;
+        //}
+
         /*Mouse
          Action on the mouse:
          * Mouse.IsButtonPressed(Mouse.Button.XXXXX) retourne un bool
@@ -144,7 +157,8 @@ namespace SFMLproject
         //Call when a key is pressed
         static void window_KeyReleased(object sender, KeyEventArgs e)
         {
-            switch(e.Code){
+            switch (e.Code)
+            {
                 case Keyboard.Key.Escape: window.Close(); break;
                 default: break;
             }
@@ -153,16 +167,21 @@ namespace SFMLproject
         //Call when a key is pressed
         static void window_KeyPressed(object sender, KeyEventArgs e)
         {
-            if (moveCharac(e.Code))
+            if (map.moveCharac(e.Code))
+            {
+                keypressed = true;
                 return;
+            }
+                
             switch (e.Code)
             {
                 case Keyboard.Key.P:
-                    if (Playing){
+                    if (Playing)
+                    {
                         music.Pause();
                         Playing = false;
                     }
-                    else{
+                    else {
                         music.Play();
                         Playing = true;
                     }
@@ -181,12 +200,13 @@ namespace SFMLproject
         //Call when the window has LostFocus
         static void window_LostFocus(object sender, EventArgs e)
         {
-            
+
         }
 
         //Call when the window has GainedFocus
-        static void window_GainedFocus(object sender, EventArgs e){
-            
+        static void window_GainedFocus(object sender, EventArgs e)
+        {
+
         }
 
         //Call when the window is closed
