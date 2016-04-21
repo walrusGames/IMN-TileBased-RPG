@@ -109,3 +109,6 @@ U:\POO\projet\ProjetPOO2016\SFMLproject\bin\Debug\sfmlnet-audio-2.dll
 U:\POO\projet\ProjetPOO2016\SFMLproject\bin\Debug\sfmlnet-graphics-2.dll
 U:\POO\projet\ProjetPOO2016\SFMLproject\bin\Debug\sfmlnet-system-2.dll
 U:\POO\projet\ProjetPOO2016\SFMLproject\bin\Debug\sfmlnet-window-2.dll
+C:\Users\Badass Motherfucker\Documents\REPO\IMN-TileBased-RPG\ProjetPOO2016\SFMLproject\bin\Debug\SFMLproject.exe.config
+C:\Users\Badass Motherfucker\Documents\REPO\IMN-TileBased-RPG\ProjetPOO2016\SFMLproject\obj\Debug\SFMLproject.exe
+C:\Users\Badass Motherfucker\Documents\REPO\IMN-TileBased-RPG\ProjetPOO2016\SFMLproject\obj\Debug\SFMLproject.pdb

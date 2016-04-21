@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SFMLproject.Menu;
 
 namespace SFMLproject.Encounter_ENV
 {
@@ -18,23 +19,23 @@ namespace SFMLproject.Encounter_ENV
         private EncounterCharacter opponent;
         private SpriteEnum spEnum;
 
-        private Menu baseMenu;
-        private Menu attackMenu;
-        private Menu itemMenu;
+        private Menu.Menu baseMenu;
+        private Menu.Menu attackMenu;
+        private Menu.Menu itemMenu;
 
-        private Menu currentMenu;
+        private Menu.Menu currentMenu;
 
         public Encounter(Character ch, Character op)
         {
             //Menu back
             encounterBkgr = new Sprite(spEnum.getEncounterBkgr());
 
-            attackMenu = new Menu(spEnum.getMenuBkgr());
+            attackMenu = new Menu.Menu(spEnum.getMenuBkgr());
             attackMenu.addElement(ch.getAttackList());
 
-            itemMenu = new Menu(spEnum.getMenuBkgr());
+            itemMenu = new Menu.Menu(spEnum.getMenuBkgr());
 
-            baseMenu = new Menu(spEnum.getMenuBkgr());
+            baseMenu = new Menu.Menu(spEnum.getMenuBkgr());
             baseMenu.addElement(new MenuTextElement("ATTACK", new Vector2f(0, 0),attackMenu));
             baseMenu.addElement(new MenuTextElement("ITEM", new Vector2f(0, 1), itemMenu));
             baseMenu.addElement(new MenuTextElement("SKIP", new Vector2f(1, 0)));
