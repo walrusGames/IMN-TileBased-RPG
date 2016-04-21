@@ -14,7 +14,7 @@ namespace SFMLproject.Encounter_ENV
     {
         private Text text;
         private TextProperties tProp;
-        private Menu link;
+        private Menu.Menu link;
         
         public MenuTextElement(string t, Vector2f position)
         {
@@ -23,7 +23,7 @@ namespace SFMLproject.Encounter_ENV
             text.Position = position;
         }
 
-        public MenuTextElement(string t, Vector2f position, Menu mLink)
+        public MenuTextElement(string t, Vector2f position, Menu.Menu mLink)
         {
             text = new Text(t, tProp.font, tProp.size);
             text.Color = tProp.color;
@@ -31,7 +31,7 @@ namespace SFMLproject.Encounter_ENV
             link = mLink;
         }
 
-        public Menu onClick()
+        public Menu.Menu onClick()
         {
             return link;
         }
