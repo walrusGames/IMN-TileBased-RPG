@@ -26,8 +26,12 @@ namespace SFMLproject.Tiles
         public override void tileEvent()
         { /*Ne ait rien*/}
 
+        public override bool updateOnInteract() { return true; }
         public override bool updateOnOccupy() { return false; }
 
         public override void updateOnLeave(Vector2i move) { }
+        public override void updateOnReact(Vector2i ind)
+        { /*Ne ait rien*/}
+        public override void updateOnAction() { Console.WriteLine("Action Button Pressed - Obstacle tile"); }
     }
 }

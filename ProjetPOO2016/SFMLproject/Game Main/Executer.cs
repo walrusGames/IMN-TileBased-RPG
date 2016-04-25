@@ -166,7 +166,7 @@ namespace SFMLproject
         //Call when a key is pressed
         static void window_KeyPressed(object sender, KeyEventArgs e)
         {
-            if (Map.Map.getState().moveCharac(e.Code))
+            if (Map.Map.getState().moveCharac(e.Code) || Map.Map.getState().actionButton(e.Code)) ;
             {
                 keypressed = true;
                 return;

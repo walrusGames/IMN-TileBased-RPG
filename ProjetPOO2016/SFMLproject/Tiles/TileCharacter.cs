@@ -49,6 +49,7 @@ namespace SFMLproject.Tiles
         }
 
         public override bool updateOnOccupy() { return false; }
+        public override bool updateOnInteract() { return true; }
 
         public override void updateOnLeave(Vector2i move)
         {
@@ -57,11 +58,26 @@ namespace SFMLproject.Tiles
             {
                 mapState.setTile(getPos(), currentTile);
                 mapState.setTile(getPos() + move, tileFactory.generateTile(new Character(character, move), mapState.getTile(getPos() + move)));
+                character.moveCharacter(move);
                 mapState.Queue(mapState.getTile(getPos() + move));
                 mapState.moveMapView(new Vector2f(move.X, move.Y) * Constants.tileSize);
                 mapState.setState(mapState);
             }
             else mapState.Queue(mapState.getTile(getPos())); 
+        }
+
+        public override void updateOnReact(Vector2i ind)
+        {
+            mapState = Map.Map.getState();
+            if (mapState.getTile(getPos() + ind).updateOnInteract())
+            {
+                mapState.getTile(getPos() + ind).updateOnAction();
+            }
+        }
+
+        public override void updateOnAction()
+        {
+            Console.WriteLine("Personnage");
         }
 
 

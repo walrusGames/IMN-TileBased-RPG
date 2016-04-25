@@ -28,7 +28,15 @@ namespace SFMLproject.Tiles
 
         public override void updateOnLeave(Vector2i move) { }
 
-        public override void tileEvent()
-        { /*Ne ait rien*/}
+        public override void tileEvent() { }
+        public override bool updateOnInteract() { return true; }
+        public override void updateOnReact(Vector2i ind)
+        {
+            /*Ne ait rien*/
+        }
+        public override void updateOnAction()
+        {
+            Console.WriteLine("Action Button Pressed - Empty tile");
+        }
     }
 }

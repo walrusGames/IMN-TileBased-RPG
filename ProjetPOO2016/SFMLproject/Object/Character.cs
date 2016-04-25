@@ -31,6 +31,10 @@ namespace SFMLproject.Object
         {
             throw new NotImplementedException();
         }
+        public string getState()
+        {
+            return stateCharact;
+        }
 
         public Sprite sprite;
         private Vector2i mapPos;
@@ -98,7 +102,7 @@ namespace SFMLproject.Object
                 sprite.TextureRect = new IntRect(0, 144, 32, 48);
         }
 
-        public void moveCharacter(Vector2f posi)
+        public void moveCharacter(Vector2i posi)
         {
             Vector2f temp = sprite.Position;
             if (posi.X > 0)
