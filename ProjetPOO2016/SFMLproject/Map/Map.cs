@@ -33,7 +33,7 @@ namespace SFMLproject.Map
             Load map from textfile
             EntryX, EntryY are character initial position
         */
-        public Map(Character c, string filePath)
+        public Map(string filePath)
         {
 
             spr = new SpriteEnum();
@@ -81,7 +81,9 @@ namespace SFMLproject.Map
                 TODO
                 Init a changer
             */
-            
+            Object.Character c = new Object.Character(new Vector2i(3, 3));
+            Object.Character d = new Object.Character("File\\Perso\\perso 1.png", new Vector2i(4, 3));
+            tiles[d.getMapPos().X, d.getMapPos().Y] = tileFactory.generateTile(d, tiles[d.getMapPos().X, d.getMapPos().Y]);
             tiles[c.getMapPos().X, c.getMapPos().Y] = tileFactory.generateTile(c, tiles[c.getMapPos().X, c.getMapPos().Y]);
             Attach(tiles[c.getMapPos().X, c.getMapPos().Y]);
             mapView.Center = c.sprite.Position;

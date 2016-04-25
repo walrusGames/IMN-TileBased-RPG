@@ -27,5 +27,10 @@ namespace SFMLproject.Menu
         public void addElement(MenuTextElement attackList)
         {
         }
+
+        public void draw(RenderWindow windoww)
+        {
+            windoww.Draw(sprite);
+        }
     }		
 }
