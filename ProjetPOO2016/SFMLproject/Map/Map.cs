@@ -70,6 +70,9 @@ namespace SFMLproject.Map
                         if (buffer == '2')
                         {
                             line = streamReader.ReadLine();
+                            line = streamReader.ReadLine();
+                            Object.Character template = new Object.Character(line); 
+                            tiles[i,j] = tileFactory.generateTile(template, tileFactory.generateTile((int)TileType.empty));
                             //create character. Line = pathfile
                         }
                         else if (buffer == '4')
@@ -91,12 +94,12 @@ namespace SFMLproject.Map
             */
 
             Object.Character c = new Object.Character(new Vector2i(3, 3));
-            Object.Character d = new Object.Character("File\\Perso\\perso 1.png", new Vector2i(4, 3));
-            tiles[d.getMapPos().X, d.getMapPos().Y] = tileFactory.generateTile(d, tiles[d.getMapPos().X, d.getMapPos().Y]);
+           // Object.Character d = new Object.Character("template", new Vector2i(4, 3));
+            //tiles[d.getMapPos().X, d.getMapPos().Y] = tileFactory.generateTile(d, tiles[d.getMapPos().X, d.getMapPos().Y]);
             tiles[c.getMapPos().X, c.getMapPos().Y] = tileFactory.generateTile(c, tiles[c.getMapPos().X, c.getMapPos().Y]);
+            
             Attach(tiles[c.getMapPos().X, c.getMapPos().Y]);
             mapView.Center = c.sprite.Position;
-            tiles[3, 9] = tileFactory.generateTile((int)TileType.eventTrigger);
 
             state = this;
         }

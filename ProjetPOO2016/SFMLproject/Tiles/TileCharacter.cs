@@ -29,7 +29,12 @@ namespace SFMLproject.Tiles
             currentTile = cur;
             sprite.Position = cur.getSpritePos();
         }
- 
+        
+        public override void moveSprite(Vector2f newPos)
+        {
+            currentTile.moveSprite(newPos);
+            character.sprite.Position = newPos;
+        }
 
         public Vector2i getPos()
         {
@@ -77,7 +82,7 @@ namespace SFMLproject.Tiles
 
         public override void updateOnAction()
         {
-            Console.WriteLine("Personnage");
+            Console.WriteLine(character.getDialogue().ElementAt(2));
         }
 
 
