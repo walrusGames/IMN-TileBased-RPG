@@ -31,13 +31,11 @@ namespace SFMLproject
 
         static Controller controller = new Controller();
 
-        static Object.Character charc = new Object.Character(new Vector2i(3,3));
+        static Map.Map map = new Map.Map("File\\Map\\test.txt");
 
-        static Map.Map map = new Map.Map(charc, "File\\Map\\test.txt");
+        //static View wholeView;
 
-        static View wholeView;
-
-        static View mapView = map.getMapview();
+        //static View mapView = map.getMapview();
 
         static bool keypressed = false;
 
@@ -67,10 +65,11 @@ namespace SFMLproject
                 if (keypressed)
                 {
                     window.Clear();
-                    window.SetView(map.getMapview());
+                    window.SetView(Map.Map.getState().getMapview());
                     //if (controller.ControllerPlugged)
                     //    charc.moveCharacter(controller.getMovementLeftJoystick() / 20);
-                    map.draw(window);
+
+                    Map.Map.getState().draw(window);
                     //window.Draw(charc.sprite);
                     window.Display();
                     keypressed = false;
@@ -167,7 +166,7 @@ namespace SFMLproject
         //Call when a key is pressed
         static void window_KeyPressed(object sender, KeyEventArgs e)
         {
-            if (map.moveCharac(e.Code))
+            if (Map.Map.getState().moveCharac(e.Code))
             {
                 keypressed = true;
                 return;

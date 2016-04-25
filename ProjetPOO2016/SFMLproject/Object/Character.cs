@@ -46,6 +46,16 @@ namespace SFMLproject.Object
             mapPos = pos;
         }
 
+        public Character(String filePath, Vector2i pos)
+        {
+            perso = new Texture(filePath);
+            sprite = new Sprite(perso);
+            sprite.TextureRect = new IntRect(0, 0, 32, 48);
+            sprite.Scale += new Vector2f(1f, 1f);
+            sprite.Position = (Vector2f)pos * (float)Constants.tileSize;
+            mapPos = pos;
+        }
+
         public Character(String filePath, String state, Vector2i pos)
         {
             perso = new Texture(filePath);

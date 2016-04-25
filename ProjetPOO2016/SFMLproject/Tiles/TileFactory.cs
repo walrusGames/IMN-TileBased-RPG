@@ -38,6 +38,8 @@ namespace SFMLproject.Tiles
                     return new TileEventTrigger(spriteManager.getBackground());
                 case (int)TileType.character:
                     throw new InvalidOperationException("Character tile need a character and current tile on board");
+                case (int)TileType.portal:
+                    return new TilePortal(spriteManager.getPortal(), "File\\Map\\test2.txt");
                 default:
                     return new TileEmpty(spriteManager.getBackground());
             }

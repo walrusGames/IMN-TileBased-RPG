@@ -17,12 +17,14 @@ namespace SFMLproject.TextureFolder
         Texture ob;
         Texture blank;
         Texture encounterBkgr;
+        Texture portal;
 
         public SpriteEnum()
         {
             back = new Texture("File\\Background\\back.png");
             ob = new Texture("File\\Background\\OB.png");
             blank = new Texture("File\\Background\\test.png");
+            portal = new Texture("File\\Background\\portal.png");
 
         }
         public Sprite getBackground()
@@ -47,6 +49,11 @@ namespace SFMLproject.TextureFolder
         public Sprite getEncounterBkgr()
         {
             return new Sprite(encounterBkgr);
+        }
+
+        public Sprite getPortal()
+        {
+            return new Sprite(portal);
         }
     }
 }
