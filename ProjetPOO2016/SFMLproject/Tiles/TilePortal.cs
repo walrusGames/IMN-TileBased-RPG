@@ -21,6 +21,16 @@ namespace SFMLproject.Tiles
             throw new NotImplementedException();
         }
 
+        public override void updateOnAction()
+        {
+            Console.WriteLine("Action Button Pressed - Portal tile");
+         }
+
+        public override bool updateOnInteract()
+        {
+            return true;
+        }
+
         public override void updateOnLeave(Vector2i ind)
         {
             throw new NotImplementedException();
@@ -33,6 +43,11 @@ namespace SFMLproject.Tiles
             mapState = Map.Map.getState();
             mapState.setState(new Map.Map(mapPath));
             return false;
+        }
+
+        public override void updateOnReact(Vector2i ind)
+        {
+            throw new NotImplementedException();
         }
     }
 }

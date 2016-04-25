@@ -39,11 +39,23 @@ namespace SFMLproject.Tiles
                 case (int)TileType.character:
                     throw new InvalidOperationException("Character tile need a character and current tile on board");
                 case (int)TileType.portal:
-                    return new TilePortal(spriteManager.getPortal(), "File\\Map\\test2.txt");
+                    throw new InvalidOperationException("Portal need path, dude.");
                 default:
                     return new TileEmpty(spriteManager.getBackground());
             }
 
+        }
+
+        public Tile generateTile(char c, string s)
+        {
+            switch(c)
+            {
+                case '4':
+                    return new TilePortal(spriteManager.getPortal(), s);
+                default:
+                    return new TileEmpty(spriteManager.getBackground());
+            }
+            
         }
 
         public Tile generateTile(Character charac, Tile cur)

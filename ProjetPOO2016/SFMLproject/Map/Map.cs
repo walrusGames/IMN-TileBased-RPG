@@ -28,6 +28,7 @@ namespace SFMLproject.Map
         private TileFactory tileFactory;
         private View mapView;
         private static Map state;
+        private Vector2i characState = new Vector2i(0, 1);
 
         /*
             Load map from textfile
@@ -41,29 +42,19 @@ namespace SFMLproject.Map
             tileFactory = TileFactory.getInstance();
 
             mapView = new View(new FloatRect(0,0,Constants.tileSize * Constants.camRow, Constants.tileSize * Constants.camCol));
-
+            
             char buffer;
-            string stringBuffer = "";
+            string line;
+            //string stringBuffer = "";
             var fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read);
             using (var streamReader = new StreamReader(fileStream, Encoding.ASCII))
             {
-                // X
-                do
-                {
-                    buffer = (char)streamReader.Read();
-                    stringBuffer += buffer;
-                } while (buffer != '\n');
 
-                mapX = uint.Parse(stringBuffer);
-                stringBuffer = "";
-                // Y
-                do
-                {
-                    buffer = (char)streamReader.Read();
-                    stringBuffer += buffer;
-                } while (buffer != '\n');
+                line = streamReader.ReadLine();
+                mapX = uint.Parse(line);
+                line = streamReader.ReadLine();
+                mapY = uint.Parse(line);
 
-                mapY = uint.Parse(stringBuffer);
                 tiles = new Tile[mapX, mapY];
 
                 // Reading map
@@ -72,7 +63,24 @@ namespace SFMLproject.Map
                     for (uint i = 0; i < mapX; i++)
                     {
                         buffer = (char)streamReader.Read();
-                        tiles[i, j] = tileFactory.generateTile(int.Parse(buffer.ToString()));
+                        while (buffer == '\r' || buffer == '\n')
+                        {
+                            buffer = (char)streamReader.Read();
+                         }
+                        if (buffer == '2')
+                        {
+                            line = streamReader.ReadLine();
+                            //create character. Line = pathfile
+                        }
+                        else if (buffer == '4')
+                        {
+                            line = streamReader.ReadLine();
+                            line = streamReader.ReadLine();
+                            tiles[i, j] = tileFactory.generateTile(buffer, line);
+                        }
+                        else tiles[i, j] = tileFactory.generateTile(int.Parse(buffer.ToString()));
+
+
                         tiles[i, j].moveSprite(new Vector2f(i * Constants.tileSize, j * Constants.tileSize));
                     }
                 }
@@ -81,12 +89,14 @@ namespace SFMLproject.Map
                 TODO
                 Init a changer
             */
+
             Object.Character c = new Object.Character(new Vector2i(3, 3));
             Object.Character d = new Object.Character("File\\Perso\\perso 1.png", new Vector2i(4, 3));
             tiles[d.getMapPos().X, d.getMapPos().Y] = tileFactory.generateTile(d, tiles[d.getMapPos().X, d.getMapPos().Y]);
             tiles[c.getMapPos().X, c.getMapPos().Y] = tileFactory.generateTile(c, tiles[c.getMapPos().X, c.getMapPos().Y]);
             Attach(tiles[c.getMapPos().X, c.getMapPos().Y]);
             mapView.Center = c.sprite.Position;
+            tiles[3, 9] = tileFactory.generateTile((int)TileType.eventTrigger);
 
             state = this;
         }
@@ -131,23 +141,44 @@ namespace SFMLproject.Map
             {
                 case Keyboard.Key.D:
                     notify(new Vector2i(1, 0));
+                    characState = new Vector2i(1, 0);
                     return true;
                     //player = player.notify(tiles[player.getPos().X +1, player.getPos().Y], new Vector2i(1, 0));
 
                 case Keyboard.Key.A:
                     notify(new Vector2i(-1, 0));
+                    characState = new Vector2i(-1, 0);
                     return true;
                     //player = player.notify(tiles[player.getPos().X - 1, player.getPos().Y], new Vector2i(-1, 0));
 
                 case Keyboard.Key.W:
                     notify(new Vector2i(0, -1));
+                    characState = new Vector2i(0, -1);
                     return true;
                     // player = player.notify(tiles[player.getPos().X, player.getPos().Y - 1], new Vector2i(0, -1));
 
                 case Keyboard.Key.S:
                     notify(new Vector2i(0, 1));
+                    characState = new Vector2i(0, 1);
                     return true;
                     //player = player.notify(tiles[player.getPos().X, player.getPos().Y + 1], new Vector2i(0, 1));
+            }
+            return false;
+        }
+
+        public bool actionButton(Keyboard.Key e)
+        {
+            switch(e)
+            {
+                case Keyboard.Key.E:
+                    notifyAction(characState);
+                    return true;
+                case Keyboard.Key.Q:
+                    Console.WriteLine("Stop the action/exit menu.");
+                    return true;
+                case Keyboard.Key.Return:
+                    Console.WriteLine("MENU");
+                    return true;
             }
             return false;
         }
@@ -163,6 +194,16 @@ namespace SFMLproject.Map
                     tiles[j, i].draw(window);
                 }
             }
+        }
+
+        public override void notifyAction(Vector2i m)
+        {
+            obt.ForEach(delegate (Observer obs)
+            {
+                obs.updateOnReact(m);
+            });
+            //KillAll();
+            Dequeue();
         }
 
         public override void notify(Vector2i m)
