@@ -53,8 +53,8 @@ namespace SFMLproject.Encounter_ENV
 
             opponent.draw(window);
             player.draw(window);
-
-            currentMenu.draw(window);
+            
+            //currentMenu.draw(window);
         }
     }
 }

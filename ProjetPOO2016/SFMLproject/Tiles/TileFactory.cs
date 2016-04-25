@@ -16,7 +16,7 @@ namespace SFMLproject.Tiles
         static SpriteEnum spriteManager;
 
         //Si quelqu'un rend se constructeur
-        //publique, je lui arrache la tête
+        //publique, je lui arrache la tête o-o extreeme
         private TileFactory() {
             spriteManager = new SpriteEnum();
         }

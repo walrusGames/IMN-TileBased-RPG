@@ -26,10 +26,13 @@ namespace SFMLproject.Object
         {
             throw new NotImplementedException();
         }
-
         internal Sprite getEncounterSprite()
         {
             throw new NotImplementedException();
+        }
+        public string getState()
+        {
+            return stateCharact;
         }
 
         public Sprite sprite;
@@ -88,7 +91,7 @@ namespace SFMLproject.Object
                 sprite.TextureRect = new IntRect(0, 144, 32, 48);
         }
 
-        public void moveCharacter(Vector2f posi)
+        public void moveCharacter(Vector2i posi)
         {
             Vector2f temp = sprite.Position;
             if (posi.X > 0)

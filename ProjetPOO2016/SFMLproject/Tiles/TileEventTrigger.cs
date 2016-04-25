@@ -19,10 +19,12 @@ namespace SFMLproject.Tiles
         public TileEventTrigger(Sprite spr) : base(spr) { }
 
         public override void tileEvent()
-        { /*Ne ait rien*/}
+        { /*Ne fait rien*/}
 
         public override bool updateOnOccupy() { return true; }
-
+        public override bool updateOnInteract() { return true; }
         public override void updateOnLeave(Vector2i move) { }
+        public override void updateOnReact(Vector2i move) { }
+        public override void updateOnAction() { Console.WriteLine("Trigger"); }
     }
 }

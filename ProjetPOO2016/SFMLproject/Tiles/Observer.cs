@@ -12,5 +12,8 @@ namespace SFMLproject.Tiles
     {
         public abstract bool updateOnOccupy();
         public abstract void updateOnLeave(Vector2i ind);
+        public abstract void updateOnReact(Vector2i ind);
+        public abstract void updateOnAction();
+        public abstract bool updateOnInteract();
     }
 }

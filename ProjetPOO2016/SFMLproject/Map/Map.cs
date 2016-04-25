@@ -28,6 +28,8 @@ namespace SFMLproject.Map
         private TileFactory tileFactory;
         private View mapView;
         private static Map state;
+        private Vector2i characState = new Vector2i(0, 1);
+
 
         /*
             Load map from textfile
@@ -85,6 +87,7 @@ namespace SFMLproject.Map
             tiles[c.getMapPos().X, c.getMapPos().Y] = tileFactory.generateTile(c, tiles[c.getMapPos().X, c.getMapPos().Y]);
             Attach(tiles[c.getMapPos().X, c.getMapPos().Y]);
             mapView.Center = c.sprite.Position;
+            tiles[3, 9] = tileFactory.generateTile((int)TileType.eventTrigger);
 
             state = this;
         }
@@ -129,26 +132,47 @@ namespace SFMLproject.Map
             {
                 case Keyboard.Key.D:
                     notify(new Vector2i(1, 0));
+                    characState = new Vector2i(1, 0);
                     return true;
                     //player = player.notify(tiles[player.getPos().X +1, player.getPos().Y], new Vector2i(1, 0));
 
                 case Keyboard.Key.A:
                     notify(new Vector2i(-1, 0));
+                    characState = new Vector2i(-1, 0);
                     return true;
                     //player = player.notify(tiles[player.getPos().X - 1, player.getPos().Y], new Vector2i(-1, 0));
 
                 case Keyboard.Key.W:
                     notify(new Vector2i(0, -1));
+                    characState = new Vector2i(0, -1);
                     return true;
                     // player = player.notify(tiles[player.getPos().X, player.getPos().Y - 1], new Vector2i(0, -1));
 
                 case Keyboard.Key.S:
                     notify(new Vector2i(0, 1));
+                    characState = new Vector2i(0, 1);
                     return true;
                     //player = player.notify(tiles[player.getPos().X, player.getPos().Y + 1], new Vector2i(0, 1));
             }
             return false;
         }
+        
+        public bool actionButton(Keyboard.Key e)
+        {
+            switch (e)
+            {
+                case Keyboard.Key.E:
+                    notifyAction(characState);
+                    return true;
+                case Keyboard.Key.Q:
+                    Console.WriteLine("Stop the action/exit menu.");
+                    return true;
+                case Keyboard.Key.Return:
+                    Console.WriteLine("MENU");
+                    return true;
+            }
+            return false;
+        } 
 
         /*
             Draw all tile in camera sight
@@ -162,6 +186,17 @@ namespace SFMLproject.Map
                 }
             }
         }
+
+        public override void notifyAction(Vector2i m)
+        {
+            obt.ForEach(delegate (Observer obs)
+            {
+                obs.updateOnReact(m);
+            });
+            //KillAll();
+            Dequeue();
+        }
+
 
         public override void notify(Vector2i m)
         {
