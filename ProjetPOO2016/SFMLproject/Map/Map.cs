@@ -43,6 +43,8 @@ namespace SFMLproject.Map
 
             mapView = new View(new FloatRect(0,0,Constants.tileSize * Constants.camRow, Constants.tileSize * Constants.camCol));
             
+            int spawnPointX = 0;
+            int spawnPointY = 0;
             char buffer;
             string line;
             //string stringBuffer = "";
@@ -54,6 +56,13 @@ namespace SFMLproject.Map
                 mapX = uint.Parse(line);
                 line = streamReader.ReadLine();
                 mapY = uint.Parse(line);
+
+                line = streamReader.ReadLine();
+                spawnPointX = int.Parse(line);
+
+                line = streamReader.ReadLine();
+                spawnPointY = int.Parse(line);
+
 
                 tiles = new Tile[mapX, mapY];
 
@@ -80,6 +89,7 @@ namespace SFMLproject.Map
                             line = streamReader.ReadLine();
                             line = streamReader.ReadLine();
                             tiles[i, j] = tileFactory.generateTile(buffer, line);
+
                         }
                         else tiles[i, j] = tileFactory.generateTile(int.Parse(buffer.ToString()));
 
@@ -146,25 +156,25 @@ namespace SFMLproject.Map
                     notify(new Vector2i(1, 0));
                     characState = new Vector2i(1, 0);
                     return true;
-                    //player = player.notify(tiles[player.getPos().X +1, player.getPos().Y], new Vector2i(1, 0));
+                   
 
                 case Keyboard.Key.A:
                     notify(new Vector2i(-1, 0));
                     characState = new Vector2i(-1, 0);
                     return true;
-                    //player = player.notify(tiles[player.getPos().X - 1, player.getPos().Y], new Vector2i(-1, 0));
+                    
 
                 case Keyboard.Key.W:
                     notify(new Vector2i(0, -1));
                     characState = new Vector2i(0, -1);
                     return true;
-                    // player = player.notify(tiles[player.getPos().X, player.getPos().Y - 1], new Vector2i(0, -1));
+                    
 
                 case Keyboard.Key.S:
                     notify(new Vector2i(0, 1));
                     characState = new Vector2i(0, 1);
                     return true;
-                    //player = player.notify(tiles[player.getPos().X, player.getPos().Y + 1], new Vector2i(0, 1));
+                    
             }
             return false;
         }

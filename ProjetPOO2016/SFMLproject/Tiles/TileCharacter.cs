@@ -59,11 +59,12 @@ namespace SFMLproject.Tiles
         public override void updateOnLeave(Vector2i move)
         {
             mapState = Map.Map.getState();
+            character.moveCharacter(move); // TODO fonction mal nommée. Ne bouge pas le perso. Fait juste changer sa position de corps.
             if (mapState.getTile(getPos() + move).updateOnOccupy())
             {
                 mapState.setTile(getPos(), currentTile);
                 mapState.setTile(getPos() + move, tileFactory.generateTile(new Character(character, move), mapState.getTile(getPos() + move)));
-                character.moveCharacter(move);
+                
                 mapState.Queue(mapState.getTile(getPos() + move));
                 mapState.moveMapView(new Vector2f(move.X, move.Y) * Constants.tileSize);
                 mapState.setState(mapState);
