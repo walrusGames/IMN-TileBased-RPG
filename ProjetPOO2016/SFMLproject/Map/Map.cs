@@ -103,8 +103,8 @@ namespace SFMLproject.Map
                 Init a changer
             */
 
-            Object.Character c = new Object.Character(new Vector2i(3, 3));
-           // Object.Character d = new Object.Character("template", new Vector2i(4, 3));
+            Object.Character c = new Object.Character(new Vector2i(spawnPointX, spawnPointY));
+            //Object.Character d = new Object.Character("File\\Perso\\perso 1.png", new Vector2i(4, 3));
             //tiles[d.getMapPos().X, d.getMapPos().Y] = tileFactory.generateTile(d, tiles[d.getMapPos().X, d.getMapPos().Y]);
             tiles[c.getMapPos().X, c.getMapPos().Y] = tileFactory.generateTile(c, tiles[c.getMapPos().X, c.getMapPos().Y]);
             
@@ -112,6 +112,8 @@ namespace SFMLproject.Map
             mapView.Center = c.sprite.Position;
 
             state = this;
+
+            fileStream.Close();
         }
 
         public static Map getState()
