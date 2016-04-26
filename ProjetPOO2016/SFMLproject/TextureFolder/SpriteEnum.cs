@@ -18,6 +18,7 @@ namespace SFMLproject.TextureFolder
         Texture blank;
         Texture encounterBkgr;
         Texture portal;
+        Texture desk;
 
         public SpriteEnum()
         {
@@ -25,7 +26,12 @@ namespace SFMLproject.TextureFolder
             ob = new Texture("File\\Background\\OB.png");
             blank = new Texture("File\\Background\\test.png");
             portal = new Texture("File\\Background\\portal.png");
+            desk = new Texture("File\\Background\\desk.png");
 
+        }
+        public Sprite getDesktop()
+        {
+            return new Sprite(desk);
         }
         public Sprite getBackground()
         {

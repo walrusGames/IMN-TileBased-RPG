@@ -27,7 +27,8 @@ namespace SFMLproject.StaticFields
         obstacle,
         character,
         eventTrigger,
-        portal
+        portal,
+        desktop
     };
 
     class TextProperties

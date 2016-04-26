@@ -40,6 +40,8 @@ namespace SFMLproject.Tiles
                     throw new InvalidOperationException("Character tile need a character and current tile on board");
                 case (int)TileType.portal:
                     throw new InvalidOperationException("Portal need path, dude.");
+                case (int)TileType.desktop:
+                    return new TileObstacle(spriteManager.getDesktop());
                 default:
                     return new TileEmpty(spriteManager.getBackground());
             }
