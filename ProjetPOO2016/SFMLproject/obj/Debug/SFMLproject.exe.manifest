@@ -90,14 +90,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SFMLproject.exe" size="24576">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SFMLproject.exe" size="24064">
       <assemblyIdentity name="SFMLproject" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>bHyoR378OBqNud+cRTvtRAc5I8IZ8jWL2tmz5euo9pQ=</dsig:DigestValue>
+        <dsig:DigestValue>uLTg430VA5mwqBxm0xjPd9kqlopYC+TEbvaABikiJF8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -207,6 +207,15 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
       <dsig:DigestValue>jGVnJCjSiOqZeydRVB3SBK5HGbkeqUDS9lO8zGU9kXo=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="bin\Debug\File\Background\textBack.png" size="707">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>ftd8os62RFcyw/7eycVBuxDeURQtPktuAEDTAU3eXiE=</dsig:DigestValue>
     </hash>
   </file>
   <file name="bin\Debug\File\Background\wall.png" size="4715">

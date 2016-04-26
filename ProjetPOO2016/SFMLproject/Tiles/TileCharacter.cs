@@ -87,7 +87,7 @@ namespace SFMLproject.Tiles
 
         public override void updateOnAction()
         {
-            Console.WriteLine(character.getDialogue().ElementAt(2));
+            //Console.WriteLine(character.getDialogue().ElementAt(2));
             Executer.inWorld = false;
             character.dia.afficher();
             //dia.afficher();
