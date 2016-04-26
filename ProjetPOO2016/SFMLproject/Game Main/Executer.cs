@@ -195,8 +195,12 @@ namespace SFMLproject
         //Call when the window is resized
         static void window_Resized(object sender, SizeEventArgs e)
         {
-
+            window.Clear();
+            window.SetView(Map.Map.getState().getMapview());
+            Map.Map.getState().draw(window);
+            window.Display();
         }
+        //ewvviniev
 
         //Call when the window has LostFocus
         static void window_LostFocus(object sender, EventArgs e)
