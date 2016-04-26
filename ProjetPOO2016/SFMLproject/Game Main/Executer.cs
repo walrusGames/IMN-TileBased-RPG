@@ -31,7 +31,9 @@ namespace SFMLproject
 
         static Controller controller = new Controller();
 
-        static Map.Map map = new Map.Map("File\\Map\\test.txt");
+        //Object.Character c = new Object.Character(new Vector2i(3, 3));
+
+        static Map.Map map = new Map.Map("File\\Map\\drago.txt");
 
         //static View wholeView;
 
@@ -193,8 +195,12 @@ namespace SFMLproject
         //Call when the window is resized
         static void window_Resized(object sender, SizeEventArgs e)
         {
-
+            window.Clear();
+            window.SetView(Map.Map.getState().getMapview());
+            Map.Map.getState().draw(window);
+            window.Display();
         }
+        //ewvviniev
 
         //Call when the window has LostFocus
         static void window_LostFocus(object sender, EventArgs e)
