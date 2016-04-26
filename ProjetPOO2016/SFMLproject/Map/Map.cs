@@ -42,7 +42,7 @@ namespace SFMLproject.Map
             tileFactory = TileFactory.getInstance();
 
             mapView = new View(new FloatRect(0,0,Constants.tileSize * Constants.camRow, Constants.tileSize * Constants.camCol));
-            
+
             int spawnPointX = 0;
             int spawnPointY = 0;
             char buffer;
@@ -80,7 +80,7 @@ namespace SFMLproject.Map
                         {
                             line = streamReader.ReadLine();
                             line = streamReader.ReadLine();
-                            Object.Character template = new Object.Character(line); 
+                            Object.Character template = new Object.Character(line);
                             tiles[i,j] = tileFactory.generateTile(template, tileFactory.generateTile((int)TileType.empty));
                             //create character. Line = pathfile
                         }
