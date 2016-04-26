@@ -10,6 +10,7 @@ using SFML.System;
 using SFML.Window;
 
 using SFMLproject.StaticFields;
+using System.IO;
 
 namespace SFMLproject.Object
 {
@@ -21,6 +22,9 @@ namespace SFMLproject.Object
         //Character Info
         static String stateCharact = "Down";
         static Texture perso;
+        uint statKnowledge, statSpeed, statEnergy, statStress;
+        string nomPerso;
+        List<String> dialogue;
 
         internal int getStats()
         {
@@ -50,14 +54,41 @@ namespace SFMLproject.Object
             mapPos = pos;
         }
 
-        public Character(String filePath, Vector2i pos)
+        public Character(String nom)
         {
+
+            dialogue = new List<string>();
+            String filePath = "File\\Perso\\" + nom + ".txt";
+            var fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read);
+            var streamReader = new StreamReader(fileStream, Encoding.ASCII);
+
+            //Lecture des infos du personnage
+            nomPerso = streamReader.ReadLine();
+            filePath = streamReader.ReadLine();
+            stateCharact = streamReader.ReadLine();
+            //string position = stateCharact;
+            //changeSpriteShow(position);
+
+            //Stats
+            statKnowledge = uint.Parse(streamReader.ReadLine());
+            statEnergy = uint.Parse(streamReader.ReadLine());
+            statSpeed = uint.Parse(streamReader.ReadLine());
+            statStress = uint.Parse(streamReader.ReadLine());
+
+            //Initialisation du perso
             perso = new Texture(filePath);
             sprite = new Sprite(perso);
             sprite.TextureRect = new IntRect(0, 0, 32, 48);
             sprite.Scale = new Vector2f(1.5f, 1.5f);
-            sprite.Position = (Vector2f)pos * (float)Constants.tileSize;
-            mapPos = pos;
+            sprite.Position = new Vector2f(0, 0);
+            //Stockage des dialogues des NPCs
+            string ligne;
+            do
+            {
+                ligne = streamReader.ReadLine();
+                dialogue.Add(ligne);
+            } while (ligne != null);
+
         }
 
         public Character(String filePath, String state, Vector2i pos)
@@ -125,5 +156,6 @@ namespace SFMLproject.Object
         {
             return mapPos;
         }
+        public List<string> getDialogue() { return dialogue; }
     }
 }
