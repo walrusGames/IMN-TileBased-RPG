@@ -82,11 +82,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Menu\Dialogue.cs" />
     <Compile Include="Menu\Menu.cs" />
     <Compile Include="Object\AttackList.cs" />
     <Compile Include="Encounter ENV\Encounter.cs" />
     <Compile Include="Encounter ENV\EncounterCharacter.cs" />
     <Compile Include="Menu\MenuTextElement.cs" />
+    <Compile Include="Object\WindowSingl.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
@@ -146,10 +148,12 @@
     <Content Include="bin\Debug\File\Map\prof1.txt" />
     <Content Include="bin\Debug\File\Map\prof2.txt" />
     <Content Include="bin\Debug\File\Music\Student Life.ogg" />
+    <Content Include="bin\Debug\File\Perso\NouvelEtudiant.txt" />
     <Content Include="bin\Debug\File\Perso\Perso 1.png" />
     <Content Include="bin\Debug\File\Perso\Perso 2.png" />
     <Content Include="bin\Debug\File\Perso\Perso 3.png" />
     <Content Include="bin\Debug\File\Perso\Perso 4.png" />
+    <Content Include="bin\Debug\File\Perso\prof.txt" />
     <Content Include="csfml-audio-2.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

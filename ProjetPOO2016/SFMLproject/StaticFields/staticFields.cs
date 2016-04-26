@@ -35,7 +35,8 @@ namespace SFMLproject.StaticFields
         board,
         deskP,
         chairD,
-        chairG
+        chairG,
+        chairC
     };
 
     class TextProperties
@@ -46,14 +47,18 @@ namespace SFMLproject.StaticFields
 
         public TextProperties()
         {
-            font = new Font(@"U:\POO\projet\ProjetPOO2016\SFMLproject\bin\Debug\File\Font");
-            color = new Color(Color.Black);
+            //font = new Font(@"U:\POO\projet\ProjetPOO2016\SFMLproject\bin\Debug\File\Font");
+            //color = new Color(Color.Black);
+            font = new Font("File\\Font\\ARCENA.ttf");
+            color = new Color(Color.White);
             size = 20;
         }
         public TextProperties(uint s)
         {
-            font = new Font(@"U:\POO\projet\ProjetPOO2016\SFMLproject\bin\Debug\File\Font");
-            color = new Color(Color.Black);
+            //font = new Font(@"U:\POO\projet\ProjetPOO2016\SFMLproject\bin\Debug\File\Font");
+            //color = new Color(Color.Black);
+            font = new Font("File\\Font\\ARCENA.tff");
+            color = new Color(Color.White);
             size = s;
         }
         public TextProperties(Color c)

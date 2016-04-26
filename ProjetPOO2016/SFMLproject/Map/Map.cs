@@ -104,11 +104,15 @@ namespace SFMLproject.Map
             */
 
             Object.Character c = new Object.Character("NouvelEtudiant", new Vector2i(spawnPointX, spawnPointY));
+            //Object.Character d = new Object.Character("prof", new Vector2i(4, 3));
+            //tiles[d.getMapPos().X, d.getMapPos().Y] = tileFactory.generateTile(d, tiles[d.getMapPos().X, d.getMapPos().Y]);
 
             tiles[c.getMapPos().X, c.getMapPos().Y] = tileFactory.generateTile(c, tiles[c.getMapPos().X, c.getMapPos().Y]);
             Attach(tiles[c.getMapPos().X, c.getMapPos().Y]);
             mapView.Center = c.sprite.Position;
             state = this;
+
+            fileStream.Close();
         }
 
         public static Map getState()

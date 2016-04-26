@@ -8,6 +8,7 @@ using SFML.Audio;
 using SFML.Graphics;
 using SFML.System;
 using SFML.Window;
+using SFMLproject.Menu;
 
 using SFMLproject.Object;
 using SFMLproject.TextureFolder;
@@ -19,6 +20,7 @@ namespace SFMLproject.Tiles
     class TileCharacter : Tile
     {
         private Character character;
+        //Dialogue dia;
 
         private Tile currentTile;
         static private SpriteEnum spr = new SpriteEnum();
@@ -28,6 +30,7 @@ namespace SFMLproject.Tiles
             character = c;
             currentTile = cur;
             sprite.Position = cur.getSpritePos();
+            //dia = new Dialogue(new List<String> { "Non", "Oui", "Fuck UML" });
         }
         
         public override void moveSprite(Vector2f newPos)
@@ -84,6 +87,10 @@ namespace SFMLproject.Tiles
         public override void updateOnAction()
         {
             Console.WriteLine(character.getDialogue().ElementAt(2));
+            Executer.inWorld = false;
+            character.dia.afficher();
+            //dia.afficher();
+            Executer.inWorld = true;
         }
 
 

@@ -153,3 +153,8 @@ C:\Users\MPidoo\Documents\GitHub\IMN-TileBased-RPG\ProjetPOO2016\SFMLproject\bin
 C:\Users\MPidoo\Documents\GitHub\IMN-TileBased-RPG\ProjetPOO2016\SFMLproject\obj\Debug\SFMLproject.TrustInfo.xml
 C:\Users\MPidoo\Documents\GitHub\IMN-TileBased-RPG\ProjetPOO2016\SFMLproject\obj\Debug\SFMLproject.exe.manifest
 C:\Users\MPidoo\Documents\GitHub\IMN-TileBased-RPG\ProjetPOO2016\SFMLproject\obj\Debug\SFMLproject.application
+C:\Users\Alienware\Source\Repos\IMN-TileBased-RPG\ProjetPOO2016\SFMLproject\bin\Debug\SFMLproject.exe.manifest
+C:\Users\Alienware\Source\Repos\IMN-TileBased-RPG\ProjetPOO2016\SFMLproject\bin\Debug\SFMLproject.application
+C:\Users\Alienware\Source\Repos\IMN-TileBased-RPG\ProjetPOO2016\SFMLproject\obj\Debug\SFMLproject.TrustInfo.xml
+C:\Users\Alienware\Source\Repos\IMN-TileBased-RPG\ProjetPOO2016\SFMLproject\obj\Debug\SFMLproject.exe.manifest
+C:\Users\Alienware\Source\Repos\IMN-TileBased-RPG\ProjetPOO2016\SFMLproject\obj\Debug\SFMLproject.application

@@ -90,14 +90,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SFMLproject.exe" size="23040">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SFMLproject.exe" size="24576">
       <assemblyIdentity name="SFMLproject" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>0XHW59sVXxf0vRIlCGxqFt0ptpGyP0ZnWuLbDBn3X3k=</dsig:DigestValue>
+        <dsig:DigestValue>bHyoR378OBqNud+cRTvtRAc5I8IZ8jWL2tmz5euo9pQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -236,13 +236,13 @@
       <dsig:DigestValue>nfceUsIUPiqIiyddgwxj6LOMJ5K1calbU9eWFDp85jc=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="bin\Debug\File\Map\drago.txt" size="222">
+  <file name="bin\Debug\File\Map\drago.txt" size="207">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>X5AVylYLvpGdnL0ODMBZh3qCVMNsZPrHE1ukON5a1Y0=</dsig:DigestValue>
+      <dsig:DigestValue>21iZAZklZ6f9gsqcP78qjHjOglJANELQScTCZoXQXfU=</dsig:DigestValue>
     </hash>
   </file>
   <file name="bin\Debug\File\Map\hallwayClass.txt" size="287">
@@ -326,6 +326,15 @@
       <dsig:DigestValue>HMS0jjL0hFWDhvp/Qay1TxdkAIDul6zXuCeLrr/aV/o=</dsig:DigestValue>
     </hash>
   </file>
+  <file name="bin\Debug\File\Perso\NouvelEtudiant.txt" size="52">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>n0jb6zfu5YuJg/rfnLM7pEeDxWJVW2JDjBXuWepDHTU=</dsig:DigestValue>
+    </hash>
+  </file>
   <file name="bin\Debug\File\Perso\Perso 1.png" size="17120">
     <hash>
       <dsig:Transforms>
@@ -360,6 +369,15 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
       <dsig:DigestValue>Mt6b8l0DY3ePo552ig6tLEKAtSTauHpoGf4ayUTFhYo=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="bin\Debug\File\Perso\prof.txt" size="96">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>YoBYDk0k1OQaw5dzFkO9bq52TmxxMgav2LQHN2V2hnc=</dsig:DigestValue>
     </hash>
   </file>
   <file name="csfml-audio-2.dll" size="199168">
