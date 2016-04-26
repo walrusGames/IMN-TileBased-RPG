@@ -53,7 +53,8 @@ namespace SFMLproject.Object
             sprite.Position = (Vector2f)pos * (float)Constants.tileSize;
             mapPos = pos;
         }
-
+        
+        //NPC constructor
         public Character(String nom)
         {
 
@@ -65,9 +66,7 @@ namespace SFMLproject.Object
             //Lecture des infos du personnage
             nomPerso = streamReader.ReadLine();
             filePath = streamReader.ReadLine();
-            stateCharact = streamReader.ReadLine();
-            //string position = stateCharact;
-            //changeSpriteShow(position);
+            string position = streamReader.ReadLine();
 
             //Stats
             statKnowledge = uint.Parse(streamReader.ReadLine());
@@ -81,6 +80,7 @@ namespace SFMLproject.Object
             sprite.TextureRect = new IntRect(0, 0, 32, 48);
             sprite.Scale += new Vector2f(1f, 1f);
             sprite.Position =  new Vector2f(0,0);
+            changePostureCharacter(position);
             //Stockage des dialogues des NPCs
             string ligne;
             do
@@ -90,7 +90,7 @@ namespace SFMLproject.Object
             } while (ligne != null) ;
 
         }
-
+        /*
         public Character(String filePath, String state, Vector2i pos)
         {
             perso = new Texture(filePath);
@@ -100,7 +100,7 @@ namespace SFMLproject.Object
             stateCharact = state;
             sprite.Position = (Vector2f)pos * (float)Constants.tileSize;
             mapPos = pos;
-        }
+        }*/
 
         public void setAttackList(AttackList l) { attList = l; }
         public AttackList getAttackList() { return attList; }
