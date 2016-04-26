@@ -84,6 +84,7 @@ namespace SFMLproject.Tiles
             }
         }
 
+
         public override void updateOnAction()
         {
             Console.WriteLine(character.getDialogue().ElementAt(2));
