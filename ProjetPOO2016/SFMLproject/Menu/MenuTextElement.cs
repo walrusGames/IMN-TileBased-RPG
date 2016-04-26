@@ -13,7 +13,7 @@ namespace SFMLproject.Encounter_ENV
     class MenuTextElement
     {
         private Text text;
-        private TextProperties tProp;
+        private TextProperties tProp = new TextProperties();
         private Menu.Menu link;
         
         public MenuTextElement(string t, Vector2f position)

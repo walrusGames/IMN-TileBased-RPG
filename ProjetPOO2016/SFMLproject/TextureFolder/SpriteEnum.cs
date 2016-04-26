@@ -27,6 +27,7 @@ namespace SFMLproject.TextureFolder
         Texture chairD;
         Texture chairG;
         Texture chairC;
+        Texture textBack;
 
         public SpriteEnum()
         {
@@ -43,6 +44,7 @@ namespace SFMLproject.TextureFolder
             chairD   = new Texture("File\\Background\\chairD.png");
             chairG   = new Texture("File\\Background\\chairG.png");
             chairC   = new Texture("File\\Background\\chairC.png");
+            textBack = new Texture("File\\Background\\textBack.png");
 
         }
         public Sprite getBackground()
@@ -52,6 +54,11 @@ namespace SFMLproject.TextureFolder
         public Sprite getObstacle()
         {
             return new Sprite(ob);
+        }
+
+        public Sprite getTextBack()
+        {
+            return new Sprite(textBack);
         }
 
         internal Sprite getMenuBkgr()
@@ -108,7 +115,6 @@ namespace SFMLproject.TextureFolder
         {
             return new Sprite(chairG);
         }
-
         public Sprite getChairC()
         {
             return new Sprite(chairC);

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SFMLproject.Menu;
 
 using SFML.Audio;
 using SFML.Graphics;
@@ -26,6 +27,7 @@ namespace SFMLproject.Object
         uint statKnowledge, statSpeed, statEnergy, statStress;
         string nomPerso;
         List<String> dialogue;
+        public Dialogue dia;
 
         internal int getStats()
         {
@@ -54,7 +56,8 @@ namespace SFMLproject.Object
             //Lecture des infos du personnage
             nomPerso = streamReader.ReadLine();
             filePath = streamReader.ReadLine();
-            stateCharact = streamReader.ReadLine();
+            string state = streamReader.ReadLine();
+
 
             //Stats
             statKnowledge = uint.Parse(streamReader.ReadLine());
@@ -67,6 +70,7 @@ namespace SFMLproject.Object
             sprite.TextureRect = new IntRect(0, 0, 32, 48);
             sprite.Scale = new Vector2f(1.5f, 1.5f);
             sprite.Position = (Vector2f)pos * (float)Constants.tileSize;
+            changePostureCharacter(state);
             mapPos = pos;
             //Stockage des dialogues
             string ligne;
@@ -75,6 +79,7 @@ namespace SFMLproject.Object
                 ligne = streamReader.ReadLine();
                 dialogue.Add(ligne);
             } while (ligne != null);
+            dia = new Dialogue(dialogue);
             fileStream.Close();
             streamReader.Close();
         }
@@ -90,7 +95,7 @@ namespace SFMLproject.Object
             //Lecture des infos du personnage
             nomPerso = streamReader.ReadLine();
             filePath = streamReader.ReadLine();
-            stateCharact = streamReader.ReadLine();
+            string state = streamReader.ReadLine();
 
             //Stats
             statKnowledge = uint.Parse(streamReader.ReadLine());
@@ -102,8 +107,9 @@ namespace SFMLproject.Object
             perso = new Texture(filePath);
             sprite = new Sprite(perso);
             sprite.TextureRect = new IntRect(0, 0, 32, 48);
-            sprite.Scale += new Vector2f(1f, 1f);
-            sprite.Position =  new Vector2f(0,0);
+            sprite.Scale = new Vector2f(1.5f, 1.5f);
+            sprite.Position = new Vector2f(0, 0);
+            changePostureCharacter(state);
             //Stockage des dialogues des NPCs
             string ligne;
             do
@@ -111,6 +117,7 @@ namespace SFMLproject.Object
                 ligne = streamReader.ReadLine();
                 dialogue.Add(ligne);
             } while (ligne != null);
+            dia = new Dialogue(dialogue);
             fileStream.Close();
             streamReader.Close();
 

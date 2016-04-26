@@ -40,8 +40,6 @@ namespace SFMLproject.Tiles
 
         public override bool updateOnOccupy()
         {
-
-
             mapState = Map.Map.getState();
             mapState.setState(new Map.Map(mapPath));
             return false;
