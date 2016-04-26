@@ -1,0 +1,3 @@
+C:\Users\Badass Motherfucker\Documents\REPO\IMN-TileBased-RPG\ProjetPOO2016\SFMLproject\bin\Debug\SFMLproject.exe.config
+C:\Users\Badass Motherfucker\Documents\REPO\IMN-TileBased-RPG\ProjetPOO2016\SFMLproject\obj\Debug\SFMLproject.exe
+C:\Users\Badass Motherfucker\Documents\REPO\IMN-TileBased-RPG\ProjetPOO2016\SFMLproject\obj\Debug\SFMLproject.pdb
