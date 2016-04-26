@@ -115,6 +115,7 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="bin\Debug\File\Background\Thumbs.db" />
+    <None Include="bin\Debug\File\Font\ARCENA.ttf" />
     <None Include="bin\Debug\File\Perso\Thumbs.db" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
@@ -135,6 +136,7 @@
     <Content Include="bin\Debug\File\Background\ob.png" />
     <Content Include="bin\Debug\File\Background\portal.png" />
     <Content Include="bin\Debug\File\Background\test.png" />
+    <Content Include="bin\Debug\File\Background\textBack.png" />
     <Content Include="bin\Debug\File\Background\wall.png" />
     <Content Include="bin\Debug\File\Dialogue\dialogueTest.txt" />
     <Content Include="bin\Debug\File\Map\class.txt" />
