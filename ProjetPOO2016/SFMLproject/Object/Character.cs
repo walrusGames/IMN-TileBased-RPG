@@ -45,7 +45,7 @@ namespace SFMLproject.Object
             perso = new Texture("File\\Perso\\perso 4.png");
             sprite = new Sprite(perso);
             sprite.TextureRect = new IntRect(0, 0, 32, 48);
-            sprite.Scale += new Vector2f(1f, 1f);
+            sprite.Scale = new Vector2f(1.5f, 1.5f);
             sprite.Position = (Vector2f)pos * (float)Constants.tileSize;
             mapPos = pos;
         }
@@ -55,7 +55,7 @@ namespace SFMLproject.Object
             perso = new Texture(filePath);
             sprite = new Sprite(perso);
             sprite.TextureRect = new IntRect(0, 0, 32, 48);
-            sprite.Scale += new Vector2f(1f, 1f);
+            sprite.Scale = new Vector2f(1.5f, 1.5f);
             sprite.Position = (Vector2f)pos * (float)Constants.tileSize;
             mapPos = pos;
         }
@@ -65,7 +65,7 @@ namespace SFMLproject.Object
             perso = new Texture(filePath);
             sprite = new Sprite(perso);
             sprite.TextureRect = new IntRect(0, 0, 32, 48);
-            sprite.Scale += new Vector2f(1f, 1f);
+            sprite.Scale = new Vector2f(1.5f, 1.5f);
             stateCharact = state;
             sprite.Position = (Vector2f)pos * (float)Constants.tileSize;
             mapPos = pos;

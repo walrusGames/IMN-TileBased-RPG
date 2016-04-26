@@ -42,6 +42,20 @@ namespace SFMLproject.Tiles
                     throw new InvalidOperationException("Portal need path, dude.");
                 case (int)TileType.desktop:
                     return new TileObstacle(spriteManager.getDesktop());
+                case (int)TileType.wall:
+                    return new TileEmpty(spriteManager.getWall());
+                case (int)TileType.chair:
+                    return new TileEmpty(spriteManager.getChair());
+                case (int)TileType.computer:
+                    return new TileObstacle(spriteManager.getComputer());
+                case (int)TileType.board:
+                    return new TileEmpty(spriteManager.getBoard());
+                case (int)TileType.deskP:
+                    return new TileObstacle(spriteManager.getDeskP());
+                case (int)TileType.chairD:
+                    return new TileEmpty(spriteManager.getChairD());
+                case (int)TileType.chairG:
+                    return new TileEmpty(spriteManager.getChairG());
                 default:
                     return new TileEmpty(spriteManager.getBackground());
             }

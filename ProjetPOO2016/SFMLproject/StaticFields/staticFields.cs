@@ -28,7 +28,14 @@ namespace SFMLproject.StaticFields
         character,
         eventTrigger,
         portal,
-        desktop
+        desktop,
+        wall,
+        chair,
+        computer,
+        board,
+        deskP,
+        chairD,
+        chairG
     };
 
     class TextProperties
