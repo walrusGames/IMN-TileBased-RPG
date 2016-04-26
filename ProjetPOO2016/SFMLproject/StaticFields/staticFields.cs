@@ -35,7 +35,8 @@ namespace SFMLproject.StaticFields
         board,
         deskP,
         chairD,
-        chairG
+        chairG,
+        chairC
     };
 
     class TextProperties
