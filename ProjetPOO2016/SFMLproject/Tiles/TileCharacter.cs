@@ -13,13 +13,14 @@ using SFMLproject.Object;
 using SFMLproject.TextureFolder;
 using SFMLproject.StaticFields;
 using System.Runtime.InteropServices;
+using SFMLproject.Menu;
 
 namespace SFMLproject.Tiles
 {
     class TileCharacter : Tile
     {
         private Character character;
-
+        Dialogue dia;
         private Tile currentTile;
         static private SpriteEnum spr = new SpriteEnum();
 
@@ -28,6 +29,7 @@ namespace SFMLproject.Tiles
             character = c;
             currentTile = cur;
             sprite.Position = cur.getSpritePos();
+            dia = new Dialogue(new List<String> { "Non", "Oui", "FUCK UML" });
         }
  
 
@@ -78,7 +80,9 @@ namespace SFMLproject.Tiles
 
         public override void updateOnAction()
         {
-            Console.WriteLine("Personnage");
+            Executer.inWorld = false;
+            dia.afficher();
+            Executer.inWorld = true;
         }
 
 

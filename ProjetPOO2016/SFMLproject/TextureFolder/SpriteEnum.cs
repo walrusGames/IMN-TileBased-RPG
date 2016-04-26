@@ -19,9 +19,10 @@ namespace SFMLproject.TextureFolder
         Texture encounterBkgr;
         Texture portal;
         Texture desk;
-
+        Texture textBack;
         public SpriteEnum()
         {
+            textBack = new Texture("File\\Background\\textBack.png");
             back = new Texture("File\\Background\\back.png");
             ob = new Texture("File\\Background\\OB.png");
             blank = new Texture("File\\Background\\test.png");
@@ -40,6 +41,10 @@ namespace SFMLproject.TextureFolder
         public Sprite getObstacle()
         {
             return new Sprite(ob);
+        }
+        public Sprite getTextBack()
+        {
+            return new Sprite(textBack);
         }
 
         internal Sprite getMenuBkgr()

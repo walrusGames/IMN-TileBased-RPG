@@ -58,11 +58,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Menu\Dialogue.cs" />
     <Compile Include="Menu\Menu.cs" />
     <Compile Include="Object\AttackList.cs" />
     <Compile Include="Encounter ENV\Encounter.cs" />
     <Compile Include="Encounter ENV\EncounterCharacter.cs" />
     <Compile Include="Menu\MenuTextElement.cs" />
+    <Compile Include="Object\WindowSingl.cs" />
     <Compile Include="StaticFields\staticFields.cs" />
     <Compile Include="Input\Controller.cs" />
     <Compile Include="Map\Source.cs" />
