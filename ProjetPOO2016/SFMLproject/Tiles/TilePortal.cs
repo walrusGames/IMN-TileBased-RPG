@@ -24,7 +24,9 @@ namespace SFMLproject.Tiles
         public override void updateOnAction()
         {
             Console.WriteLine("Action Button Pressed - Portal tile");
-         }
+            mapState = Map.Map.getState();
+            mapState.setState(new Map.Map(mapPath));
+        }
 
         public override bool updateOnInteract()
         {

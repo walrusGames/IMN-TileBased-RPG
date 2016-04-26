@@ -88,9 +88,18 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="bin\Debug\File\Background\back.png" />
+    <Content Include="bin\Debug\File\Background\board.png" />
+    <Content Include="bin\Debug\File\Background\chair.png" />
+    <Content Include="bin\Debug\File\Background\chairC.png" />
+    <Content Include="bin\Debug\File\Background\chairD.png" />
+    <Content Include="bin\Debug\File\Background\chairG.png" />
+    <Content Include="bin\Debug\File\Background\computer.png" />
+    <Content Include="bin\Debug\File\Background\desk.png" />
+    <Content Include="bin\Debug\File\Background\deskP.png" />
     <Content Include="bin\Debug\File\Background\ob.png" />
     <Content Include="bin\Debug\File\Background\portal.png" />
     <Content Include="bin\Debug\File\Background\test.png" />
+    <Content Include="bin\Debug\File\Background\wall.png" />
     <Content Include="bin\Debug\File\Dialogue\dialogueTest.txt" />
     <Content Include="bin\Debug\File\Map\class.txt" />
     <Content Include="bin\Debug\File\Map\hallwayClass.txt" />
