@@ -148,3 +148,8 @@ C:\Users\MPidoo\Documents\GitHub\IMN-TileBased-RPG\ProjetPOO2016\SFMLproject\bin
 C:\Users\MPidoo\Documents\GitHub\IMN-TileBased-RPG\ProjetPOO2016\SFMLproject\obj\Debug\SFMLproject.csprojResolveAssemblyReference.cache
 C:\Users\MPidoo\Documents\GitHub\IMN-TileBased-RPG\ProjetPOO2016\SFMLproject\obj\Debug\SFMLproject.exe
 C:\Users\MPidoo\Documents\GitHub\IMN-TileBased-RPG\ProjetPOO2016\SFMLproject\obj\Debug\SFMLproject.pdb
+C:\Users\MPidoo\Documents\GitHub\IMN-TileBased-RPG\ProjetPOO2016\SFMLproject\bin\Debug\SFMLproject.exe.manifest
+C:\Users\MPidoo\Documents\GitHub\IMN-TileBased-RPG\ProjetPOO2016\SFMLproject\bin\Debug\SFMLproject.application
+C:\Users\MPidoo\Documents\GitHub\IMN-TileBased-RPG\ProjetPOO2016\SFMLproject\obj\Debug\SFMLproject.TrustInfo.xml
+C:\Users\MPidoo\Documents\GitHub\IMN-TileBased-RPG\ProjetPOO2016\SFMLproject\obj\Debug\SFMLproject.exe.manifest
+C:\Users\MPidoo\Documents\GitHub\IMN-TileBased-RPG\ProjetPOO2016\SFMLproject\obj\Debug\SFMLproject.application
