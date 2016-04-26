@@ -37,11 +37,11 @@ namespace SFMLproject.Menu
             Executer.window.KeyPressed += window_KeyPressed;
             int i = 0;
             Executer.window.Draw(t.getTextBack());
-            textAff = new MenuTextElement(text[i], new Vector2f(1,1));
+            textAff = new MenuTextElement(text[i], new Vector2f(10,10));
             textAff.draw(Executer.window);
             Executer.window.Display();
 
-            while (i<text.Count)
+            while (i<text.Count -1)
             {
                 
                 Executer.window.DispatchEvents();
@@ -49,9 +49,9 @@ namespace SFMLproject.Menu
                 if (keyPressed)
                 {
                     i++;
-                    textAff = new MenuTextElement(text[i], new Vector2f(1, 1));
-                    textAff.draw(Executer.window);
                     Executer.window.Draw(t.getTextBack());
+                    textAff = new MenuTextElement(text[i], new Vector2f(10, 10));
+                    textAff.draw(Executer.window);
                     //Afficher text
                     Executer.window.Display();
                     keyPressed = false;
