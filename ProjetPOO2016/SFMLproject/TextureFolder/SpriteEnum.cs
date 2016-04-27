@@ -125,6 +125,10 @@ namespace SFMLproject.TextureFolder
             return new Sprite(chairC);
         }
 
+        public Texture getTextBackTexture()
+        {
+            return textBack;
+        }
         public void Dispose()
         {
             back?.Dispose();

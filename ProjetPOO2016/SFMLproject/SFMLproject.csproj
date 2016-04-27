@@ -83,8 +83,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Command\AttackCommand.cs" />
+    <Compile Include="Command\AttackMenuCommand.cs" />
+    <Compile Include="Command\Command.cs" />
+    <Compile Include="Command\Inoker.cs" />
+    <Compile Include="Encounter ENV\MenuEncounter.cs" />
     <Compile Include="Menu\Dialogue.cs" />
     <Compile Include="Menu\Menu.cs" />
+    <Compile Include="Menu\MenuButton.cs" />
+    <Compile Include="Menu\MenuElement.cs" />
     <Compile Include="Object\AttackList.cs" />
     <Compile Include="Encounter ENV\Encounter.cs" />
     <Compile Include="Encounter ENV\EncounterCharacter.cs" />

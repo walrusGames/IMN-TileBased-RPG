@@ -7,10 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SFMLproject.StaticFields;
+using SFMLproject.Menu;
 
 namespace SFMLproject.Encounter_ENV
 {
-    class MenuTextElement
+    class MenuTextElement : MenuElement
     {
         private Text text;
         private TextProperties tProp = new TextProperties();
@@ -45,7 +46,7 @@ namespace SFMLproject.Encounter_ENV
             throw new NotImplementedException();
         }
 
-        public void draw(RenderWindow window)
+        public override void draw(RenderWindow window)
         {
             window.Draw(text);
         }
