@@ -22,7 +22,7 @@ namespace SFMLproject
     class Executer
     {
         static ContextSettings context = new ContextSettings();
-        static RenderWindow window;
+        public static RenderWindow window = new RenderWindow(new VideoMode(1280, 720), "Project IFT 232", Styles.Default, context);
 
         //Audio State
         static bool Playing = true;
@@ -38,9 +38,10 @@ namespace SFMLproject
 
         static bool keypressed = false;
 
+        public static bool inWorld = true;
+
         static void initWindow()
         {
-            window = new RenderWindow(new VideoMode(1280, 720), "Project IFT 232", Styles.Default, context);
             window.Closed += window_Closed;
             window.GainedFocus += window_GainedFocus;
             window.LostFocus += window_LostFocus;
@@ -77,7 +78,7 @@ namespace SFMLproject
             }
         }
 
-       /*Map swap*/
+        /*Map swap*/
 
         static void swapMap()
         {
@@ -98,7 +99,7 @@ namespace SFMLproject
         }
 
         //Call when a key is pressed
-        static void window_KeyPressed(object sender, KeyEventArgs e)
+        public static void window_KeyPressed(object sender, KeyEventArgs e)
         {
             if (map.moveCharac(e.Code) || map.actionButton(e.Code))
             {

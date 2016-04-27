@@ -8,6 +8,7 @@ using SFML.Audio;
 using SFML.Graphics;
 using SFML.System;
 using SFML.Window;
+using SFMLproject.Menu;
 
 using SFMLproject.Object;
 using SFMLproject.TextureFolder;
@@ -19,6 +20,7 @@ namespace SFMLproject.Tiles
     class TileCharacter : Tile
     {
         private Character character;
+        //Dialogue dia;
 
         private Tile currentTile;
 
@@ -26,9 +28,15 @@ namespace SFMLproject.Tiles
         {
             character = c;
             currentTile = cur;
-            Sprite.Position = cur.getSpritePos();
+            sprite.Position = cur.getSpritePos();
+            //dia = new Dialogue(new List<String> { "Non", "Oui", "Fuck UML" });
         }
  
+        public override void moveSprite(Vector2f newPos)
+        {
+            currentTile.moveSprite(newPos);
+            character.sprite.Position = newPos;
+        }
 
         public Vector2i getPos()
         {
@@ -57,7 +65,7 @@ namespace SFMLproject.Tiles
             {
                 Executer.map.setTile(getPos(), currentTile);
                 Executer.map.setTile(getPos() + move, tileFactory.generateTile(new Character(character, move), Executer.map.getTile(getPos() + move)));
-
+                
                 Executer.map.Queue(Executer.map.getTile(getPos() + move));
                 Executer.map.moveMapView(new Vector2f(move.X, move.Y) * Constants.tileSize);
             }
@@ -72,9 +80,14 @@ namespace SFMLproject.Tiles
             }
         }
 
+
         public override void updateOnAction()
         {
-            Console.WriteLine("Personnage");
+            //Console.WriteLine(character.getDialogue().ElementAt(2));
+            Executer.inWorld = false;
+            character.dia.afficher(currentTile.getSpritePos());
+            //dia.afficher();
+            Executer.inWorld = true;
         }
 
         public override void Dispose()
