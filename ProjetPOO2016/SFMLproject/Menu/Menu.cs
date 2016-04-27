@@ -8,10 +8,10 @@ using SFMLproject.Encounter_ENV;
 using SFMLproject.Object;
 
 namespace SFMLproject.Menu
-{
+{		
     class Menu
-    {
-        private View menuView;
+    {		
+        private View menuView;		
         private Sprite menuSprite;
         private Sprite sprite;
 
@@ -32,5 +32,5 @@ namespace SFMLproject.Menu
         {
             windoww.Draw(sprite);
         }
-    }
+    }		
 }

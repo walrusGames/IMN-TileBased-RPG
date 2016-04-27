@@ -22,7 +22,10 @@ namespace SFMLproject.Tiles
         { /*Ne ait rien*/}
 
         public override bool updateOnOccupy() { return true; }
-
+        public override bool updateOnInteract() { return true; }
         public override void updateOnLeave(Vector2i move) { }
+        public override void updateOnReact(Vector2i move) { }
+        public override void updateOnAction() { Console.WriteLine("Trigger"); }
+
     }
 }

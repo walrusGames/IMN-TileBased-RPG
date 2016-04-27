@@ -20,14 +20,18 @@ namespace SFMLproject.Tiles
         {
             sprite = spr;
             sprite.TextureRect = new IntRect(0, 0, Constants.tileSize, Constants.tileSize);
-            sprite.Scale += new Vector2f(1f, 1f);
+            sprite.Scale = new Vector2f(1f, 1f);
         }
 
         public override void tileEvent()
         { /*Ne ait rien*/}
 
+        public override bool updateOnInteract() { return true; }
         public override bool updateOnOccupy() { return false; }
 
         public override void updateOnLeave(Vector2i move) { }
+        public override void updateOnReact(Vector2i ind)
+        { /*Ne ait rien*/}
+        public override void updateOnAction() { Console.WriteLine("Action Button Pressed - Obstacle tile"); }
     }
 }
