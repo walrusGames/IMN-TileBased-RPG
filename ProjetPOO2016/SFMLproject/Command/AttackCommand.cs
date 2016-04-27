@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SFMLproject.Encounter_ENV;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,11 @@ using System.Threading.Tasks;
 
 namespace SFMLproject.Command
 {
-    interface AttackCommand
+    class AttackCommand : AbstractCommand
     {
+        public void execute()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

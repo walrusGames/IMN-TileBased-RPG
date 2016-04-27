@@ -85,8 +85,8 @@
   <ItemGroup>
     <Compile Include="Command\AttackCommand.cs" />
     <Compile Include="Command\AttackMenuCommand.cs" />
-    <Compile Include="Command\Command.cs" />
-    <Compile Include="Command\Inoker.cs" />
+    <Compile Include="Command\AbstractCommand.cs" />
+    <Compile Include="Command\Invoker.cs" />
     <Compile Include="Encounter ENV\MenuEncounter.cs" />
     <Compile Include="Menu\Dialogue.cs" />
     <Compile Include="Menu\Menu.cs" />

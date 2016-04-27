@@ -14,6 +14,6 @@ namespace SFMLproject.Encounter_ENV
 {
     interface Invoker
     {
-        void storeCommand(Command c);
+        void storeCommand(AbstractCommand c);
     }
 }

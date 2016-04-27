@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SFMLproject.Encounter_ENV
 {
-    class AttackMenuCommand : Command
+    class AttackMenuCommand : AbstractCommand
     {
         private Encounter e;
         private MenuEncounter m;

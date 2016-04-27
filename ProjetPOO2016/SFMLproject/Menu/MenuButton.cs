@@ -9,11 +9,12 @@ using SFML.Graphics;
 using SFMLproject.TextureFolder;
 using SFMLproject.Encounter_ENV;
 
+
 namespace SFMLproject.Menu
 {
     class MenuButton : MenuElement, Invoker
     {
-        private Command cmd;
+        AbstractCommand cmd; 
         private RectangleShape rectShape;
         private Menu link;
         private MenuTextElement menutxt;
@@ -69,11 +70,9 @@ namespace SFMLproject.Menu
             }
         }
 
-        public void storeCommand(Command c)
+        public void storeCommand(AbstractCommand c)
         {
             cmd = c;
         }
-
-
     }
 }
