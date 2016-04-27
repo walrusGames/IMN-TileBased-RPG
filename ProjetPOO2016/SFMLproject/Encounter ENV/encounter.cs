@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SFMLproject.Menu;
+using SFMLproject.Command;
 
 namespace SFMLproject.Encounter_ENV
 {
@@ -22,7 +23,8 @@ namespace SFMLproject.Encounter_ENV
         private MenuEncounter baseMenu;
         private MenuEncounter attackMenu;
         private MenuEncounter itemMenu;
-
+        private uint nbAttackExam; 
+        private float examTime; 
         private MenuEncounter currentMenu;
 
         public Encounter(Character ch, Character op)
@@ -30,10 +32,9 @@ namespace SFMLproject.Encounter_ENV
             //Menu back
             encounterBkgr = new Sprite(spEnum.getEncounterBkgr());
 
-            attackMenu = new MenuEncounter(spEnum.getMenuBkgr());
             itemMenu = new MenuEncounter(spEnum.getMenuBkgr());
             baseMenu = new MenuEncounter(spEnum.getMenuBkgr());
-
+            initAttackMenu(ch); 
             MenuButton attackButton = new MenuButton(new Vector2f(10, 4), new Vector2f(0, 0), attackMenu, "ATTACK");
             MenuButton itemButton = new MenuButton(new Vector2f(10, 4), new Vector2f(0, 1), itemMenu, "ATTACK");
             MenuButton skipButton = new MenuButton(new Vector2f(10, 4), new Vector2f(1, 0), "SKIP");
@@ -44,8 +45,20 @@ namespace SFMLproject.Encounter_ENV
             baseMenu.addElement(new MenuTextElement("SUICIDE", new Vector2f(1, 1)));
             player = new EncounterCharacter(ch, new FloatRect(0, 0, 32, 32));
             opponent = new EncounterCharacter(op, new FloatRect(0, 0, 32, 32));
-
+            examTime = 200;
+            nbAttackExam = (uint)ch.getKnowledge();
             currentMenu = baseMenu;
+        }
+
+        private void initAttackMenu(Character ch)
+        {
+            attackMenu = new MenuEncounter(spEnum.getMenuBkgr());
+           foreach(Attack a in ch.getCurrentAttack()){
+               MenuButton attack = new MenuButton(new Vector2f(10, 4), new Vector2f(0, 0), a.getName());
+                attack.storeCommand(new AttackCommand(this, a.getDamage(), ch));
+                attackMenu.addElement(attack); 
+            }
+
         }
 
         public void draw(RenderWindow window)
@@ -60,5 +73,30 @@ namespace SFMLproject.Encounter_ENV
         {
             return currentMenu = attackMenu;
         }
+
+        public float getExamTime()
+        {
+            return examTime;
+        }
+
+        public void setExamTime(float newExamTime)
+        {
+            examTime = newExamTime; 
+        }
+        public void setNbAttackLeft()
+        {
+            nbAttackExam--; 
+        }
+
+        public void StartEncounterLoop(Character ch)
+        {
+            
+            while (nbAttackExam != 0)
+            {
+                draw(Executer.window); 
+            }
+        }
+
+
     }
 }

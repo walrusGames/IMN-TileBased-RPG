@@ -39,6 +39,13 @@ namespace SFMLproject.StaticFields
         chairC
     };
 
+    public enum attackType
+    {
+        info,
+        math,
+        marieFlavie
+    };
+
     class TextProperties
     {
         public Font font;

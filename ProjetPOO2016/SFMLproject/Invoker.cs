@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SFMLproject.Object
+namespace SFMLproject.Encounter_ENV
 {
-    class AttackList
+    interface Invoker
     {
+        void storeCommand(Command c);
     }
 }

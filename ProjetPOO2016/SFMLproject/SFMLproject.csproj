@@ -92,7 +92,7 @@
     <Compile Include="Menu\Menu.cs" />
     <Compile Include="Menu\MenuButton.cs" />
     <Compile Include="Menu\MenuElement.cs" />
-    <Compile Include="Object\AttackList.cs" />
+    <Compile Include="Object\Attack.cs" />
     <Compile Include="Encounter ENV\Encounter.cs" />
     <Compile Include="Encounter ENV\EncounterCharacter.cs" />
     <Compile Include="Menu\MenuTextElement.cs" />

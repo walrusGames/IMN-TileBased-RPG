@@ -27,13 +27,30 @@ namespace SFMLproject.Object
         uint _statKnowledge, _statSpeed, _statEnergy, _statStress;
         string _nomPerso;
         List<String> _dialogue;
+        Dictionary<string, Attack> attackList;
+        List<Attack> currentAvailableAttacks; 
         public Dialogue Dia;
 
-        internal int GetStats()
+        internal float getStress()
         {
-            throw new NotImplementedException();
+            return _statStress; 
         }
 
+        internal float getSpeed()
+        {
+            return _statSpeed; 
+        }
+
+        internal float getEnergy()
+        {
+            return _statEnergy; 
+        }
+
+        internal float getKnowledge()
+        {
+            return _statKnowledge; 
+        }
+ 
         internal Sprite GetEncounterSprite()
         {
             throw new NotImplementedException();
@@ -45,7 +62,7 @@ namespace SFMLproject.Object
 
         public Sprite Sprite;
         private Vector2i _mapPos;
-        private AttackList _attList;
+        private Attack _attList;
 
         public Vector2i MapPos
         {
@@ -79,6 +96,9 @@ namespace SFMLproject.Object
             _statSpeed = uint.Parse(streamReader.ReadLine());
             _statStress = uint.Parse(streamReader.ReadLine());
 
+            //attack list 
+            initAttack();
+
             _perso = new Texture(filePath);
             Sprite = new Sprite(_perso);
             Sprite.TextureRect = new IntRect(32, 0, 32, 32);
@@ -110,6 +130,9 @@ namespace SFMLproject.Object
             _nomPerso = streamReader.ReadLine();
             filePath = streamReader.ReadLine();
             string state = streamReader.ReadLine();
+
+            //attack list 
+            initAttack();
 
             //Stats
             _statKnowledge = uint.Parse(streamReader.ReadLine());
@@ -149,6 +172,8 @@ namespace SFMLproject.Object
             filePath = streamReader.ReadLine();
             //string state = streamReader.ReadLine();
 
+            //attack list 
+            initAttack();
 
             //Stats
             _statKnowledge = uint.Parse(streamReader.ReadLine());
@@ -174,6 +199,7 @@ namespace SFMLproject.Object
             fileStream.Close();
             streamReader.Close();
         }
+
         public void SaveCharacter()
         {
             String filePath = "File\\Perso\\NouvelEtudiant.txt";
@@ -205,9 +231,16 @@ namespace SFMLproject.Object
             mapPos = pos;
         }*/
 
-        public void SetAttackList(AttackList l) { _attList = l; }
-        public AttackList GetAttackList() { return _attList; }
+            /*attackSection*/
+            private void initAttack()
+        {
+            currentAvailableAttacks = new List<Attack>();
+           attackList = new Dictionary<string, Attack>();
 
+        }
+        public void SetAttackList(Attack l) { _attList = l; }
+        public Dictionary<string, Attack> GetAttackList() { return attackList; }
+        public List<Attack> getCurrentAttack(){ return currentAvailableAttacks; }
         public Character(Character character, Vector2i move)
         {
             Sprite = character.Sprite;

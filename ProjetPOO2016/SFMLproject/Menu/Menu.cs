@@ -20,7 +20,7 @@ namespace SFMLproject.Menu
             this.sprite = sprite;
         }
 
-        internal void addElement(AttackList attackList)
+        internal void addElement(Attack attackList)
         {
         }
 
