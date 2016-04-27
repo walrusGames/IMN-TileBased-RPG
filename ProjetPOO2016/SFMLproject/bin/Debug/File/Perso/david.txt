@@ -1,0 +1,12 @@
+David
+File\\Perso\\david.png
+Down
+12
+45
+6
+99
+Hi, my name is David.
+We are like a bunch of indie developpers.
+We have a thousand ideas for our game...
+But we don't have the time nor 
+the experience to see them completed!

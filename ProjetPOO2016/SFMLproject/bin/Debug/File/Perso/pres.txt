@@ -1,0 +1,11 @@
+Pres
+File\\Perso\\pres.png
+Up
+12
+45
+6
+99
+Hi, my name is Pres!
+I made this project somewhat tolerable.
+I'm going for a smoke outside.
+Wanna come?
