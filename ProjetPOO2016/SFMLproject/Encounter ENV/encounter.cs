@@ -31,7 +31,8 @@ namespace SFMLproject.Encounter_ENV
         {
             //Menu back
             //encounterBkgr = new Sprite(spEnum.getEncounterBkgr());
-            spEnum = new SpriteEnum(); 
+            spEnum = new SpriteEnum();
+            encounterView = new View(new FloatRect(200, 200, 300, 200)); 
             itemMenu = new MenuEncounter(spEnum.getTextBack());
             baseMenu = new MenuEncounter(spEnum.getTextBack());
             initAttackMenu(ch); 
@@ -63,10 +64,14 @@ namespace SFMLproject.Encounter_ENV
 
         public void draw(RenderWindow window)
         {
+
+            window.Clear();
+            window.SetView(encounterView);
             //window.Draw(encounterBkgr);
             //opponent.draw(window);
-            //player.draw(window);
+            player.draw(window);
             currentMenu.draw(window);
+            window.Display(); 
         }
 
         public Menu.Menu attackSubMenu()
