@@ -31,21 +31,25 @@ namespace SFMLproject.TextureFolder
 
         public SpriteEnum()
         {
-            back     = new Texture("File\\Background\\back.png");
-            ob       = new Texture("File\\Background\\OB.png");
-            blank    = new Texture("File\\Background\\test.png");
-            portal   = new Texture("File\\Background\\portal.png");
-            desk     = new Texture("File\\Background\\desk.png");
-            wall     = new Texture("File\\Background\\wall.png");
-            chair    = new Texture("File\\Background\\chair.png");
+            back = new Texture("File\\Background\\back.png");
+            ob = new Texture("File\\Background\\OB.png");
+            blank = new Texture("File\\Background\\test.png");
+            portal = new Texture("File\\Background\\portal.png");
+            desk = new Texture("File\\Background\\desk.png");
+            wall = new Texture("File\\Background\\wall.png");
+            chair = new Texture("File\\Background\\chair.png");
             computer = new Texture("File\\Background\\computer.png");
-            board    = new Texture("File\\Background\\board.png");
-            deskP    = new Texture("File\\Background\\deskP.png");
-            chairD   = new Texture("File\\Background\\chairD.png");
-            chairG   = new Texture("File\\Background\\chairG.png");
-            chairC   = new Texture("File\\Background\\chairC.png");
+            board = new Texture("File\\Background\\board.png");
+            deskP = new Texture("File\\Background\\deskP.png");
+            chairD = new Texture("File\\Background\\chairD.png");
+            chairG = new Texture("File\\Background\\chairG.png");
+            chairC = new Texture("File\\Background\\chairC.png");
             textBack = new Texture("File\\Background\\textBack.png");
 
+        }
+        public Sprite getDesktop()
+        {
+            return new Sprite(desk);
         }
         public Sprite getBackground()
         {
@@ -115,6 +119,7 @@ namespace SFMLproject.TextureFolder
         {
             return new Sprite(chairG);
         }
+
         public Sprite getChairC()
         {
             return new Sprite(chairC);
@@ -136,6 +141,7 @@ namespace SFMLproject.TextureFolder
             chairD?.Dispose();
             chairG?.Dispose();
             chairC?.Dispose();
+            textBack?.Dispose();
         }
     }
 }

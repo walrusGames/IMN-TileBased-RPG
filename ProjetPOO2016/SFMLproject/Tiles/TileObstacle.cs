@@ -18,9 +18,9 @@ namespace SFMLproject.Tiles
     {
         public TileObstacle(Sprite spr)
         {
-            sprite = spr;
-            sprite.TextureRect = new IntRect(0, 0, Constants.tileSize, Constants.tileSize);
-            sprite.Scale = new Vector2f(1f, 1f);
+            Sprite = spr;
+            Sprite.TextureRect = new IntRect(0, 0, Constants.tileSize, Constants.tileSize);
+            Sprite.Scale = new Vector2f(1f, 1f);
         }
 
         public override void tileEvent()
