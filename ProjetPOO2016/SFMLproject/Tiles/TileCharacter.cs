@@ -35,14 +35,14 @@ namespace SFMLproject.Tiles
         public override void moveSprite(Vector2f newPos)
         {
             currentTile.moveSprite(newPos);
-            character.Sprite.Position = newPos;
+            character.sprite.Position = newPos;
         }
 
-        public Vector2i getPos
+        public Vector2i getPos()
         {
-            get { return character.GetMapPos(); }
+            return character.getMapPos();
         }
-
+       
 
         public override void tileEvent()
         { /*Provoque dialog du character*/
@@ -52,7 +52,7 @@ namespace SFMLproject.Tiles
         public override void draw(RenderWindow window)
         {
             currentTile.draw(window);
-            window.Draw(character.Sprite);
+            window.Draw(character.sprite);
         }
 
         public override bool updateOnOccupy() { return false; }
@@ -60,23 +60,23 @@ namespace SFMLproject.Tiles
 
         public override void updateOnLeave(Vector2i move)
         {
-            character.changePostureCharacter(move);
-            if (Executer.map.getTile(getPos+ move).updateOnOccupy())
+            character.changeCharPosture(move);
+            if (Executer.map.getTile(getPos() + move).updateOnOccupy())
             {
-                Executer.map.setTile(getPos, currentTile);
-                Executer.map.setTile(getPos+ move, tileFactory.generateTile(new Character(character, move), Executer.map.getTile(getPos+ move)));
+                Executer.map.setTile(getPos(), currentTile);
+                Executer.map.setTile(getPos() + move, tileFactory.generateTile(new Character(character, move), Executer.map.getTile(getPos() + move)));
                 
-                Executer.map.Queue(Executer.map.getTile(getPos+ move));
+                Executer.map.Queue(Executer.map.getTile(getPos() + move));
                 Executer.map.moveMapView(new Vector2f(move.X, move.Y)*Constants.tileSize);
             }
-            else Executer.map.Queue(Executer.map.getTile(getPos)); 
+            else Executer.map.Queue(Executer.map.getTile(getPos())); 
         }
 
         public override void updateOnReact(Vector2i ind)
         {
-            if (Executer.map.getTile(getPos+ ind).updateOnInteract())
+            if (Executer.map.getTile(getPos() + ind).updateOnInteract())
             {
-                Executer.map.getTile(getPos+ ind).updateOnAction();
+                Executer.map.getTile(getPos() + ind).updateOnAction();
             }
         }
 
@@ -85,7 +85,7 @@ namespace SFMLproject.Tiles
         {
             //Console.WriteLine(character.getDialogue().ElementAt(2));
             Executer.inWorld = false;
-            character.Dia.afficher(currentTile.getSpritePos());
+            character.dia.afficher(currentTile.getSpritePos());
             //dia.afficher();
             Executer.inWorld = true;
         }

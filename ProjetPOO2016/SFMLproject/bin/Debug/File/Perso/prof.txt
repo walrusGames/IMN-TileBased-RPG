@@ -1,11 +1,11 @@
-Mikael
-File\\Perso\\prof1.png
-Down
+NomPoche
+File\\Perso\\perso 1.png
+Up
 12
 45
 6
 99
-Hi, my name is Mikael.
-Grosso-Modo, i'm your teacher.
-This is going to be a fun year!
+Salut!
+...FUCK UML.
+WOOT WOOT MOTHERFUCKER!
 Bye!
