@@ -173,3 +173,6 @@ C:\Users\bell2912\Desktop\IMN-TileBased-RPG-master\ProjetPOO2016\SFMLproject\obj
 C:\Users\bell2912\Desktop\IMN-TileBased-RPG-master\ProjetPOO2016\SFMLproject\obj\Debug\SFMLproject.TrustInfo.xml
 C:\Users\bell2912\Desktop\IMN-TileBased-RPG-master\ProjetPOO2016\SFMLproject\obj\Debug\SFMLproject.exe.manifest
 C:\Users\bell2912\Desktop\IMN-TileBased-RPG-master\ProjetPOO2016\SFMLproject\obj\Debug\SFMLproject.application
+C:\Users\bell2912\Source\Repos\IMN-TileBased-RPG\ProjetPOO2016\SFMLproject\bin\Debug\SFMLproject.exe.config
+C:\Users\bell2912\Source\Repos\IMN-TileBased-RPG\ProjetPOO2016\SFMLproject\obj\Debug\SFMLproject.exe
+C:\Users\bell2912\Source\Repos\IMN-TileBased-RPG\ProjetPOO2016\SFMLproject\obj\Debug\SFMLproject.pdb
