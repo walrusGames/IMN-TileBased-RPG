@@ -5,7 +5,7 @@ Up
 45
 6
 99
-Hi, my name is Pres!
-I made this project somewhat tolerable.
-I'm going for a smoke outside.
-Wanna come?
+Hi, my name is Pres!;0;1;
+I made this project somewhat tolerable.;1;2;
+I'm going for a smoke outside.;2;3;
+Wanna come?;3;-1;

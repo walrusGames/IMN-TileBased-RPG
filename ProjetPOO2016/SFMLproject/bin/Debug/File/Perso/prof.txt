@@ -5,7 +5,7 @@ Down
 45
 6
 99
-Hi, my name is Mikael.
-Grosso-Modo, i'm your teacher.
-This is going to be a fun year!
-Bye!
+Hi, my name is Mikael.;0;1;
+Grosso-Modo, i'm your teacher.;1;2;
+This is going to be a fun year!;2;3;
+Bye!;3;-1;

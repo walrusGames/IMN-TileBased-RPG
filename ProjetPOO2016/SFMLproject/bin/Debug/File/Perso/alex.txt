@@ -5,9 +5,9 @@ Down
 45
 6
 99
-Hi, my name is Alex!
-Have you seen that red-haired demon?
-She's the most evil being you'll ever see.
-Also,
-I wanted to be a lumberjack.
-Just... don't ask, ok?
+Hi, my name is Alex!;0;1;
+Have you seen that red-haired demon?;1;2;
+She's the most evil being you'll ever see.;2;3;
+Also,;3;4;
+I wanted to be a lumberjack.;4;5;
+Just... don't ask, ok?;5;-1;

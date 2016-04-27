@@ -117,7 +117,7 @@ namespace SFMLproject.Map
                     tiles[c.GetMapPos().X, c.GetMapPos().Y] = tileFactory.generateTile(c,
                         tiles[c.GetMapPos().X, c.GetMapPos().Y]);
                     Attach(tiles[c.GetMapPos().X, c.GetMapPos().Y]);
-                    Map.mapView.Center = c.Sprite.Position;
+                    Map.mapView.Center = c.sprite.Position;
                     //tiles[3, 9] = tileFactory.generateTile((int)TileType.eventTrigger);
 
                     fileStream.Close();

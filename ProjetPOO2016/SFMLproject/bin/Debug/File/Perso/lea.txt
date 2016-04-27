@@ -5,8 +5,8 @@ Left
 45
 6
 99
-Hi, my name is Lea!
-Insert joke about dead babies.
-Or about suicide or something.
-I know. I know.
-I'm annoying/bothersome/Unpleasant.
+Hi, my name is Lea!;0;1;
+Insert joke about dead babies.;1;2;
+Or about suicide or something.;2;3;
+I know. I know.;3;4;
+I'm annoying/bothersome/Unpleasant.;4;-1;

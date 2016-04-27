@@ -35,7 +35,7 @@ namespace SFMLproject.Tiles
         public override void moveSprite(Vector2f newPos)
         {
             currentTile.moveSprite(newPos);
-            character.Sprite.Position = newPos;
+            character.sprite.Position = newPos;
         }
 
         public Vector2i getPos
@@ -52,7 +52,7 @@ namespace SFMLproject.Tiles
         public override void draw(RenderWindow window)
         {
             currentTile.draw(window);
-            window.Draw(character.Sprite);
+            window.Draw(character.sprite);
         }
 
         public override bool updateOnOccupy() { return false; }
@@ -85,7 +85,7 @@ namespace SFMLproject.Tiles
         {
             //Console.WriteLine(character.getDialogue().ElementAt(2));
             Executer.inWorld = false;
-            character.Dia.afficher(currentTile.getSpritePos());
+            character.dia.afficher(currentTile.getSpritePos());
             //dia.afficher();
             Executer.inWorld = true;
         }

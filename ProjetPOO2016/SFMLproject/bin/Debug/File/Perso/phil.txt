@@ -5,6 +5,4 @@ Down
 45
 6
 99
-Hi, my name is Phil.
-Yeah. I don't have anything witty to say.
-So, bye.
+...;0;-1;

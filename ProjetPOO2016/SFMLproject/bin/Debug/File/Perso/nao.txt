@@ -5,8 +5,8 @@ Left
 45
 6
 99
-Hi, my name is Nao!
-You should stay away from me.
-I'm sick and I already infected
-my boyfriend... again.
-Hope your ready for the exam!
+Hi, my name is Nao!;0;1;
+You should stay away from me.;1;2;
+I'm sick and I already infected;2;3;
+my boyfriend... again.;3;4;
+Hope your ready for the exam!;4;-1;

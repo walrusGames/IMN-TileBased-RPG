@@ -11,7 +11,7 @@ namespace SFMLproject.Events
 {
     class ActionEventSave : ActionEvent
     {
-        private List<string> tex;
+        //private List<string> tex;
         Dialogue dia;
 
         public ActionEventSave(Character c) : base(c) {
@@ -20,9 +20,13 @@ namespace SFMLproject.Events
         }
         public override void execute()
         {
-            tex = new List<string>();
-            tex.Add("Saved the game!");
-            tex.Add("null");
+            List<Character.characDialogueStruc> tex = new List<Character.characDialogueStruc>();
+            Character.characDialogueStruc line = new Character.characDialogueStruc();
+            line.dialogue = "Game has been saved.";
+            line.id = 0;
+            line.nextIdList = new List<int>() { -1 };
+            tex.Add(line);
+            
             dia = new Dialogue(tex);
             Vector2f position = new Vector2f(50, 350);
             character.SaveCharacter();

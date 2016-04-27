@@ -5,14 +5,11 @@ Down
 45
 6
 99
-Hi, my name is David.
-We are like a bunch of indie developpers.
-We have a thousand ideas for our game...
-But we don't have the time nor 
-the experience to see them completed!
-...
-.....
-.......
-.........
-...........
-Terreur.
+Hi, my name is David.;0;1;
+We are like a bunch of indie developpers.;1;2;
+We have a thousand ideas for our game...;2;3;
+But we don't have the time nor ;3;4;
+the experience to see them completed!;4;5;
+...;5;6;
+.....;6;7;
+Terreur.;7;-1;

@@ -18,21 +18,24 @@ namespace SFMLproject.Menu
 {
     class Dialogue
     {
-        List<String> text;
+
+        List<Character.characDialogueStruc> text;
         SpriteEnum t = new SpriteEnum();
-        View dialogView;
+        //View dialogView;
         MenuTextElement textAff;
+        //String statText;
         static bool keyPressed = false;
 
-        public Dialogue(List<String> tex)
+        public Dialogue(List<Character.characDialogueStruc> tex)
         {
             text = tex;
-            dialogView = new View(new FloatRect(0, 0, Constants.tileSize* Constants.camRow, Constants.tileSize* Constants.camCol));
         }
 
         public void afficher(Vector2f position)
         {
             Executer.window.Display();
+           // c.setKnowledge(2);
+           // c.setEnergy(-2);
 
             Executer.window.KeyPressed -= Executer.window_KeyPressed;
             Executer.window.KeyPressed += window_KeyPressed;
@@ -41,50 +44,73 @@ namespace SFMLproject.Menu
             // The elements' position of the dialogue box
             Vector2f boxPosition = new Vector2f(position.X - 150, position.Y - 160);
             Vector2f textPosition = new Vector2f(position.X - 140, position.Y - 150);
+            Vector2f textPositionAdjust = new Vector2f(position.X - 140, position.Y - 174);
 
             // Place the dialogue box on top of the NPC
             Sprite boxSprite = t.getTextBack();
             boxSprite.Position = boxPosition;
             Executer.window.Draw(boxSprite);
+            int temps = 10;
+            if (temps > 0)
+            {
+                // Place the text inside the dialogue box
+               // statText = "Knowledge: " + c.getKnowledge().ToString() + " Energy: " + c.getstatEnergy().ToString() + "\n"
+                //           + "Stress: " + c.getstatStress().ToString() + " Speed: " + c.getstatSpeed().ToString() + "\n";
+               // statText += "Temps restant: " + temps.ToString() + "\n";
+                textAff = new MenuTextElement(text[i].dialogue, textPosition);
+                textAff.draw(Executer.window);
+            }
+            else {
+                textAff = new MenuTextElement("GAME OVER", textPosition);
+                textAff.draw(Executer.window);
+                Executer.window.Display();
 
-            // Place the text inside the dialogue box
-            textAff = new MenuTextElement(text[i], textPosition);
-            textAff.draw(Executer.window);
+                while (true)
+                {
+                    Executer.window.DispatchEvents();
+                    if (keyPressed)
+                    {
+                        Executer.window.Close();
+                        System.Environment.Exit(0);
+                    }
+                }
+            }
 
             //Show the dialogue box
-            
             Executer.window.Display();
 
-            while (i<text.Count -1)
+            while (i != -1)
             {
-                
+
                 Executer.window.DispatchEvents();
 
                 if (keyPressed)
                 {
-                    i++;
-                    Executer.window.Display();
-                    // Change the box to the next line of dialogue
-                    Executer.window.Draw(boxSprite);
-                    textAff = new MenuTextElement(text[i], textPosition);
-                    textAff.draw(Executer.window);
+                    if (text[i].nextIdList[0] == -1) { i = -1; keyPressed = false; }
+                    else {
+                        i = text[i].nextIdList[0]; //TODO changer selon choix
 
-                    //Show the dialogue box
-                    Executer.window.Display();
+                        // Change the box to the next line of dialogue
+                        Executer.window.Display();
+                        Executer.window.Draw(boxSprite);
+                        textAff = new MenuTextElement( text[i].dialogue, textPositionAdjust);
+                        textAff.draw(Executer.window);
 
-                    keyPressed = false;
+                        //Show the dialogue box
+                        Executer.window.Display();
+
+                        keyPressed = false;
+                    }
                 }
 
             }
-           Executer.window.KeyPressed -= window_KeyPressed;
-           Executer.window.KeyPressed += Executer.window_KeyPressed;
+            Executer.window.KeyPressed -= window_KeyPressed;
+            Executer.window.KeyPressed += Executer.window_KeyPressed;
         }
 
         static void window_KeyPressed(object sender, KeyEventArgs e)
         {
-            if(e.Code == Keyboard.Key.E) keyPressed = true;
+            if (e.Code == Keyboard.Key.E) keyPressed = true;
         }
-
-
     }
 }

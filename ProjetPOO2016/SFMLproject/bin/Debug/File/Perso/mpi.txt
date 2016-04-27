@@ -5,9 +5,9 @@ Right
 45
 6
 99
-Hi, my name is Mpi!
-You should buy Don't Starve Together!
-Dooooooo eeettt!
-Also, don't talk to that girl
-on the other side of the hallway.
-She's evil.
+Hi, my name is Mpi!;0;1;
+You should buy Don't Starve Together!;1;2;
+Dooooooo eeettt!;2;3;
+Also, don't talk to that girl.;3;4;
+on the other side of the hallway.;4;5;
+She's evil.;5;-1;

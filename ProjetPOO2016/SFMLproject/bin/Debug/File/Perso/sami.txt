@@ -5,7 +5,7 @@ Left
 45
 6
 99
-Hi, my name is Sami.
-I'm a kitsune.
-Wanna play some Magic Card game?
-No? Ok, then.
+Hi, my name is Sami.;0;1;
+I'm a kitsune.;1;2;
+Wanna play some Magic Card game?;2;3;
+No? Ok, then.;3;-1;
