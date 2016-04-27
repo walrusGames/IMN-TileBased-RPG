@@ -20,14 +20,13 @@ namespace SFMLproject.Tiles
         protected static TileFactory tileFactory = TileFactory.getInstance();
         protected static SpriteEnum spr = new SpriteEnum();
 
-        protected Sprite Sprite { get; set; } = new Sprite();
+        protected Sprite Sprite = new Sprite();
 
         public Tile()
         {
         }
         public Tile(Sprite spr)
         {
-            tileFactory = TileFactory.getInstance();
             Sprite = spr;
             Sprite.TextureRect = new IntRect(0, 0, Constants.tileSize, Constants.tileSize);
             Sprite.Scale = new Vector2f(1f, 1f);

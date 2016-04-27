@@ -100,8 +100,7 @@ namespace SFMLproject.Map
                     Object.Character c = new Object.Character("NouvelEtudiant", new Vector2i(spawnPointX, spawnPointY));
                     //Object.Character d = new Object.Character("File\\Perso\\perso 1.png", new Vector2i(4, 3));
                     //tiles[d.getMapPos().X, d.getMapPos().Y] = tileFactory.generateTile(d, tiles[d.getMapPos().X, d.getMapPos().Y]);
-                    tiles[c.getMapPos().X, c.getMapPos().Y] = tileFactory.generateTile(c,
-                        tiles[c.getMapPos().X, c.getMapPos().Y]);
+                    tiles[c.getMapPos().X, c.getMapPos().Y] = tileFactory.generateTile(c, tiles[c.getMapPos().X, c.getMapPos().Y]);
                     Attach(tiles[c.getMapPos().X, c.getMapPos().Y]);
                     Map.mapView.Center = c.sprite.Position;
                     //tiles[3, 9] = tileFactory.generateTile((int)TileType.eventTrigger);
@@ -142,22 +141,27 @@ namespace SFMLproject.Map
             {
                 case Keyboard.Key.D:
                     notify(new Vector2i(1, 0));
+                    characState = new Vector2i(1, 0);
                     return true;
-                   
+
 
                 case Keyboard.Key.A:
                     notify(new Vector2i(-1, 0));
+                    characState = new Vector2i(-1, 0);
                     return true;
-                    
+
 
                 case Keyboard.Key.W:
                     notify(new Vector2i(0, -1));
+                    characState = new Vector2i(0, -1);
                     return true;
-                    
+
 
                 case Keyboard.Key.S:
                     notify(new Vector2i(0, 1));
+                    characState = new Vector2i(0, 1);
                     return true;
+
             }
             return false;
         }
@@ -173,6 +177,23 @@ namespace SFMLproject.Map
                     tiles[j, i].draw(window);
                 }
             }
+        }
+
+        public bool actionButton(Keyboard.Key e)
+        {
+            switch (e)
+            {
+                case Keyboard.Key.E:
+                    notifyAction(characState);
+                    return true;
+                case Keyboard.Key.Q:
+                    Console.WriteLine("Stop the action/exit menu.");
+                    return true;
+                case Keyboard.Key.Return:
+                    Console.WriteLine("MENU");
+                    return true;
+            }
+            return false;
         }
 
         public override void notifyAction(Vector2i m)
