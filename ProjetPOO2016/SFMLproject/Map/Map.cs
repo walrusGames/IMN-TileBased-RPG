@@ -18,7 +18,7 @@ using System.Runtime.InteropServices;
 
 namespace SFMLproject.Map
 {
-    class Map : Source
+    class Map : Source, IDisposable
     {
 
         private Tile[,] tiles;
@@ -27,6 +27,7 @@ namespace SFMLproject.Map
         private static TileFactory tileFactory = TileFactory.getInstance();
         private static View mapView = new View(new FloatRect(0, 0, Constants.tileSize * Constants.camRow, Constants.tileSize * Constants.camCol));
         private Vector2i characState = new Vector2i(0, 1);
+        private bool disposeFlag = false;
 
         /*
             Load map from textfile
@@ -42,72 +43,71 @@ namespace SFMLproject.Map
             //string stringBuffer = "";
             using(var fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read))
             {
-                using (var streamReader = new StreamReader(fileStream, Encoding.ASCII))
+            using (var streamReader = new StreamReader(fileStream, Encoding.ASCII))
+            {
+
+                line = streamReader.ReadLine();
+                mapX = uint.Parse(line);
+                line = streamReader.ReadLine();
+                mapY = uint.Parse(line);
+
+                line = streamReader.ReadLine();
+                spawnPointX = int.Parse(line);
+
+                line = streamReader.ReadLine();
+                spawnPointY = int.Parse(line);
+
+
+                tiles = new Tile[mapX, mapY];
+
+                // Reading map
+                for (uint j = 0; j < mapY; j++)
                 {
-
-                    line = streamReader.ReadLine();
-                    mapX = uint.Parse(line);
-                    line = streamReader.ReadLine();
-                    mapY = uint.Parse(line);
-
-                    line = streamReader.ReadLine();
-                    spawnPointX = int.Parse(line);
-
-                    line = streamReader.ReadLine();
-                    spawnPointY = int.Parse(line);
-
-
-                    tiles = new Tile[mapX, mapY];
-
-                    // Reading map
-                    for (uint j = 0; j < mapY; j++)
+                    for (uint i = 0; i < mapX; i++)
                     {
-                        for (uint i = 0; i < mapX; i++)
+                        buffer = (char)streamReader.Read();
+                        while (buffer == '\r' || buffer == '\n')
                         {
                             buffer = (char)streamReader.Read();
-                            while (buffer == '\r' || buffer == '\n')
-                            {
-                                buffer = (char)streamReader.Read();
-                            }
-                            if (buffer == '2')
-                            {
-                                line = streamReader.ReadLine();
+                         }
+                        if (buffer == '2')
+                        {
+                            line = streamReader.ReadLine();
                             line = streamReader.ReadLine();
                             Object.Character template = new Object.Character(line);
-                            tiles[i,j] = tileFactory.generateTile(template, tileFactory.generateTile((int)TileType.empty));
-                                //create character. Line = pathfile
-                            }
-                            else if (buffer == '4')
-                            {
-                                line = streamReader.ReadLine();
-                                line = streamReader.ReadLine();
-                                tiles[i, j] = tileFactory.generateTile(buffer, line);
+                            tiles[i, j] = tileFactory.generateTile(template, tileFactory.generateTile((int)TileType.empty));
+                            //create character. Line = pathfile
+                        }
+                        else if (buffer == '4')
+                        {
+                            line = streamReader.ReadLine();
+                            line = streamReader.ReadLine();
+                            tiles[i, j] = tileFactory.generateTile(buffer, line);
 
-                            }
+                        }
                         else tiles[i, j] = tileFactory.generateTile(int.Parse(buffer.ToString()));
 
 
-                            tiles[i, j].moveSprite(new Vector2f(i * Constants.tileSize, j * Constants.tileSize));
-                        }
+                        tiles[i, j].moveSprite(new Vector2f(i * Constants.tileSize, j * Constants.tileSize));
                     }
                 }
-                /*
-                    TODO
-                    Init a changer
-                */
+            }
+            /*
+                TODO
+                Init a changer
+            */
 
-                Object.Character c = new Object.Character(new Vector2i(spawnPointX, spawnPointY));
+                Object.Character c = new Object.Character("NouvelEtudiant", new Vector2i(spawnPointX, spawnPointY));
                 //Object.Character d = new Object.Character("File\\Perso\\perso 1.png", new Vector2i(4, 3));
                 //tiles[d.getMapPos().X, d.getMapPos().Y] = tileFactory.generateTile(d, tiles[d.getMapPos().X, d.getMapPos().Y]);
-                tiles[c.getMapPos().X, c.getMapPos().Y] = tileFactory.generateTile(c, tiles[c.getMapPos().X, c.getMapPos().Y]);
-            
-                Attach(tiles[c.getMapPos().X, c.getMapPos().Y]);
+            tiles[c.getMapPos().X, c.getMapPos().Y] = tileFactory.generateTile(c, tiles[c.getMapPos().X, c.getMapPos().Y]);
+            Attach(tiles[c.getMapPos().X, c.getMapPos().Y]);
                 Map.mapView.Center = c.sprite.Position;
                 //tiles[3, 9] = tileFactory.generateTile((int)TileType.eventTrigger);
 
                 fileStream.Close();
-            }
-            
+        }
+
         }
 
         public View getMapview()
@@ -227,6 +227,6 @@ namespace SFMLproject.Map
             }
             base.Dispose();
         }
-
+    
     }
 }

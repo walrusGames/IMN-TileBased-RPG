@@ -163,6 +163,11 @@ namespace SFMLproject.Object
             moveMapPos(move);
         }
 
+        public Character(Vector2i spawnPos)
+        {
+            throw new NotImplementedException();
+        }
+
         private void changePostureCharacter(String position)
         {
             if (position != stateCharact)
