@@ -28,7 +28,7 @@ namespace SFMLproject.Tiles
         {
             character = c;
             currentTile = cur;
-            sprite.Position = cur.getSpritePos();
+            Sprite.Position = cur.getSpritePos();
             //dia = new Dialogue(new List<String> { "Non", "Oui", "Fuck UML" });
         }
  
