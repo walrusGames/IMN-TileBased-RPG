@@ -41,6 +41,8 @@ namespace SFMLproject.Map
             int spawnPointY = 0;
             char buffer;
             string line;
+            String SpritePositionNPC;
+            String SpritePositionMain;
             //string stringBuffer = "";
             using (var fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read))
             {
@@ -57,6 +59,8 @@ namespace SFMLproject.Map
 
                     line = streamReader.ReadLine();
                     spawnPointY = int.Parse(line);
+
+                    SpritePositionMain = streamReader.ReadLine();
 
 
                     tiles = new Tile[mapX, mapY];
@@ -98,7 +102,7 @@ namespace SFMLproject.Map
                 Init a changer
             */
 
-                    Object.Character c = new Object.Character("NouvelEtudiant", new Vector2i(spawnPointX, spawnPointY));
+                    Object.Character c = new Object.Character("NouvelEtudiant", new Vector2i(spawnPointX, spawnPointY),SpritePositionMain);
                     //Object.Character d = new Object.Character("File\\Perso\\perso 1.png", new Vector2i(4, 3));
                     //tiles[d.getMapPos().X, d.getMapPos().Y] = tileFactory.generateTile(d, tiles[d.getMapPos().X, d.getMapPos().Y]);
                     tiles[c.getMapPos().X, c.getMapPos().Y] = tileFactory.generateTile(c,

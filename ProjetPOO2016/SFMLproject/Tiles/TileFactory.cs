@@ -43,13 +43,13 @@ namespace SFMLproject.Tiles
                 case (int)TileType.desktop:
                     return new TileObstacle(spriteManager.getDesktop());
                 case (int)TileType.wall:
-                    return new TileEmpty(spriteManager.getWall());
+                    return new TileObstacle(spriteManager.getWall());
                 case (int)TileType.chair:
                     return new TileEmpty(spriteManager.getChair());
                 case (int)TileType.computer:
                     return new TileObstacle(spriteManager.getComputer());
                 case (int)TileType.board:
-                    return new TileEmpty(spriteManager.getBoard());
+                    return new TileObstacle(spriteManager.getBoard());
                 case (int)TileType.deskP:
                     return new TileObstacle(spriteManager.getDeskP());
                 case (int)TileType.chairD:
