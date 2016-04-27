@@ -33,7 +33,7 @@ namespace SFMLproject
 
         static Object.Character charc = new Object.Character(new Vector2i(3,3));
 
-        static Map.Map map = new Map.Map(charc, "File\\Map\\test.txt");
+        static Map.Map map = new Map.Map(charc, "File\\Map\\drago.txt");
 
         static View wholeView;
 
