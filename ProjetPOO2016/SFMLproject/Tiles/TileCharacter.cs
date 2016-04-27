@@ -89,7 +89,7 @@ namespace SFMLproject.Tiles
         {
             //Console.WriteLine(character.getDialogue().ElementAt(2));
             Executer.inWorld = false;
-            character.dia.afficher();
+            character.dia.afficher(currentTile.getSpritePos());
             //dia.afficher();
             Executer.inWorld = true;
         }
