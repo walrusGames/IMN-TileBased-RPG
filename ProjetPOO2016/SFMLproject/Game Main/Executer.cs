@@ -15,6 +15,7 @@ using SFML.Window;
 using SFMLproject.Map;
 
 using SFMLproject.StaticFields;
+using SFMLproject.Menu;
 
 namespace SFMLproject
 {
@@ -51,8 +52,40 @@ namespace SFMLproject
             window.SetActive(true);
             window.SetFramerateLimit(60);
             window.SetView(map.getMapview());
-            map.draw(window);
+            map.draw(window); 
             window.Display();
+            generateIntroMessage();
+        }
+
+        static void generateIntroMessage()
+        {
+            List<Character.characDialogueStruc> tex = new List<Character.characDialogueStruc>();
+            Character.characDialogueStruc line = new Character.characDialogueStruc();
+
+            line.dialogue = "Press 'e' to interact.";
+            line.id = 0;
+            line.nextIdList = new List<int>() { 1 };
+            tex.Add(line);
+
+            line.dialogue = "Welcome to your school!";
+            line.id = 1;
+            line.nextIdList = new List<int>() { 2 };
+            tex.Add(line);
+
+            line.dialogue = "Get ready for a whole lot of fun!";
+            line.id = 2;
+            line.nextIdList = new List<int>() { 3 };
+            tex.Add(line);
+
+            line.dialogue = "Press WASD to move around.";
+            line.id = 3;
+            line.nextIdList = new List<int>() { -1 };
+            tex.Add(line);
+
+            Dialogue dia = new Dialogue(tex);
+            Vector2f position = new Vector2f(550, 350);
+            dia.afficherIntro(position);
+
         }
 
         static void Main(string[] args)
