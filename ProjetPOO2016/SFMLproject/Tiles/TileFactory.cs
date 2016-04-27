@@ -56,6 +56,8 @@ namespace SFMLproject.Tiles
                     return new TileEmpty(spriteManager.getChairD());
                 case (int)TileType.chairG:
                     return new TileEmpty(spriteManager.getChairG());
+                case (int)TileType.chairC:
+                    return new TileEmpty(spriteManager.getChairC());
                 default:
                     return new TileEmpty(spriteManager.getBackground());
             }
@@ -71,7 +73,7 @@ namespace SFMLproject.Tiles
                 default:
                     return new TileEmpty(spriteManager.getBackground());
             }
-            
+
         }
 
         public Tile generateTile(Character charac, Tile cur)

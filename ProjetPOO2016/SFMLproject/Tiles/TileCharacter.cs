@@ -31,7 +31,7 @@ namespace SFMLproject.Tiles
             Sprite.Position = cur.getSpritePos();
             //dia = new Dialogue(new List<String> { "Non", "Oui", "Fuck UML" });
         }
- 
+        
         public override void moveSprite(Vector2f newPos)
         {
             currentTile.moveSprite(newPos);
@@ -67,7 +67,7 @@ namespace SFMLproject.Tiles
                 Executer.map.setTile(getPos() + move, tileFactory.generateTile(new Character(character, move), Executer.map.getTile(getPos() + move)));
                 
                 Executer.map.Queue(Executer.map.getTile(getPos() + move));
-                Executer.map.moveMapView(new Vector2f(move.X, move.Y) * Constants.tileSize);
+                Executer.map.moveMapView(new Vector2f(move.X, move.Y)*Constants.tileSize);
             }
             else Executer.map.Queue(Executer.map.getTile(getPos())); 
         }
