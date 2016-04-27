@@ -16,8 +16,8 @@ namespace SFMLproject.Encounter_ENV
 
         public EncounterCharacter(Character c, FloatRect viewRect)
         {
-            stats = c.getStats();
-            charSprite = c.getEncounterSprite();
+            stats = c.GetStats();
+            charSprite = c.GetEncounterSprite();
             charView = new View(viewRect);
         }
 

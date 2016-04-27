@@ -31,7 +31,7 @@ namespace SFMLproject.Encounter_ENV
             encounterBkgr = new Sprite(spEnum.getEncounterBkgr());
 
             attackMenu = new Menu.Menu(spEnum.getMenuBkgr());
-            attackMenu.addElement(ch.getAttackList());
+            attackMenu.addElement(ch.GetAttackList());
 
             itemMenu = new Menu.Menu(spEnum.getMenuBkgr());
 

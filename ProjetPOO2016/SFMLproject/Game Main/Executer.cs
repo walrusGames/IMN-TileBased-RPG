@@ -34,7 +34,7 @@ namespace SFMLproject
 
         static Controller controller = new Controller();
 
-        public static Map.Map map = new Map.Map("File\\Map\\drago.txt");
+        public static Map.Map map = new Map.Map("File\\Map\\drago.txt", new Vector2i(0, 1));
 
         static bool keypressed = false;
 
@@ -68,7 +68,7 @@ namespace SFMLproject
                     window.Clear();
                     window.SetView(map.getMapview());
                     //if (controller.ControllerPlugged)
-                    //    charc.changeCharPosture(controller.getMovementLeftJoystick() / 20);
+                    //    charc.changePostureCharacter(controller.getMovementLeftJoystick() / 20);
 
                     map.draw(window);
                     window.Display();
@@ -82,8 +82,9 @@ namespace SFMLproject
 
         static void swapMap()
         {
+            Vector2i charPastState = map.getCharState();
             map.Dispose();
-            map = new Map.Map(swapPath);
+            map = new Map.Map(swapPath, charPastState);
             swapFlag = false;
         }
 
