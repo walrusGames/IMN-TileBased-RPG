@@ -1,4 +1,5 @@
 ﻿using SFML.Graphics;
+using SFMLproject.Events;
 using SFMLproject.Object;
 using SFMLproject.StaticFields;
 using SFMLproject.TextureFolder;
@@ -34,10 +35,10 @@ namespace SFMLproject.Tiles
                     return new TileEmpty(spriteManager.getBackground());
                 case (int)TileType.obstacle:
                     return new TileObstacle(spriteManager.getObstacle());
-                case (int)TileType.eventTrigger:
-                    return new TileEventTrigger(spriteManager.getBackground());
                 case (int)TileType.character:
-                    throw new InvalidOperationException("Character tile need a character and current tile on board");
+                    throw new InvalidOperationException("Character tile needs a character and current tile on board");
+                case (int)TileType.eventTrigger:
+                    throw new InvalidOperationException("eventTrigger tile needs a character and an event");
                 case (int)TileType.portal:
                     throw new InvalidOperationException("Portal need path, dude.");
                 case (int)TileType.desktop:
@@ -74,6 +75,31 @@ namespace SFMLproject.Tiles
                     return new TileEmpty(spriteManager.getBackground());
             }
 
+        }
+
+
+        public Tile generateTile(Character charac, char indexEvent)
+        {
+            ActionEvent e = new ActionEventVoid(charac); //TODO changer default
+            switch (indexEvent)
+            {
+                case 's':
+                    e = new ActionEventSave(charac);
+                    break;
+                case 'k':
+                    e = new ActionEventAddKnowledge(charac, 1);
+                    break;
+                case 'e':
+                    e = new ActionEventAddSpeed(charac, 1);
+                    break;
+                case 'n':
+                    e = new ActionEventAddEnergy(charac, 1);
+                    break;
+                case 't':
+                    e = new ActionEventAddStress(charac, 1);
+                    break;
+            }
+            return new TileEventTrigger(spriteManager.getSave(), e);
         }
 
         public Tile generateTile(Character charac, Tile cur)

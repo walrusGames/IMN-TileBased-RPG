@@ -83,6 +83,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Events\ActionEvent.cs" />
+    <Compile Include="Events\ActionEventAddStress.cs" />
+    <Compile Include="Events\ActionEventAddEnergy.cs" />
+    <Compile Include="Events\ActionEventAddSpeed.cs" />
+    <Compile Include="Events\ActionEventAddKnowledge.cs" />
+    <Compile Include="Events\ActionEventSave.cs" />
+    <Compile Include="Events\ActionEventTeleport.cs" />
+    <Compile Include="Events\ActionEventVoid.cs" />
     <Compile Include="Menu\Dialogue.cs" />
     <Compile Include="Menu\Menu.cs" />
     <Compile Include="Object\AttackList.cs" />

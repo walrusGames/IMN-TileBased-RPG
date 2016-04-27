@@ -24,7 +24,7 @@ namespace SFMLproject.Object
         //Character Info
         private string _stateCharact;
         static Texture _perso;
-        uint _statKnowledge, _statSpeed, _statEnergy, _statStress;
+        public uint _statKnowledge, _statSpeed, _statEnergy, _statStress;
         string _nomPerso;
         List<String> _dialogue;
         public Dialogue Dia;
@@ -182,8 +182,8 @@ namespace SFMLproject.Object
             var writer = new StreamWriter(fs, Encoding.ASCII);
             //Entete
             writer.WriteLine("Nouvel Etudiant");
-            writer.WriteLine("File\\Perso\\perso 4.png");
-            writer.WriteLine("Down");
+            writer.WriteLine("File\\Perso\\main.png");
+            //writer.WriteLine("Down");
             //Nouveau stats
             writer.WriteLine(Convert.ToString(_statKnowledge));
             writer.WriteLine(Convert.ToString(_statEnergy));

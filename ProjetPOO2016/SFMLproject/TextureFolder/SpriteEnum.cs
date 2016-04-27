@@ -28,6 +28,7 @@ namespace SFMLproject.TextureFolder
         Texture chairG;
         Texture chairC;
         Texture textBack;
+        Texture save;
 
         public SpriteEnum()
         {
@@ -45,6 +46,7 @@ namespace SFMLproject.TextureFolder
             chairG   = new Texture("File\\Background\\chairG.png");
             chairC   = new Texture("File\\Background\\chairC.png");
             textBack = new Texture("File\\Background\\textBack.png");
+            save     = new Texture("File\\Background\\save.png");
 
         }
         public Sprite getDesktop()
@@ -125,6 +127,11 @@ namespace SFMLproject.TextureFolder
             return new Sprite(chairC);
         }
 
+        public Sprite getSave()
+        {
+            return new Sprite(save);
+        }
+
         public void Dispose()
         {
             back?.Dispose();
@@ -142,6 +149,7 @@ namespace SFMLproject.TextureFolder
             chairG?.Dispose();
             chairC?.Dispose();
             textBack?.Dispose();
+            save?.Dispose();
         }
 }
 }

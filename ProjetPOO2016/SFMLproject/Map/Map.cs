@@ -65,6 +65,7 @@ namespace SFMLproject.Map
 
                     tiles = new Tile[mapX, mapY];
 
+                    Object.Character c = new Object.Character("NouvelEtudiant", new Vector2i(spawnPointX, spawnPointY), SpritePositionMain);
                     // Reading map
                     for (uint j = 0; j < mapY; j++)
                     {
@@ -84,6 +85,13 @@ namespace SFMLproject.Map
                                     tileFactory.generateTile((int) TileType.empty));
                                 //create character. Line = pathfile
                             }
+                            else if(buffer == '3')
+                            {
+                                line = streamReader.ReadLine();
+                                buffer = (char)streamReader.Read();
+                                line = streamReader.ReadLine();
+                                tiles[i, j] = tileFactory.generateTile(c, buffer);
+                            }
                             else if (buffer == '4')
                             {
                                 line = streamReader.ReadLine();
@@ -102,7 +110,7 @@ namespace SFMLproject.Map
                 Init a changer
             */
 
-                    Object.Character c = new Object.Character("NouvelEtudiant", new Vector2i(spawnPointX, spawnPointY),SpritePositionMain);
+                   
                     c.changePostureCharacter(characState);
                     //Object.Character d = new Object.Character("File\\Perso\\perso 1.png", new Vector2i(4, 3));
                     //tiles[d.getMapPos().X, d.getMapPos().Y] = tileFactory.generateTile(d, tiles[d.getMapPos().X, d.getMapPos().Y]);

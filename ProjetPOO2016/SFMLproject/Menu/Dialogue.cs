@@ -32,7 +32,8 @@ namespace SFMLproject.Menu
 
         public void afficher(Vector2f position)
         {
-            
+            Executer.window.Display();
+
             Executer.window.KeyPressed -= Executer.window_KeyPressed;
             Executer.window.KeyPressed += window_KeyPressed;
             int i = 0;
@@ -51,6 +52,7 @@ namespace SFMLproject.Menu
             textAff.draw(Executer.window);
 
             //Show the dialogue box
+            
             Executer.window.Display();
 
             while (i<text.Count -1)
@@ -61,6 +63,7 @@ namespace SFMLproject.Menu
                 if (keyPressed)
                 {
                     i++;
+                    Executer.window.Display();
                     // Change the box to the next line of dialogue
                     Executer.window.Draw(boxSprite);
                     textAff = new MenuTextElement(text[i], textPosition);
