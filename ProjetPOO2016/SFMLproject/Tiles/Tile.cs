@@ -18,18 +18,15 @@ namespace SFMLproject.Tiles
     abstract class Tile: Observer, IDisposable
     {
         protected static TileFactory tileFactory = TileFactory.getInstance();
-        protected static Map.Map mapState;
         protected static SpriteEnum spr = new SpriteEnum();
 
         protected Sprite Sprite { get; set; } = new Sprite();
 
         public Tile()
         {
-            mapState = Map.Map.getState();
         }
         public Tile(Sprite spr)
         {
-            mapState = Map.Map.getState();
             tileFactory = TileFactory.getInstance();
             Sprite = spr;
             Sprite.TextureRect = new IntRect(0, 0, Constants.tileSize, Constants.tileSize);

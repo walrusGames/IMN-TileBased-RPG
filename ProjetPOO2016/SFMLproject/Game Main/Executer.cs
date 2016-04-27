@@ -34,7 +34,7 @@ namespace SFMLproject
 
         static Controller controller = new Controller();
 
-        static Map.Map map = new Map.Map("File\\Map\\drago.txt");
+        public static Map.Map map = new Map.Map("File\\Map\\drago.txt");
 
         static bool keypressed = false;
 
@@ -71,21 +71,12 @@ namespace SFMLproject
                     //    charc.changeCharPosture(controller.getMovementLeftJoystick() / 20);
 
                     map.draw(window);
-                    //window.Draw(charc.sprite);
                     window.Display();
                     keypressed = false;
                 }
 
             }
         }
-
-        /*Mouse
-         Action on the mouse:
-         * Mouse.IsButtonPressed(Mouse.Button.XXXXX) retourne un bool
-         * Mouse.GetPosition() retourne un Vector2i
-         * Mouse.setPosition(Vector2i(X,Y) place la souris
-         * event.type == sf::Event::MouseWheelMoved
-         */
 
        /*Map swap*/
 
@@ -110,7 +101,7 @@ namespace SFMLproject
         //Call when a key is pressed
         public static void window_KeyPressed(object sender, KeyEventArgs e)
         {
-            if (Map.Map.getState().moveCharac(e.Code) || Map.Map.getState().actionButton(e.Code))
+            if (map.moveCharac(e.Code) || map.actionButton(e.Code))
             {
                 keypressed = true;
                 return;
@@ -137,7 +128,10 @@ namespace SFMLproject
         //Call when the window is resized
         static void window_Resized(object sender, SizeEventArgs e)
         {
-
+            window.Clear();
+            window.SetView(map.getMapview());
+            map.draw(window);
+            window.Display();
         }
 
         //Call when the window has LostFocus

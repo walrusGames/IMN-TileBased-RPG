@@ -59,26 +59,23 @@ namespace SFMLproject.Tiles
 
         public override void updateOnLeave(Vector2i move)
         {
-            mapState = Map.Map.getState();
             character.changeCharPosture(move);
-            if (mapState.getTile(getPos() + move).updateOnOccupy())
+            if (Executer.map.getTile(getPos() + move).updateOnOccupy())
             {
-                mapState.setTile(getPos(), currentTile);
-                mapState.setTile(getPos() + move, tileFactory.generateTile(new Character(character, move), mapState.getTile(getPos() + move)));
-                
-                mapState.Queue(mapState.getTile(getPos() + move));
-                mapState.moveMapView(new Vector2f(move.X, move.Y) * Constants.tileSize);
-                mapState.setState(mapState);
+                Executer.map.setTile(getPos(), currentTile);
+                Executer.map.setTile(getPos() + move, tileFactory.generateTile(new Character(character, move), Executer.map.getTile(getPos() + move)));
+
+                Executer.map.Queue(Executer.map.getTile(getPos() + move));
+                Executer.map.moveMapView(new Vector2f(move.X, move.Y) * Constants.tileSize);
             }
-            else mapState.Queue(mapState.getTile(getPos())); 
+            else Executer.map.Queue(Executer.map.getTile(getPos())); 
         }
 
         public override void updateOnReact(Vector2i ind)
         {
-            mapState = Map.Map.getState();
-            if (mapState.getTile(getPos() + ind).updateOnInteract())
+            if (Executer.map.getTile(getPos() + ind).updateOnInteract())
             {
-                mapState.getTile(getPos() + ind).updateOnAction();
+                Executer.map.getTile(getPos() + ind).updateOnAction();
             }
         }
 
