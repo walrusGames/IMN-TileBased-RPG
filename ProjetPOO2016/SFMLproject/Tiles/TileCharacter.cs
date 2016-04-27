@@ -60,23 +60,34 @@ namespace SFMLproject.Tiles
 
         public override void updateOnLeave(Vector2i move)
         {
-            character.changeCharPosture(move);
+            mapState = Map.Map.getState();
+            character.changeCharPosture(move); // TODO fonction mal nommée. Ne bouge pas le perso. Fait juste changer sa position de corps.
             if (Executer.map.getTile(getPos() + move).updateOnOccupy())
             {
                 Executer.map.setTile(getPos(), currentTile);
                 Executer.map.setTile(getPos() + move, tileFactory.generateTile(new Character(character, move), Executer.map.getTile(getPos() + move)));
-                
-                Executer.map.Queue(Executer.map.getTile(getPos() + move));
+
+                Executer.map.Queue(mapState.getTile(getPos() + move));
                 Executer.map.moveMapView(new Vector2f(move.X, move.Y) * Constants.tileSize);
+                Executer.map.setState(mapState);
             }
-            else Executer.map.Queue(Executer.map.getTile(getPos())); 
+
+
+        public override void updateOnAction()
+        {
+            //Console.WriteLine(character.getDialogue().ElementAt(2));
+            Executer.inWorld = false;
+            character.dia.afficher(currentTile.getSpritePos());
+            //dia.afficher();
+            Executer.inWorld = true;
         }
 
         public override void updateOnReact(Vector2i ind)
         {
-            if (Executer.map.getTile(getPos() + ind).updateOnInteract())
+            mapState = Map.Map.getState();
+            if (mapState.getTile(getPos() + ind).updateOnInteract())
             {
-                Executer.map.getTile(getPos() + ind).updateOnAction();
+                mapState.getTile(getPos() + ind).updateOnAction();
             }
         }
 

@@ -47,6 +47,10 @@ namespace SFMLproject.TextureFolder
             textBack = new Texture("File\\Background\\textBack.png");
 
         }
+        public Sprite getDesktop()
+        {
+            return new Sprite(desk);
+        }
         public Sprite getBackground()
         {
             return new Sprite(back);

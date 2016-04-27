@@ -66,7 +66,7 @@ namespace SFMLproject
                 {
                     if(swapFlag) swapMap();
                     window.Clear();
-                    window.SetView(map.getMapview());
+                    window.SetView(Map.Map.getState().getMapview());
                     //if (controller.ControllerPlugged)
                     //    charc.changeCharPosture(controller.getMovementLeftJoystick() / 20);
 

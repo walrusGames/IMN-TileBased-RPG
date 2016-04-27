@@ -212,6 +212,7 @@ namespace SFMLproject.Object
         {
             return mapPos;
         }
+        public List<string> getDialogue() { return dialogue; }
 
         public void Dispose()
         {
