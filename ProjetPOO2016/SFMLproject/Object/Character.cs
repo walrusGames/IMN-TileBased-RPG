@@ -213,10 +213,6 @@ namespace SFMLproject.Object
             return mapPos;
         }
 
-        public void Dispose()
-        {
-            sprite.Dispose();
-        }
         public List<string> getDialogue() { return dialogue; }
 
         public void Dispose()
