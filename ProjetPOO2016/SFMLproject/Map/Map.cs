@@ -33,6 +33,7 @@ namespace SFMLproject.Map
             Load map from textfile
             EntryX, EntryY are character initial position
         */
+
         public Map(string filePath)
         {
 
@@ -41,7 +42,7 @@ namespace SFMLproject.Map
             char buffer;
             string line;
             //string stringBuffer = "";
-            using(var fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read))
+            using (var fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read))
             {
                 using (var streamReader = new StreamReader(fileStream, Encoding.ASCII))
                 {
@@ -93,11 +94,13 @@ namespace SFMLproject.Map
                         }
                     }
                     /*
-                    TODO
-                    Init a changer
-                */
+                TODO
+                Init a changer
+            */
 
                     Object.Character c = new Object.Character("NouvelEtudiant", new Vector2i(spawnPointX, spawnPointY));
+                    //Object.Character d = new Object.Character("File\\Perso\\perso 1.png", new Vector2i(4, 3));
+                    //tiles[d.getMapPos().X, d.getMapPos().Y] = tileFactory.generateTile(d, tiles[d.getMapPos().X, d.getMapPos().Y]);
                     tiles[c.getMapPos().X, c.getMapPos().Y] = tileFactory.generateTile(c,
                         tiles[c.getMapPos().X, c.getMapPos().Y]);
                     Attach(tiles[c.getMapPos().X, c.getMapPos().Y]);
@@ -107,7 +110,6 @@ namespace SFMLproject.Map
                     fileStream.Close();
                 }
             }
-
         }
 
         public View getMapview()
@@ -140,44 +142,27 @@ namespace SFMLproject.Map
             {
                 case Keyboard.Key.D:
                     notify(new Vector2i(1, 0));
-                    //characState = new Vector2i(1, 0);
+                    characState = new Vector2i(1, 0);
                     return true;
                    
 
                 case Keyboard.Key.A:
                     notify(new Vector2i(-1, 0));
-                    //characState = new Vector2i(-1, 0);
+                    characState = new Vector2i(-1, 0);
                     return true;
                     
 
                 case Keyboard.Key.W:
                     notify(new Vector2i(0, -1));
-                    //characState = new Vector2i(0, -1);
+                    characState = new Vector2i(0, -1);
                     return true;
                     
 
                 case Keyboard.Key.S:
                     notify(new Vector2i(0, 1));
-                    //characState = new Vector2i(0, 1);
+                    characState = new Vector2i(0, 1);
                     return true;
                     
-            }
-            return false;
-        }
-
-        public bool actionButton(Keyboard.Key e)
-        {
-            switch(e)
-            {
-                case Keyboard.Key.E:
-                    notifyAction(characState);
-                    return true;
-                case Keyboard.Key.Q:
-                    Console.WriteLine("Stop the action/exit menu.");
-                    return true;
-                case Keyboard.Key.Return:
-                    Console.WriteLine("MENU");
-                    return true;
             }
             return false;
         }
@@ -193,6 +178,23 @@ namespace SFMLproject.Map
                     tiles[j, i].draw(window);
                 }
             }
+        }
+
+        public bool actionButton(Keyboard.Key e)
+        {
+            switch (e)
+            {
+                case Keyboard.Key.E:
+                    notifyAction(characState);
+                    return true;
+                case Keyboard.Key.Q:
+                    Console.WriteLine("Stop the action/exit menu.");
+                    return true;
+                case Keyboard.Key.Return:
+                    Console.WriteLine("MENU");
+                    return true;
+            }
+            return false;
         }
 
         public override void notifyAction(Vector2i m)
@@ -214,7 +216,7 @@ namespace SFMLproject.Map
             KillAll();
             Dequeue();
         }
-
+    
         public override void Dispose()
         {
             for (uint j = 0; j < mapY; j++)

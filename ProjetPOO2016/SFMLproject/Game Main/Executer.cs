@@ -78,7 +78,7 @@ namespace SFMLproject
             }
         }
 
-       /*Map swap*/
+        /*Map swap*/
 
         static void swapMap()
         {
