@@ -1,0 +1,12 @@
+Nao
+File\\Perso\\nao.png
+Left
+12
+45
+6
+99
+Hi, my name is Nao!
+You should stay away from me.
+I'm sick and I already infected
+my boyfriend... again.
+Hope your ready for the exam!

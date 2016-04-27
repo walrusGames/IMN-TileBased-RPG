@@ -1,0 +1,11 @@
+Sami
+File\\Perso\\sami.png
+Left
+12
+45
+6
+99
+Hi, my name is Sami.
+I'm a kitsune.
+Wanna play some Magic Card game?
+No? Ok, then.

@@ -150,12 +150,32 @@
     <Content Include="bin\Debug\File\Map\prof1.txt" />
     <Content Include="bin\Debug\File\Map\prof2.txt" />
     <Content Include="bin\Debug\File\Music\Student Life.ogg" />
+    <Content Include="bin\Debug\File\Perso\alex.png" />
+    <Content Include="bin\Debug\File\Perso\clovis.png" />
+    <Content Include="bin\Debug\File\Perso\lea.txt" />
+    <Content Include="bin\Debug\File\Perso\david.png" />
+    <Content Include="bin\Debug\File\Perso\lea.png" />
+    <Content Include="bin\Debug\File\Perso\main.png" />
+    <Content Include="bin\Debug\File\Perso\alex.txt" />
+    <Content Include="bin\Debug\File\Perso\phil.txt" />
+    <Content Include="bin\Debug\File\Perso\nao.txt" />
+    <Content Include="bin\Debug\File\Perso\mpi.png" />
+    <Content Include="bin\Debug\File\Perso\nao.png" />
     <Content Include="bin\Debug\File\Perso\NouvelEtudiant.txt" />
     <Content Include="bin\Debug\File\Perso\Perso 1.png" />
     <Content Include="bin\Debug\File\Perso\Perso 2.png" />
     <Content Include="bin\Debug\File\Perso\Perso 3.png" />
     <Content Include="bin\Debug\File\Perso\Perso 4.png" />
+    <Content Include="bin\Debug\File\Perso\phil.png" />
+    <Content Include="bin\Debug\File\Perso\pres.png" />
+    <Content Include="bin\Debug\File\Perso\pres.txt" />
+    <Content Include="bin\Debug\File\Perso\sami.txt" />
+    <Content Include="bin\Debug\File\Perso\mpi.txt" />
+    <Content Include="bin\Debug\File\Perso\clovis.txt" />
+    <Content Include="bin\Debug\File\Perso\david.txt" />
     <Content Include="bin\Debug\File\Perso\prof.txt" />
+    <Content Include="bin\Debug\File\Perso\prof1.png" />
+    <Content Include="bin\Debug\File\Perso\sami.png" />
     <Content Include="csfml-audio-2.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

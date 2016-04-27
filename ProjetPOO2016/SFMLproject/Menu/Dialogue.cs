@@ -38,8 +38,8 @@ namespace SFMLproject.Menu
             int i = 0;
 
             // The elements' position of the dialogue box
-            Vector2f boxPosition = new Vector2f(position.X - 150, position.Y - 160);
-            Vector2f textPosition = new Vector2f(position.X - 140, position.Y - 150);
+            Vector2f boxPosition = new Vector2f(position.X - 150, position.Y - 50);
+            Vector2f textPosition = new Vector2f(position.X - 140, position.Y - 45);
 
             // Place the dialogue box on top of the NPC
             Sprite boxSprite = t.getTextBack();
