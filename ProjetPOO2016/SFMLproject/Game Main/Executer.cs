@@ -29,6 +29,9 @@ namespace SFMLproject
 
         static Music music = new Music("File\\Music\\Student Life.ogg");
 
+        static bool swapFlag = false;
+        private static string swapPath;
+
         static Controller controller = new Controller();
 
         static Map.Map map = new Map.Map("File\\Map\\drago.txt");
@@ -61,12 +64,13 @@ namespace SFMLproject
                 window.DispatchEvents();
                 if (keypressed)
                 {
+                    if(swapFlag) swapMap();
                     window.Clear();
-                    window.SetView(Map.Map.getState().getMapview());
+                    window.SetView(map.getMapview());
                     //if (controller.ControllerPlugged)
-                    //    charc.moveCharacter(controller.getMovementLeftJoystick() / 20);
+                    //    charc.changeCharPosture(controller.getMovementLeftJoystick() / 20);
 
-                    Map.Map.getState().draw(window);
+                    map.draw(window);
                     //window.Draw(charc.sprite);
                     window.Display();
                     keypressed = false;
@@ -83,6 +87,15 @@ namespace SFMLproject
          * event.type == sf::Event::MouseWheelMoved
          */
 
+       /*Map swap*/
+
+        static void swapMap()
+        {
+            map.Dispose();
+            map = new Map.Map(swapPath);
+            swapFlag = false;
+        }
+
         /*Keyboard Fonctions*/
         //Call when a key is pressed
         static void window_KeyReleased(object sender, KeyEventArgs e)
@@ -97,7 +110,7 @@ namespace SFMLproject
         //Call when a key is pressed
         public static void window_KeyPressed(object sender, KeyEventArgs e)
         {
-            if (Map.Map.getState().moveCharac(e.Code) || Map.Map.getState().actionButton(e.Code)) ;
+            if (Map.Map.getState().moveCharac(e.Code) || Map.Map.getState().actionButton(e.Code))
             {
                 keypressed = true;
                 return;
@@ -143,6 +156,12 @@ namespace SFMLproject
         static void window_Closed(object sender, EventArgs e)
         {
             window.Close();
+        }
+
+        public static void setToSwap(string mapPath)
+        {
+            swapFlag = true;
+            swapPath = mapPath;
         }
     }
 }

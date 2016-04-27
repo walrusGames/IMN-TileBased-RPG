@@ -11,7 +11,7 @@ using SFML.Window;
 
 namespace SFMLproject.TextureFolder
 {
-    class SpriteEnum
+    class SpriteEnum : IDisposable
     {
         Texture back;
         Texture ob;
@@ -118,6 +118,24 @@ namespace SFMLproject.TextureFolder
         public Sprite getChairC()
         {
             return new Sprite(chairC);
+        }
+
+        public void Dispose()
+        {
+            back?.Dispose();
+            ob?.Dispose();
+            blank?.Dispose();
+            encounterBkgr?.Dispose();
+            portal?.Dispose();
+            desk?.Dispose();
+            wall?.Dispose();
+            chair?.Dispose();
+            computer?.Dispose();
+            board?.Dispose();
+            deskP?.Dispose();
+            chairD?.Dispose();
+            chairG?.Dispose();
+            chairC?.Dispose();
         }
     }
 }
