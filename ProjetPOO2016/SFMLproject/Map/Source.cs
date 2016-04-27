@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SFMLproject.Map
 {
-    abstract class Source
+    abstract class Source : IDisposable
     {
         protected List<Observer> obt = new List<Observer>();
         protected List<Observer> next = new List<Observer>();
@@ -25,5 +25,10 @@ namespace SFMLproject.Map
 
         public void Kill(Observer ob) { obt.Remove(ob); }
 
+        public virtual void Dispose()
+        {
+            obt.Clear();
+            next.Clear();
+        }
     }
 }

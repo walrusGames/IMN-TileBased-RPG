@@ -21,13 +21,12 @@ namespace SFMLproject.Tiles
         private Character character;
 
         private Tile currentTile;
-        static private SpriteEnum spr = new SpriteEnum();
 
         public TileCharacter(Character c, Tile cur) : base(spr.getBackground())
         {
             character = c;
             currentTile = cur;
-            sprite.Position = cur.getSpritePos();
+            Sprite.Position = cur.getSpritePos();
         }
  
 
@@ -54,7 +53,7 @@ namespace SFMLproject.Tiles
         public override void updateOnLeave(Vector2i move)
         {
             mapState = Map.Map.getState();
-            character.moveCharacter(move); // TODO fonction mal nommée. Ne bouge pas le perso. Fait juste changer sa position de corps.
+            character.changeCharPosture(move);
             if (mapState.getTile(getPos() + move).updateOnOccupy())
             {
                 mapState.setTile(getPos(), currentTile);
@@ -64,7 +63,7 @@ namespace SFMLproject.Tiles
                 mapState.moveMapView(new Vector2f(move.X, move.Y) * Constants.tileSize);
                 mapState.setState(mapState);
             }
-            else mapState.Queue(mapState.getTile(getPos())); 
+            //else mapState.Queue(mapState.getTile(getPos())); 
         }
 
         public override void updateOnReact(Vector2i ind)
@@ -81,6 +80,14 @@ namespace SFMLproject.Tiles
             Console.WriteLine("Personnage");
         }
 
+        public override void Dispose()
+        {
+            base.Dispose();
+            currentTile.Dispose();
+            character.Dispose();
+            currentTile = null;
+            character = null;
+        }
 
         /*
             Transfer this to destination Tile, similar to map.transfer

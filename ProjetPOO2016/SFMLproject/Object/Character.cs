@@ -13,7 +13,7 @@ using SFMLproject.StaticFields;
 
 namespace SFMLproject.Object
 {
-    class Character
+    class Character : IDisposable
     {
         /*Note
          *  One caracter is 48 x 32
@@ -102,7 +102,7 @@ namespace SFMLproject.Object
                 sprite.TextureRect = new IntRect(0, 144, 32, 48);
         }
 
-        public void moveCharacter(Vector2i posi)
+        public void changeCharPosture(Vector2i posi)
         {
             Vector2f temp = sprite.Position;
             if (posi.X > 0)
@@ -124,6 +124,11 @@ namespace SFMLproject.Object
         public Vector2i getMapPos()
         {
             return mapPos;
+        }
+
+        public void Dispose()
+        {
+            sprite.Dispose();
         }
     }
 }

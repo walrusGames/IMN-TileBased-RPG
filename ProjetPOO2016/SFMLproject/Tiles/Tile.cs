@@ -9,45 +9,54 @@ using SFML.System;
 
 using SFMLproject.StaticFields;
 using System.Runtime.InteropServices;
+using SFMLproject.TextureFolder;
 
 namespace SFMLproject.Tiles
 {
 
  
-    abstract class Tile: Observer
+    abstract class Tile: Observer, IDisposable
     {
-        protected Sprite sprite = new Sprite();
-        protected TileFactory tileFactory;
-        protected Map.Map mapState;
+        protected static TileFactory tileFactory = TileFactory.getInstance();
+        protected static Map.Map mapState;
+        protected static SpriteEnum spr = new SpriteEnum();
+
+        protected Sprite Sprite { get; set; } = new Sprite();
 
         public Tile()
         {
-            tileFactory = TileFactory.getInstance();
             mapState = Map.Map.getState();
         }
         public Tile(Sprite spr)
         {
+            mapState = Map.Map.getState();
             tileFactory = TileFactory.getInstance();
-            sprite = spr;
-            sprite.TextureRect = new IntRect(0, 0, Constants.tileSize, Constants.tileSize);
-            sprite.Scale = new Vector2f(1f, 1f);
+            Sprite = spr;
+            Sprite.TextureRect = new IntRect(0, 0, Constants.tileSize, Constants.tileSize);
+            Sprite.Scale = new Vector2f(1f, 1f);
         }
 
         public Vector2f getSpritePos()
         {
-            return sprite.Position;
+            return Sprite.Position;
         }
 
         public virtual void moveSprite(Vector2f newPos)
         {
-            sprite.Position = newPos;
+            Sprite.Position = newPos;
         }
 
-        abstract public void tileEvent();
+        public abstract void tileEvent();
 
         public virtual void draw(RenderWindow window)
         {
-            window.Draw(sprite);
+            window.Draw(Sprite);
+        }
+
+        public virtual void Dispose()
+        {
+            ((IDisposable)Sprite).Dispose();
+            Sprite = null;
         }
     }
 }
