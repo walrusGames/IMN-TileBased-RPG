@@ -45,6 +45,7 @@ namespace SFMLproject.TextureFolder
             chairG   = new Texture("File\\Background\\chairG.png");
             chairC   = new Texture("File\\Background\\chairC.png");
             textBack = new Texture("File\\Background\\textBack.png");
+            encounterBkgr = new Texture("File\\Background\\test.png");
 
         }
         public Sprite getDesktop()
@@ -67,7 +68,7 @@ namespace SFMLproject.TextureFolder
 
         internal Sprite getMenuBkgr()
         {
-            throw new NotImplementedException();
+            return new Sprite(encounterBkgr);
         }
 
         public Sprite getBlank()

@@ -52,7 +52,7 @@ namespace SFMLproject.Menu
 
         public override void draw(RenderWindow window)
         {
-            window.Draw(rectShape);
+            rectShape.Texture.Update(window);
             menutxt.draw(window);
         }
 

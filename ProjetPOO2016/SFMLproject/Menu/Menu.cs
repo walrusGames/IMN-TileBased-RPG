@@ -28,9 +28,9 @@ namespace SFMLproject.Menu
         {
         }
 
-        public void draw(RenderWindow windoww)
+        public void draw(RenderWindow window)
         {
-            windoww.Draw(sprite);
+            window.Draw(sprite);
         }
     }		
 }

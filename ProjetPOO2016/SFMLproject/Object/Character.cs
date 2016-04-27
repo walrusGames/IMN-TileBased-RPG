@@ -53,7 +53,7 @@ namespace SFMLproject.Object
  
         internal Sprite GetEncounterSprite()
         {
-            throw new NotImplementedException();
+            return new Sprite(_perso); 
         }
         public string GetState()
         {

@@ -27,13 +27,13 @@ namespace SFMLproject.Encounter_ENV
         private float examTime; 
         private MenuEncounter currentMenu;
 
-        public Encounter(Character ch, Character op)
+        public Encounter(Character ch)
         {
             //Menu back
-            encounterBkgr = new Sprite(spEnum.getEncounterBkgr());
-
-            itemMenu = new MenuEncounter(spEnum.getMenuBkgr());
-            baseMenu = new MenuEncounter(spEnum.getMenuBkgr());
+            //encounterBkgr = new Sprite(spEnum.getEncounterBkgr());
+            spEnum = new SpriteEnum(); 
+            itemMenu = new MenuEncounter(spEnum.getTextBack());
+            baseMenu = new MenuEncounter(spEnum.getTextBack());
             initAttackMenu(ch); 
             MenuButton attackButton = new MenuButton(new Vector2f(10, 4), new Vector2f(0, 0), attackMenu, "ATTACK");
             MenuButton itemButton = new MenuButton(new Vector2f(10, 4), new Vector2f(0, 1), itemMenu, "ATTACK");
@@ -44,7 +44,7 @@ namespace SFMLproject.Encounter_ENV
             baseMenu.addElement(skipButton);
             baseMenu.addElement(new MenuTextElement("SUICIDE", new Vector2f(1, 1)));
             player = new EncounterCharacter(ch, new FloatRect(0, 0, 32, 32));
-            opponent = new EncounterCharacter(op, new FloatRect(0, 0, 32, 32));
+            //opponent = new EncounterCharacter(op, new FloatRect(0, 0, 32, 32));
             examTime = 200;
             nbAttackExam = (uint)ch.getKnowledge();
             currentMenu = baseMenu;
@@ -52,7 +52,7 @@ namespace SFMLproject.Encounter_ENV
 
         private void initAttackMenu(Character ch)
         {
-            attackMenu = new MenuEncounter(spEnum.getMenuBkgr());
+            attackMenu = new MenuEncounter(spEnum.getTextBack());
            foreach(Attack a in ch.getCurrentAttack()){
                MenuButton attack = new MenuButton(new Vector2f(10, 4), new Vector2f(0, 0), a.getName());
                 attack.storeCommand(new AttackCommand(this, a.getDamage(), ch));
@@ -63,9 +63,9 @@ namespace SFMLproject.Encounter_ENV
 
         public void draw(RenderWindow window)
         {
-            window.Draw(encounterBkgr);
-            opponent.draw(window);
-            player.draw(window);
+            //window.Draw(encounterBkgr);
+            //opponent.draw(window);
+            //player.draw(window);
             currentMenu.draw(window);
         }
 

@@ -15,6 +15,7 @@ using SFML.Window;
 using SFMLproject.Map;
 
 using SFMLproject.StaticFields;
+using SFMLproject.Encounter_ENV;
 
 namespace SFMLproject
 {
@@ -120,6 +121,12 @@ namespace SFMLproject
                         music.Play();
                         Playing = true;
                     }
+                    break;
+                case Keyboard.Key.B:
+
+                    Character c = new Character("sami");
+                    Encounter enc = new Encounter(c);
+                    enc.StartEncounterLoop(c); 
                     break;
                 default: break;
             }
