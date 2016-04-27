@@ -22,28 +22,26 @@ namespace SFMLproject
     class Executer
     {
         static ContextSettings context = new ContextSettings();
-        static RenderWindow window;
+        public static RenderWindow window = new RenderWindow(new VideoMode(1280, 720), "Project IFT 232", Styles.Default, context);
 
         //Audio State
         static bool Playing = true;
 
         static Music music = new Music("File\\Music\\Student Life.ogg");
 
+        static bool swapFlag = false;
+        private static string swapPath;
+
         static Controller controller = new Controller();
 
-        static Object.Character charc = new Object.Character(new Vector2i(3,3));
-
-        static Map.Map map = new Map.Map(charc, "File\\Map\\test.txt");
-
-        static View wholeView;
-
-        static View mapView = map.getMapview();
+        public static Map.Map map = new Map.Map("File\\Map\\drago.txt");
 
         static bool keypressed = false;
 
+        public static bool inWorld = true;
+
         static void initWindow()
         {
-            window = new RenderWindow(new VideoMode(1280, 720), "Project IFT 232", Styles.Default, context);
             window.Closed += window_Closed;
             window.GainedFocus += window_GainedFocus;
             window.LostFocus += window_LostFocus;
@@ -66,12 +64,13 @@ namespace SFMLproject
                 window.DispatchEvents();
                 if (keypressed)
                 {
+                    if(swapFlag) swapMap();
                     window.Clear();
                     window.SetView(map.getMapview());
                     //if (controller.ControllerPlugged)
-                    //    charc.moveCharacter(controller.getMovementLeftJoystick() / 20);
+                    //    charc.changeCharPosture(controller.getMovementLeftJoystick() / 20);
+
                     map.draw(window);
-                    //window.Draw(charc.sprite);
                     window.Display();
                     keypressed = false;
                 }
@@ -79,79 +78,14 @@ namespace SFMLproject
             }
         }
 
-        //static bool moveCharac(Keyboard.Key e)
-        //{
-        //    Tile depl;
-        //    switch (e)
-        //    {
-        //        case Keyboard.Key.D:
-        //            map.setTile(charc.getMapPos(), map.getTile(charc.getMapPos()).onLeave());
-        //            charc.moveMapPos(new Vector2i(1, 0));
+       /*Map swap*/
 
-        //            depl = map.getTile(charc.getMapPos()).occupy(charc);
-        //            if (depl is Character)
-        //            {
-        //                charc.moveCharacter(new Vector2f(30, 0));
-        //                map.setCamera(new Vector2i(charc.getMapPos().X - 5, charc.getMapPos().Y - 5));
-        //                return true;
-        //            }
-        //            else {
-        //                charc.moveMapPos(new Vector2i(-1, 0));
-        //                return false;
-        //            }
-        //        case Keyboard.Key.A:
-        //            map.setTile(charc.getMapPos(), map.getTile(charc.getMapPos()).onLeave());
-        //            charc.moveMapPos(new Vector2i(-1, 0));
-        //            depl = map.getTile(charc.getMapPos()).occupy(charc);
-        //            if (depl is Character)
-        //            {
-        //                charc.moveCharacter(new Vector2f(-30, 0));
-        //                map.setCamera(new Vector2i(charc.getMapPos().X - Constants.camCol / 2, charc.getMapPos().Y - Constants.camRow / 2));
-        //                return true;
-        //            }
-        //            else {
-        //                charc.moveMapPos(new Vector2i(1, 0));
-        //                return false;
-        //            }
-        //        case Keyboard.Key.S:
-        //            map.setTile(charc.getMapPos(), map.getTile(charc.getMapPos()).onLeave());
-        //            charc.moveMapPos(new Vector2i(0, 1));
-        //            depl = map.getTile(charc.getMapPos()).occupy(charc);
-        //            if (depl is Character)
-        //            {
-        //                charc.moveCharacter(new Vector2f(0, 30));
-        //                map.setCamera(new Vector2i(charc.getMapPos().X - Constants.camCol / 2, charc.getMapPos().Y - Constants.camRow / 2));
-        //                return true;
-        //            }
-        //            else {
-        //                charc.moveMapPos(new Vector2i(0, -1));
-        //                return false;
-        //            }
-        //        case Keyboard.Key.W:
-        //            map.setTile(charc.getMapPos(), map.getTile(charc.getMapPos()).onLeave());
-        //            charc.moveMapPos(new Vector2i(0, -1));
-        //            depl = map.getTile(charc.getMapPos()).occupy(charc);
-        //            if (depl is Character)
-        //            {
-        //                charc.moveCharacter(new Vector2f(0, -30));
-        //                map.setCamera(new Vector2i(charc.getMapPos().X - Constants.camCol / 2, charc.getMapPos().Y - Constants.camRow / 2));
-        //                return true;
-        //            }
-        //            else {
-        //                charc.moveMapPos(new Vector2i(0, 1));
-        //                return false;
-        //            }
-        //    }
-        //    return false;
-        //}
-
-        /*Mouse
-         Action on the mouse:
-         * Mouse.IsButtonPressed(Mouse.Button.XXXXX) retourne un bool
-         * Mouse.GetPosition() retourne un Vector2i
-         * Mouse.setPosition(Vector2i(X,Y) place la souris
-         * event.type == sf::Event::MouseWheelMoved
-         */
+        static void swapMap()
+        {
+            map.Dispose();
+            map = new Map.Map(swapPath);
+            swapFlag = false;
+        }
 
         /*Keyboard Fonctions*/
         //Call when a key is pressed
@@ -165,9 +99,9 @@ namespace SFMLproject
         }
 
         //Call when a key is pressed
-        static void window_KeyPressed(object sender, KeyEventArgs e)
+        public static void window_KeyPressed(object sender, KeyEventArgs e)
         {
-            if (map.moveCharac(e.Code))
+            if (map.moveCharac(e.Code) || map.actionButton(e.Code))
             {
                 keypressed = true;
                 return;
@@ -194,7 +128,10 @@ namespace SFMLproject
         //Call when the window is resized
         static void window_Resized(object sender, SizeEventArgs e)
         {
-
+            window.Clear();
+            window.SetView(map.getMapview());
+            map.draw(window);
+            window.Display();
         }
 
         //Call when the window has LostFocus
@@ -213,6 +150,12 @@ namespace SFMLproject
         static void window_Closed(object sender, EventArgs e)
         {
             window.Close();
+        }
+
+        public static void setToSwap(string mapPath)
+        {
+            swapFlag = true;
+            swapPath = mapPath;
         }
     }
 }

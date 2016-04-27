@@ -15,10 +15,12 @@ namespace SFMLproject.Object
     {
         static Texture background;
         public Sprite sprite;
+        public IntRect r;
 
         public Background(String filePath)
         {
             background = new Texture(filePath);
+            background.Repeated = false;
             sprite = new Sprite(background);
         }
     }

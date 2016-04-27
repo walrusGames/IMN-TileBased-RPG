@@ -112,3 +112,41 @@ U:\POO\projet\ProjetPOO2016\SFMLproject\bin\Debug\sfmlnet-window-2.dll
 C:\Users\Badass Motherfucker\Documents\REPO\IMN-TileBased-RPG\ProjetPOO2016\SFMLproject\bin\Debug\SFMLproject.exe.config
 C:\Users\Badass Motherfucker\Documents\REPO\IMN-TileBased-RPG\ProjetPOO2016\SFMLproject\obj\Debug\SFMLproject.exe
 C:\Users\Badass Motherfucker\Documents\REPO\IMN-TileBased-RPG\ProjetPOO2016\SFMLproject\obj\Debug\SFMLproject.pdb
+C:\Users\Clovis\Documents\Visual Studio 2013\Projects\IMN-TileBased-RPG-POGOSTICK\ProjetPOO2016\SFMLproject\bin\Debug\SFMLproject.exe.config
+C:\Users\Clovis\Documents\Visual Studio 2013\Projects\IMN-TileBased-RPG-POGOSTICK\ProjetPOO2016\SFMLproject\obj\Debug\SFMLproject.exe
+C:\Users\Clovis\Documents\Visual Studio 2013\Projects\IMN-TileBased-RPG-POGOSTICK\ProjetPOO2016\SFMLproject\obj\Debug\SFMLproject.pdb
+C:\Users\Clovis\Documents\Visual Studio 2013\Projects\IMN-TileBased-RPG-POGOSTICK\ProjetPOO2016\SFMLproject\bin\Debug\csfml-audio-2.dll
+C:\Users\Clovis\Documents\Visual Studio 2013\Projects\IMN-TileBased-RPG-POGOSTICK\ProjetPOO2016\SFMLproject\bin\Debug\csfml-graphics-2.dll
+C:\Users\Clovis\Documents\Visual Studio 2013\Projects\IMN-TileBased-RPG-POGOSTICK\ProjetPOO2016\SFMLproject\bin\Debug\csfml-system-2.dll
+C:\Users\Clovis\Documents\Visual Studio 2013\Projects\IMN-TileBased-RPG-POGOSTICK\ProjetPOO2016\SFMLproject\bin\Debug\csfml-window-2.dll
+C:\Users\Clovis\Documents\Visual Studio 2013\Projects\IMN-TileBased-RPG-POGOSTICK\ProjetPOO2016\SFMLproject\bin\Debug\libsndfile-1.dll
+C:\Users\Clovis\Documents\Visual Studio 2013\Projects\IMN-TileBased-RPG-POGOSTICK\ProjetPOO2016\SFMLproject\bin\Debug\openal32.dll
+C:\Users\Clovis\Documents\Visual Studio 2013\Projects\IMN-TileBased-RPG-POGOSTICK\ProjetPOO2016\SFMLproject\bin\Debug\OpenTK.Compatibility.dll
+C:\Users\Clovis\Documents\Visual Studio 2013\Projects\IMN-TileBased-RPG-POGOSTICK\ProjetPOO2016\SFMLproject\bin\Debug\OpenTK.dll
+C:\Users\Clovis\Documents\Visual Studio 2013\Projects\IMN-TileBased-RPG-POGOSTICK\ProjetPOO2016\SFMLproject\bin\Debug\SFMLproject.exe
+C:\Users\Clovis\Documents\Visual Studio 2013\Projects\IMN-TileBased-RPG-POGOSTICK\ProjetPOO2016\SFMLproject\bin\Debug\SFMLproject.pdb
+C:\Users\Clovis\Documents\Visual Studio 2013\Projects\IMN-TileBased-RPG-POGOSTICK\ProjetPOO2016\SFMLproject\bin\Debug\sfmlnet-audio-2.dll
+C:\Users\Clovis\Documents\Visual Studio 2013\Projects\IMN-TileBased-RPG-POGOSTICK\ProjetPOO2016\SFMLproject\bin\Debug\sfmlnet-graphics-2.dll
+C:\Users\Clovis\Documents\Visual Studio 2013\Projects\IMN-TileBased-RPG-POGOSTICK\ProjetPOO2016\SFMLproject\bin\Debug\sfmlnet-system-2.dll
+C:\Users\Clovis\Documents\Visual Studio 2013\Projects\IMN-TileBased-RPG-POGOSTICK\ProjetPOO2016\SFMLproject\bin\Debug\sfmlnet-window-2.dll
+C:\Users\Clovis\Documents\Visual Studio 2013\Projects\IMN-TileBased-RPG-POGOSTICK\ProjetPOO2016\SFMLproject\obj\Debug\SFMLproject.csprojResolveAssemblyReference.cache
+C:\Users\Badass Motherfucker\Documents\REPO\IMN-TileBased-RPG\ProjetPOO2016\SFMLproject\bin\Debug\csfml-audio-2.dll
+C:\Users\Badass Motherfucker\Documents\REPO\IMN-TileBased-RPG\ProjetPOO2016\SFMLproject\bin\Debug\csfml-graphics-2.dll
+C:\Users\Badass Motherfucker\Documents\REPO\IMN-TileBased-RPG\ProjetPOO2016\SFMLproject\bin\Debug\csfml-system-2.dll
+C:\Users\Badass Motherfucker\Documents\REPO\IMN-TileBased-RPG\ProjetPOO2016\SFMLproject\bin\Debug\csfml-window-2.dll
+C:\Users\Badass Motherfucker\Documents\REPO\IMN-TileBased-RPG\ProjetPOO2016\SFMLproject\bin\Debug\libsndfile-1.dll
+C:\Users\Badass Motherfucker\Documents\REPO\IMN-TileBased-RPG\ProjetPOO2016\SFMLproject\bin\Debug\openal32.dll
+C:\Users\Badass Motherfucker\Documents\REPO\IMN-TileBased-RPG\ProjetPOO2016\SFMLproject\bin\Debug\OpenTK.Compatibility.dll
+C:\Users\Badass Motherfucker\Documents\REPO\IMN-TileBased-RPG\ProjetPOO2016\SFMLproject\bin\Debug\OpenTK.dll
+C:\Users\Badass Motherfucker\Documents\REPO\IMN-TileBased-RPG\ProjetPOO2016\SFMLproject\bin\Debug\SFMLproject.exe
+C:\Users\Badass Motherfucker\Documents\REPO\IMN-TileBased-RPG\ProjetPOO2016\SFMLproject\bin\Debug\SFMLproject.pdb
+C:\Users\Badass Motherfucker\Documents\REPO\IMN-TileBased-RPG\ProjetPOO2016\SFMLproject\bin\Debug\sfmlnet-audio-2.dll
+C:\Users\Badass Motherfucker\Documents\REPO\IMN-TileBased-RPG\ProjetPOO2016\SFMLproject\bin\Debug\sfmlnet-graphics-2.dll
+C:\Users\Badass Motherfucker\Documents\REPO\IMN-TileBased-RPG\ProjetPOO2016\SFMLproject\bin\Debug\sfmlnet-system-2.dll
+C:\Users\Badass Motherfucker\Documents\REPO\IMN-TileBased-RPG\ProjetPOO2016\SFMLproject\bin\Debug\sfmlnet-window-2.dll
+C:\Users\Badass Motherfucker\Documents\REPO\IMN-TileBased-RPG\ProjetPOO2016\SFMLproject\obj\Debug\SFMLproject.csprojResolveAssemblyReference.cache
+C:\Users\Badass Motherfucker\Documents\REPO\IMN-TileBased-RPG\ProjetPOO2016\SFMLproject\bin\Debug\SFMLproject.exe.manifest
+C:\Users\Badass Motherfucker\Documents\REPO\IMN-TileBased-RPG\ProjetPOO2016\SFMLproject\bin\Debug\SFMLproject.application
+C:\Users\Badass Motherfucker\Documents\REPO\IMN-TileBased-RPG\ProjetPOO2016\SFMLproject\obj\Debug\SFMLproject.TrustInfo.xml
+C:\Users\Badass Motherfucker\Documents\REPO\IMN-TileBased-RPG\ProjetPOO2016\SFMLproject\obj\Debug\SFMLproject.exe.manifest
+C:\Users\Badass Motherfucker\Documents\REPO\IMN-TileBased-RPG\ProjetPOO2016\SFMLproject\obj\Debug\SFMLproject.application
