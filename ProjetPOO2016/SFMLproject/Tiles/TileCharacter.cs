@@ -70,7 +70,7 @@ namespace SFMLproject.Tiles
                 mapState.moveMapView(new Vector2f(move.X, move.Y) * Constants.tileSize);
                 mapState.setState(mapState);
             }
-            //else mapState.Queue(mapState.getTile(getPos())); 
+            else mapState.Queue(mapState.getTile(getPos())); 
         }
 
         public override void updateOnReact(Vector2i ind)
