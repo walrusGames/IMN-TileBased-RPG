@@ -119,6 +119,7 @@ namespace SFMLproject.TextureFolder
         {
             return new Sprite(chairG);
         }
+
         public Sprite getChairC()
         {
             return new Sprite(chairC);
@@ -140,6 +141,7 @@ namespace SFMLproject.TextureFolder
             chairD?.Dispose();
             chairG?.Dispose();
             chairC?.Dispose();
+            textBack?.Dispose();
         }
-    }
+}
 }

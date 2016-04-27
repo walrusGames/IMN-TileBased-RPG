@@ -33,6 +33,7 @@ namespace SFMLproject.Map
             Load map from textfile
             EntryX, EntryY are character initial position
         */
+
         public Map(string filePath)
         {
 
@@ -41,7 +42,7 @@ namespace SFMLproject.Map
             char buffer;
             string line;
             //string stringBuffer = "";
-            using(var fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read))
+            using (var fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read))
             {
                 using (var streamReader = new StreamReader(fileStream, Encoding.ASCII))
                 {
@@ -100,7 +101,8 @@ namespace SFMLproject.Map
                     Object.Character c = new Object.Character("NouvelEtudiant", new Vector2i(spawnPointX, spawnPointY));
                     //Object.Character d = new Object.Character("File\\Perso\\perso 1.png", new Vector2i(4, 3));
                     //tiles[d.getMapPos().X, d.getMapPos().Y] = tileFactory.generateTile(d, tiles[d.getMapPos().X, d.getMapPos().Y]);
-                    tiles[c.getMapPos().X, c.getMapPos().Y] = tileFactory.generateTile(c, tiles[c.getMapPos().X, c.getMapPos().Y]);
+                    tiles[c.getMapPos().X, c.getMapPos().Y] = tileFactory.generateTile(c,
+                        tiles[c.getMapPos().X, c.getMapPos().Y]);
                     Attach(tiles[c.getMapPos().X, c.getMapPos().Y]);
                     Map.mapView.Center = c.sprite.Position;
                     //tiles[3, 9] = tileFactory.generateTile((int)TileType.eventTrigger);
@@ -108,7 +110,6 @@ namespace SFMLproject.Map
                     fileStream.Close();
                 }
             }
-
         }
 
         public View getMapview()
@@ -143,25 +144,25 @@ namespace SFMLproject.Map
                     notify(new Vector2i(1, 0));
                     characState = new Vector2i(1, 0);
                     return true;
-
+                   
 
                 case Keyboard.Key.A:
                     notify(new Vector2i(-1, 0));
                     characState = new Vector2i(-1, 0);
                     return true;
-
+                    
 
                 case Keyboard.Key.W:
                     notify(new Vector2i(0, -1));
                     characState = new Vector2i(0, -1);
                     return true;
-
+                    
 
                 case Keyboard.Key.S:
                     notify(new Vector2i(0, 1));
                     characState = new Vector2i(0, 1);
                     return true;
-
+                    
             }
             return false;
         }

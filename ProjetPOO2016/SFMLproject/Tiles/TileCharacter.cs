@@ -31,7 +31,7 @@ namespace SFMLproject.Tiles
             Sprite.Position = cur.getSpritePos();
             //dia = new Dialogue(new List<String> { "Non", "Oui", "Fuck UML" });
         }
- 
+        
         public override void moveSprite(Vector2f newPos)
         {
             currentTile.moveSprite(newPos);
@@ -65,20 +65,11 @@ namespace SFMLproject.Tiles
             {
                 Executer.map.setTile(getPos(), currentTile);
                 Executer.map.setTile(getPos() + move, tileFactory.generateTile(new Character(character, move), Executer.map.getTile(getPos() + move)));
-
+                
                 Executer.map.Queue(Executer.map.getTile(getPos() + move));
                 Executer.map.moveMapView(new Vector2f(move.X, move.Y)*Constants.tileSize);
             }
-            else Executer.map.Queue(Executer.map.getTile(getPos()));
-        }
-
-        public override void updateOnAction()
-        {
-            //Console.WriteLine(character.getDialogue().ElementAt(2));
-            Executer.inWorld = false;
-            character.dia.afficher(currentTile.getSpritePos());
-            //dia.afficher();
-            Executer.inWorld = true;
+            else Executer.map.Queue(Executer.map.getTile(getPos())); 
         }
 
         public override void updateOnReact(Vector2i ind)
@@ -87,6 +78,16 @@ namespace SFMLproject.Tiles
             {
                 Executer.map.getTile(getPos() + ind).updateOnAction();
             }
+        }
+
+
+        public override void updateOnAction()
+        {
+            //Console.WriteLine(character.getDialogue().ElementAt(2));
+            Executer.inWorld = false;
+            character.dia.afficher(currentTile.getSpritePos());
+            //dia.afficher();
+            Executer.inWorld = true;
         }
 
         public override void Dispose()
