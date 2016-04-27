@@ -26,7 +26,6 @@ namespace SFMLproject.Map
         private uint mapX, mapY;
         private static TileFactory tileFactory = TileFactory.getInstance();
         private static View mapView = new View(new FloatRect(0, 0, Constants.tileSize * Constants.camRow, Constants.tileSize * Constants.camCol));
-        private static Map state;
         private Vector2i characState = new Vector2i(0, 1);
         private bool disposeFlag = false;
 
@@ -103,21 +102,9 @@ namespace SFMLproject.Map
                 Map.mapView.Center = c.sprite.Position;
                 //tiles[3, 9] = tileFactory.generateTile((int)TileType.eventTrigger);
 
-                state = this;
-
                 fileStream.Close();
             }
             
-        }
-
-        public static Map getState()
-        {
-            return state;
-        }
-
-        public void setState(Map map)
-        {
-            state = map;
         }
 
         public View getMapview()
