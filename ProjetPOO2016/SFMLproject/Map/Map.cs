@@ -26,7 +26,7 @@ namespace SFMLproject.Map
         private uint mapX, mapY;
         private static TileFactory tileFactory = TileFactory.getInstance();
         private static View mapView = new View(new FloatRect(0, 0, Constants.tileSize * Constants.camRow, Constants.tileSize * Constants.camCol));
-        private Vector2i characState = new Vector2i(0, 1);
+        private Vector2i characState;
         private bool disposeFlag = false;
 
         /*
@@ -34,15 +34,15 @@ namespace SFMLproject.Map
             EntryX, EntryY are character initial position
         */
 
-        public Map(string filePath)
+        public Map(string filePath, Vector2i charSpawnState)
         {
-
+            characState = charSpawnState;
             int spawnPointX = 0;
             int spawnPointY = 0;
             char buffer;
             string line;
-            String SpritePositionNPC;
-            String SpritePositionMain;
+            string SpritePositionNPC;
+            string SpritePositionMain;
             //string stringBuffer = "";
             using (var fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read))
             {
@@ -103,12 +103,13 @@ namespace SFMLproject.Map
             */
 
                     Object.Character c = new Object.Character("NouvelEtudiant", new Vector2i(spawnPointX, spawnPointY),SpritePositionMain);
+                    c.changePostureCharacter(characState);
                     //Object.Character d = new Object.Character("File\\Perso\\perso 1.png", new Vector2i(4, 3));
                     //tiles[d.getMapPos().X, d.getMapPos().Y] = tileFactory.generateTile(d, tiles[d.getMapPos().X, d.getMapPos().Y]);
-                    tiles[c.getMapPos().X, c.getMapPos().Y] = tileFactory.generateTile(c,
-                        tiles[c.getMapPos().X, c.getMapPos().Y]);
-                    Attach(tiles[c.getMapPos().X, c.getMapPos().Y]);
-                    Map.mapView.Center = c.sprite.Position;
+                    tiles[c.GetMapPos().X, c.GetMapPos().Y] = tileFactory.generateTile(c,
+                        tiles[c.GetMapPos().X, c.GetMapPos().Y]);
+                    Attach(tiles[c.GetMapPos().X, c.GetMapPos().Y]);
+                    Map.mapView.Center = c.Sprite.Position;
                     //tiles[3, 9] = tileFactory.generateTile((int)TileType.eventTrigger);
 
                     fileStream.Close();
@@ -145,26 +146,26 @@ namespace SFMLproject.Map
             switch (e)
             {
                 case Keyboard.Key.D:
-                    notify(new Vector2i(1, 0));
                     characState = new Vector2i(1, 0);
+                    notify(characState);
                     return true;
                    
 
                 case Keyboard.Key.A:
-                    notify(new Vector2i(-1, 0));
                     characState = new Vector2i(-1, 0);
+                    notify(characState);
                     return true;
                     
 
                 case Keyboard.Key.W:
-                    notify(new Vector2i(0, -1));
                     characState = new Vector2i(0, -1);
+                    notify(characState);
                     return true;
                     
 
                 case Keyboard.Key.S:
-                    notify(new Vector2i(0, 1));
                     characState = new Vector2i(0, 1);
+                    notify(characState);
                     return true;
                     
             }
@@ -233,6 +234,10 @@ namespace SFMLproject.Map
             }
             base.Dispose();
         }
-    
+
+        public Vector2i getCharState()
+        {
+            return characState;
+        }
     }
 }

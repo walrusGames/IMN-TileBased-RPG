@@ -12,22 +12,26 @@ namespace SFMLproject.Encounter_ENV
 {
     class MenuTextElement
     {
-        public Text text;
+        private Text text;
         private TextProperties tProp = new TextProperties();
         private Menu.Menu link;
         
         public MenuTextElement(string t, Vector2f position)
         {
-            text = new Text(t, tProp.font,tProp.size);
-            text.Color = tProp.color;
-            text.Position = position;
+            text = new Text(t, tProp.font, tProp.size)
+            {
+                Color = tProp.color,
+                Position = position
+            };
         }
 
         public MenuTextElement(string t, Vector2f position, Menu.Menu mLink)
         {
-            text = new Text(t, tProp.font, tProp.size);
-            text.Color = tProp.color;
-            text.Position = position;
+            text = new Text(t, tProp.font, tProp.size)
+            {
+                Color = tProp.color,
+                Position = position
+            };
             link = mLink;
         }
 

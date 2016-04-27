@@ -22,102 +22,116 @@ namespace SFMLproject.Object
          *  One caracter is 48 x 32
          */
         //Character Info
-        static String stateCharact = "Down";
-        static Texture perso;
-        uint statKnowledge, statSpeed, statEnergy, statStress;
-        string nomPerso;
-        List<String> dialogue;
-        public Dialogue dia;
+        private string _stateCharact;
+        static Texture _perso;
+        uint _statKnowledge, _statSpeed, _statEnergy, _statStress;
+        string _nomPerso;
+        List<String> _dialogue;
+        public Dialogue Dia;
 
-        internal int getStats()
+        internal int GetStats()
         {
             throw new NotImplementedException();
         }
 
-        internal Sprite getEncounterSprite()
+        internal Sprite GetEncounterSprite()
         {
             throw new NotImplementedException();
         }
-        public string getState()
+        public string GetState()
         {
-            return stateCharact;
+            return _stateCharact;
         }
 
-        public Sprite sprite;
-        private Vector2i mapPos;
-        private AttackList attList;
+        public Sprite Sprite;
+        private Vector2i _mapPos;
+        private AttackList _attList;
+
+        public Vector2i MapPos
+        {
+            get
+            {
+                return _mapPos;
+            }
+
+            set
+            {
+                _mapPos = value;
+            }
+        }
 
         public Character(String nom, Vector2i pos)
         {
-            dialogue = new List<string>();
+            _stateCharact = "Down";
+            _dialogue = new List<string>();
             String filePath = "File\\Perso\\" + nom + ".txt";
             var fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read);
             var streamReader = new StreamReader(fileStream, Encoding.ASCII);
             //Lecture des infos du personnage
-            nomPerso = streamReader.ReadLine();
+            _nomPerso = streamReader.ReadLine();
             filePath = streamReader.ReadLine();
             string state = streamReader.ReadLine();
 
 
             //Stats
-            statKnowledge = uint.Parse(streamReader.ReadLine());
-            statEnergy = uint.Parse(streamReader.ReadLine());
-            statSpeed = uint.Parse(streamReader.ReadLine());
-            statStress = uint.Parse(streamReader.ReadLine());
+            _statKnowledge = uint.Parse(streamReader.ReadLine());
+            _statEnergy = uint.Parse(streamReader.ReadLine());
+            _statSpeed = uint.Parse(streamReader.ReadLine());
+            _statStress = uint.Parse(streamReader.ReadLine());
 
-            perso = new Texture(filePath);
-            sprite = new Sprite(perso);
-            sprite.TextureRect = new IntRect(32, 0, 32, 32);
-            sprite.Scale = new Vector2f(1.5f, 1.5f);
-            sprite.Position = (Vector2f)pos * (float)Constants.tileSize;
+            _perso = new Texture(filePath);
+            Sprite = new Sprite(_perso);
+            Sprite.TextureRect = new IntRect(32, 0, 32, 32);
+            Sprite.Scale = new Vector2f(1.5f, 1.5f);
+            Sprite.Position = (Vector2f)pos * (float)Constants.tileSize;
             changePostureCharacter(state);
-            mapPos = pos;
+            MapPos = pos;
             //Stockage des dialogues
             string ligne;
             do
             {
                 ligne = streamReader.ReadLine();
-                dialogue.Add(ligne);
+                _dialogue.Add(ligne);
             } while (ligne != null);
-            dia = new Dialogue(dialogue);
+            Dia = new Dialogue(_dialogue);
             fileStream.Close();
             streamReader.Close();
         }
 
         public Character(String nom)
         {
-
-            dialogue = new List<string>();
+            _stateCharact = "Down";
+            _dialogue = new List<string>();
             String filePath = "File\\Perso\\" + nom + ".txt";
             var fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read);
             var streamReader = new StreamReader(fileStream, Encoding.ASCII);
 
             //Lecture des infos du personnage
-            nomPerso = streamReader.ReadLine();
+            _nomPerso = streamReader.ReadLine();
             filePath = streamReader.ReadLine();
             string state = streamReader.ReadLine();
 
             //Stats
-            statKnowledge = uint.Parse(streamReader.ReadLine());
-            statEnergy = uint.Parse(streamReader.ReadLine());
-            statSpeed = uint.Parse(streamReader.ReadLine());
-            statStress = uint.Parse(streamReader.ReadLine());
+            _statKnowledge = uint.Parse(streamReader.ReadLine());
+            _statEnergy = uint.Parse(streamReader.ReadLine());
+            _statSpeed = uint.Parse(streamReader.ReadLine());
+            _statStress = uint.Parse(streamReader.ReadLine());
 
             //Initialisation du perso
-            perso = new Texture(filePath);
-            sprite = new Sprite(perso);
-            sprite.TextureRect = new IntRect(32, 0, 32, 32);
-            sprite.Scale = new Vector2f(1.5f, 1.5f);
-            sprite.Position = new Vector2f(0, 0);
+            _perso = new Texture(filePath);
+            Sprite = new Sprite(_perso);
+            Sprite.TextureRect = new IntRect(32, 0, 32, 32);
+            Sprite.Scale = new Vector2f(1.5f, 1.5f);
+            Sprite.Position = new Vector2f(0, 0);
             changePostureCharacter(state);
             //Stockage des dialogues des NPCs
             string ligne;
             do
             {
                 ligne = streamReader.ReadLine();
-                dialogue.Add(ligne);
+                _dialogue.Add(ligne);
             } while (ligne != null);
-            dia = new Dialogue(dialogue);
+            Dia = new Dialogue(_dialogue);
             fileStream.Close();
             streamReader.Close();
 
@@ -125,41 +139,42 @@ namespace SFMLproject.Object
 
         public Character(String nom, Vector2i pos, String spritePosition)
         {
-            dialogue = new List<string>();
+            _stateCharact = "Down";
+            _dialogue = new List<string>();
             String filePath = "File\\Perso\\" + nom + ".txt";
             var fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read);
             var streamReader = new StreamReader(fileStream, Encoding.ASCII);
             //Lecture des infos du personnage
-            nomPerso = streamReader.ReadLine();
+            _nomPerso = streamReader.ReadLine();
             filePath = streamReader.ReadLine();
             //string state = streamReader.ReadLine();
 
 
             //Stats
-            statKnowledge = uint.Parse(streamReader.ReadLine());
-            statEnergy = uint.Parse(streamReader.ReadLine());
-            statSpeed = uint.Parse(streamReader.ReadLine());
-            statStress = uint.Parse(streamReader.ReadLine());
+            _statKnowledge = uint.Parse(streamReader.ReadLine());
+            _statEnergy = uint.Parse(streamReader.ReadLine());
+            _statSpeed = uint.Parse(streamReader.ReadLine());
+            _statStress = uint.Parse(streamReader.ReadLine());
 
-            perso = new Texture(filePath);
-            sprite = new Sprite(perso);
-            sprite.TextureRect = new IntRect(32, 0, 32, 32);
-            sprite.Scale = new Vector2f(1.5f, 1.5f);
-            sprite.Position = (Vector2f)pos* (float)Constants.tileSize;
+            _perso = new Texture(filePath);
+            Sprite = new Sprite(_perso);
+            Sprite.TextureRect = new IntRect(32, 0, 32, 32);
+            Sprite.Scale = new Vector2f(1.5f, 1.5f);
+            Sprite.Position = (Vector2f)pos* (float)Constants.tileSize;
             changePostureCharacter(spritePosition);
-            mapPos = pos;
+            MapPos = pos;
             //Stockage des dialogues
             string ligne;
             do
             {
                 ligne = streamReader.ReadLine();
-                dialogue.Add(ligne);
+                _dialogue.Add(ligne);
             } while (ligne != null);
-            dia = new Dialogue(dialogue);
+            Dia = new Dialogue(_dialogue);
             fileStream.Close();
             streamReader.Close();
         }
-public void SaveCharacter()
+        public void SaveCharacter()
         {
             String filePath = "File\\Perso\\NouvelEtudiant.txt";
             //File.Delete(filePath);
@@ -170,10 +185,10 @@ public void SaveCharacter()
             writer.WriteLine("File\\Perso\\perso 4.png");
             writer.WriteLine("Down");
             //Nouveau stats
-            writer.WriteLine(Convert.ToString(statKnowledge));
-            writer.WriteLine(Convert.ToString(statEnergy));
-            writer.WriteLine(Convert.ToString(statSpeed));
-            writer.WriteLine(Convert.ToString(statStress));
+            writer.WriteLine(Convert.ToString(_statKnowledge));
+            writer.WriteLine(Convert.ToString(_statEnergy));
+            writer.WriteLine(Convert.ToString(_statSpeed));
+            writer.WriteLine(Convert.ToString(_statStress));
 
             writer.Close();
             fs.Close();
@@ -190,14 +205,16 @@ public void SaveCharacter()
             mapPos = pos;
         }*/
 
-        public void setAttackList(AttackList l) { attList = l; }
-        public AttackList getAttackList() { return attList; }
+        public void SetAttackList(AttackList l) { _attList = l; }
+        public AttackList GetAttackList() { return _attList; }
 
         public Character(Character character, Vector2i move)
         {
-            sprite = character.sprite;
-            mapPos = character.mapPos;
-            moveMapPos(move);
+            Sprite = character.Sprite;
+            MapPos = character.MapPos;
+            _stateCharact = character._stateCharact;
+            changePostureCharacter(_stateCharact);
+            MoveMapPos(move);
         }
 
         public Character(Vector2i spawnPos)
@@ -207,28 +224,28 @@ public void SaveCharacter()
 
         private void changePostureCharacter(String position)
         {
-            if (position != stateCharact)
+            if (position != _stateCharact)
             {
-                changeSpriteShow(position);
-                stateCharact = position;
+                ChangeSpriteShow(position);
+                _stateCharact = position;
             }
         }
 
-        private void changeSpriteShow(String position)
+        private void ChangeSpriteShow(String position)
         {
             if (position == "Down")
-                sprite.TextureRect = new IntRect(32, 0, 32, 32);
+                Sprite.TextureRect = new IntRect(32, 0, 32, 32);
             if (position == "Left")
-                sprite.TextureRect = new IntRect(32, 32, 32, 32);
+                Sprite.TextureRect = new IntRect(32, 32, 32, 32);
             if (position == "Right")
-                sprite.TextureRect = new IntRect(32, 64, 32, 32);
+                Sprite.TextureRect = new IntRect(32, 64, 32, 32);
             if (position == "Up")
-                sprite.TextureRect = new IntRect(32, 96, 32, 32);
+                Sprite.TextureRect = new IntRect(32, 96, 32, 32);
         }
 
-        public void changeCharPosture(Vector2i posi)
+        public void changePostureCharacter(Vector2i posi)
         {
-            Vector2f temp = sprite.Position;
+            Vector2f temp = Sprite.Position;
             if (posi.X > 0)
                 changePostureCharacter("Right");
             else if (posi.X < 0)
@@ -239,22 +256,22 @@ public void SaveCharacter()
                 changePostureCharacter("Down");
         }
 
-        public void moveMapPos(Vector2i pos)
+        public void MoveMapPos(Vector2i pos)
         {
-            mapPos += pos;
-            sprite.Position += new Vector2f(pos.X * Constants.tileSize, pos.Y * Constants.tileSize);
+            MapPos += pos;
+            Sprite.Position += new Vector2f(pos.X * Constants.tileSize, pos.Y * Constants.tileSize);
         }
 
-        public Vector2i getMapPos()
+        public Vector2i GetMapPos()
         {
-            return mapPos;
+            return MapPos;
         }
 
-        public List<string> getDialogue() { return dialogue; }
+        public List<string> GetDialogue() { return _dialogue; }
 
         public void Dispose()
         {
-            sprite.Dispose();
+            Sprite.Dispose();
         }
     }
 }
