@@ -1,4 +1,5 @@
 ﻿using SFML.Graphics;
+using SFML.System;
 using SFMLproject.Encounter_ENV;
 using System;
 using System.Collections.Generic;
@@ -11,8 +12,10 @@ namespace SFMLproject.Menu
     class MenuEncounter : Menu
     {
         internal List<MenuElement> menuContent;
-        public MenuEncounter(Sprite sprite) : base(sprite)
+        public Color background = new Color(Color.Cyan);
+        public MenuEncounter(Vector2f dim, int pad, float bordS, View v) : base(dim, pad, bordS, v)
         {
+            menuBody.FillColor = background;
             menuContent = new List<MenuElement>();
         }
         public new void addElement(MenuTextElement text)
@@ -25,13 +28,17 @@ namespace SFMLproject.Menu
             menuContent.Add(button);
         }
 
-        public new void draw(RenderWindow window)
+        public override void drawImpl(RenderWindow window)
         {
+            window.SetView(getMenuView()); 
+            window.Draw(menuBody);
+            window.SetView(window.DefaultView);
             foreach (MenuElement e in menuContent)
             {
                 e.draw(window);
             }
-            window.Draw(sprite);
+            
         }
+
     }
 }

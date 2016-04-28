@@ -14,7 +14,7 @@ namespace SFMLproject.Encounter_ENV
 {
     class Encounter
     {
-        private View encounterView;
+        internal View encounterView;
         private Sprite encounterBkgr;
         private EncounterCharacter player;
         private EncounterCharacter opponent;
@@ -32,32 +32,37 @@ namespace SFMLproject.Encounter_ENV
             //Menu back
             //encounterBkgr = new Sprite(spEnum.getEncounterBkgr());
             spEnum = new SpriteEnum();
+            examTime = 200;
+
             encounterView = new View(new FloatRect(200, 200, 300, 200)); 
-            itemMenu = new MenuEncounter(spEnum.getTextBack());
-            baseMenu = new MenuEncounter(spEnum.getTextBack());
+            itemMenu = new MenuEncounter(new Vector2f(300, 300), 5, 10, encounterView);
+            baseMenu = new MenuEncounter(new Vector2f(300, 300), 5, 10, encounterView);
             initAttackMenu(ch); 
-            MenuButton attackButton = new MenuButton(new Vector2f(10, 4), new Vector2f(0, 0), attackMenu, "ATTACK");
-            MenuButton itemButton = new MenuButton(new Vector2f(10, 4), new Vector2f(0, 1), itemMenu, "ATTACK");
-            MenuButton skipButton = new MenuButton(new Vector2f(10, 4), new Vector2f(1, 0), "SKIP");
+            MenuButton attackButton = new MenuButton(new Vector2f(60, 20), new Vector2f(100, 600), attackMenu, "ATTACK");
+            MenuButton itemButton = new MenuButton(new Vector2f(60, 20), new Vector2f(200, 600), itemMenu, "ATTACK");
+            MenuButton skipButton = new MenuButton(new Vector2f(60, 20), new Vector2f(300, 600), "SKIP");
             attackButton.storeCommand(new AttackMenuCommand(this));
             baseMenu.addElement(attackButton);
             baseMenu.addElement(itemButton);
             baseMenu.addElement(skipButton);
             baseMenu.addElement(new MenuTextElement("SUICIDE", new Vector2f(1, 1)));
+            
             player = new EncounterCharacter(ch, new FloatRect(0, 0, 32, 32));
             //opponent = new EncounterCharacter(op, new FloatRect(0, 0, 32, 32));
-            examTime = 200;
             nbAttackExam = (uint)ch.getKnowledge();
             currentMenu = baseMenu;
+         
         }
 
         private void initAttackMenu(Character ch)
         {
-            attackMenu = new MenuEncounter(spEnum.getTextBack());
+            attackMenu = new MenuEncounter(new Vector2f(300, 300), 5, 1, encounterView);
            foreach(Attack a in ch.getCurrentAttack()){
-               MenuButton attack = new MenuButton(new Vector2f(10, 4), new Vector2f(0, 0), a.getName());
+                int i = 1; 
+                MenuButton attack = new MenuButton(new Vector2f(60, 20), new Vector2f(i*100, 600), a.getName());
                 attack.storeCommand(new AttackCommand(this, a.getDamage(), ch));
-                attackMenu.addElement(attack); 
+                attackMenu.addElement(attack);
+                ++i;
             }
 
         }
@@ -67,10 +72,9 @@ namespace SFMLproject.Encounter_ENV
 
             window.Clear();
             window.SetView(encounterView);
-            //window.Draw(encounterBkgr);
-            //opponent.draw(window);
             player.draw(window);
             currentMenu.draw(window);
+            baseMenu.addElement(new MenuTextElement("EXAM TIME LEFT  :  " + getExamTime().ToString(), new Vector2f(10, 200)));
             window.Display(); 
         }
 
@@ -93,13 +97,9 @@ namespace SFMLproject.Encounter_ENV
             nbAttackExam--; 
         }
 
-        public void StartEncounterLoop(Character ch)
+        public float getNbAttackLeft()
         {
-            
-            while (nbAttackExam != 0)
-            {
-                draw(Executer.window); 
-            }
+            return nbAttackExam; 
         }
 
 

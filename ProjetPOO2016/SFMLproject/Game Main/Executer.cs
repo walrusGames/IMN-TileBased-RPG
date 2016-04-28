@@ -125,8 +125,7 @@ namespace SFMLproject
                 case Keyboard.Key.B:
 
                     Character c = new Character("sami");
-                    Encounter enc = new Encounter(c);
-                    enc.StartEncounterLoop(c); 
+                    StartEncounterLoop(c); 
                     break;
                 default: break;
             }
@@ -165,5 +164,18 @@ namespace SFMLproject
             swapFlag = true;
             swapPath = mapPath;
         }
+
+        public static void StartEncounterLoop(Character ch)
+        {
+            Encounter enc = new Encounter(ch);
+            while (enc.getNbAttackLeft()!= 0)
+            {
+                
+                enc.draw(window);
+            }
+            
+        }
+
+
     }
 }

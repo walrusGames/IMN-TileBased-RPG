@@ -14,7 +14,8 @@ namespace SFMLproject.Menu
 {
     class MenuButton : MenuElement, Invoker
     {
-        AbstractCommand cmd; 
+        AbstractCommand cmd;
+        public Color buttonColor = new Color(135, 206, 250); 
         private RectangleShape rectShape;
         private Menu link;
         private MenuTextElement menutxt;
@@ -24,8 +25,8 @@ namespace SFMLproject.Menu
             SpriteEnum t = new SpriteEnum();
 
             rectShape = new RectangleShape(size);
+            rectShape.FillColor = buttonColor; 
             rectShape.Position = position;
-            rectShape.Texture = t.getTextBackTexture();
             link = mLink;
             menutxt = new MenuTextElement(txt, position, mLink);
         }
@@ -34,8 +35,8 @@ namespace SFMLproject.Menu
             SpriteEnum t = new SpriteEnum();
 
             rectShape = new RectangleShape(size);
+            rectShape.FillColor = buttonColor;
             rectShape.Position = position;
-            rectShape.Texture = t.getTextBackTexture();
             link = mLink;
             menutxt = txt;
         }
@@ -45,14 +46,14 @@ namespace SFMLproject.Menu
             SpriteEnum t = new SpriteEnum();
 
             rectShape = new RectangleShape(size);
+            rectShape.FillColor = buttonColor;
             rectShape.Position = position;
-            rectShape.Texture = t.getTextBackTexture();
             menutxt = new MenuTextElement(txt, position);
         }
 
         public override void draw(RenderWindow window)
         {
-            rectShape.Texture.Update(window);
+            window.Draw(rectShape);
             menutxt.draw(window);
         }
 
@@ -65,6 +66,7 @@ namespace SFMLproject.Menu
         {
             if (Mouse.IsButtonPressed(Mouse.Button.Left))
             {
+                Console.WriteLine("tamere");
                 Vector2i position = Mouse.GetPosition();
                 if (rectShape.GetGlobalBounds().Contains(position.X, position.Y)) cmd.execute();
             }

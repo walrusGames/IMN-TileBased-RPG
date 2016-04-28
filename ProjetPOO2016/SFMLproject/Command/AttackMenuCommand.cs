@@ -24,7 +24,7 @@ namespace SFMLproject.Encounter_ENV
         public void execute()
         {
             e.attackSubMenu();
-            e.draw(Executer.window);
+            e.draw(Executer.window); 
         }
     }
 }
