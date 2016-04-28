@@ -40,6 +40,9 @@ namespace SFMLproject
 
         public static bool inWorld = true;
 
+        static Menu.MenuPrincipal menuInGame = new Menu.MenuPrincipal(new Vector2f(175, 50), 4, 1, map.getMapview());
+        static Menu.MenuPrincipal menuIntro = new Menu.MenuPrincipal(new Vector2f(175, 100), 4, 1, map.getMapview());
+
         static void initWindow()
         {
             window.Closed += window_Closed;
@@ -52,11 +55,14 @@ namespace SFMLproject
             window.SetFramerateLimit(60);
             window.SetView(map.getMapview());
             map.draw(window);
+            menuIntro.draw(window);
             window.Display();
         }
 
         static void Main(string[] args)
         {
+            loadMenuIntro();
+            loadMenu();
             initWindow();
 
             while (window.IsOpen)
@@ -64,13 +70,15 @@ namespace SFMLproject
                 window.DispatchEvents();
                 if (keypressed)
                 {
+                    closeMenuIntro();
                     if(swapFlag) swapMap();
                     window.Clear();
                     window.SetView(map.getMapview());
                     //if (controller.ControllerPlugged)
                     //    charc.changeCharPosture(controller.getMovementLeftJoystick() / 20);
-
+                    
                     map.draw(window);
+                    menuInGame.draw(window);
                     window.Display();
                     keypressed = false;
                 }
@@ -120,6 +128,23 @@ namespace SFMLproject
                         Playing = true;
                     }
                     break;
+                case Keyboard.Key.Space: menuInGame.activate(3);
+                    break;
+
+                default: break;
+            }
+        }
+
+        public static void window_ButtonPressed(object sender, MouseButtonEvent e)
+        {
+            Vector2f mousePos = window.MapPixelToCoords(Mouse.GetPosition(window), map.getMapview());
+
+            switch (e.Button)
+            {
+                case Mouse.Button.Left:
+                    if (menuInGame.visible) menuInGame.activate(mousePos);
+                    break;
+
                 default: break;
             }
         }
@@ -156,6 +181,29 @@ namespace SFMLproject
         {
             swapFlag = true;
             swapPath = mapPath;
+        }
+
+        static public void loadMenuIntro()
+        {
+            Command.StartGameCommand startCommand = new Command.StartGameCommand();
+            menuIntro.addButton("Start", startCommand);
+            menuIntro.show();
+        }
+
+        static public void loadMenu()
+        {
+            Command.StartGameCommand startCommand = new Command.StartGameCommand();
+            menuInGame.addButton("Sauver", startCommand);
+            menuInGame.addButton("Attaques", startCommand);
+            menuInGame.addButton("Stats", startCommand);
+            menuInGame.addButton("Combat", startCommand);
+            menuInGame.show();
+        }
+
+
+        static public void closeMenuIntro()
+        {
+            menuIntro.hide();
         }
     }
 }

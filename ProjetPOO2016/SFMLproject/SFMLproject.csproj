@@ -86,11 +86,14 @@
     <Compile Include="Command\AttackMenuCommand.cs" />
     <Compile Include="Command\Command.cs" />
     <Compile Include="Command\Invoker.cs" />
+    <Compile Include="Command\StartGameCommand.cs" />
+    <Compile Include="Menu\ButtonClickMenu.cs" />
     <Compile Include="Menu\Dialogue.cs" />
     <Compile Include="Menu\Menu.cs" />
     <Compile Include="Menu\MenuButton.cs" />
     <Compile Include="Menu\MenuElement.cs" />
     <Compile Include="Encounter ENV\MenuEncounter.cs" />
+    <Compile Include="Menu\MenuPrincipal.cs" />
     <Compile Include="Object\AttackList.cs" />
     <Compile Include="Encounter ENV\Encounter.cs" />
     <Compile Include="Encounter ENV\EncounterCharacter.cs" />

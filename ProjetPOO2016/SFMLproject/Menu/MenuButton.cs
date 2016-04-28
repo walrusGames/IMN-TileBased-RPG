@@ -13,7 +13,7 @@ namespace SFMLproject.Menu
 {
     class MenuButton : MenuElement, Invoker
     {
-        private Command cmd;
+        private Encounter_ENV.Command cmd;
         private RectangleShape rectShape;
         private Menu link;
         private MenuTextElement menutxt; 
@@ -69,7 +69,7 @@ namespace SFMLproject.Menu
             }
         }
 
-        public void storeCommand(Command c)
+        public void storeCommand(Encounter_ENV.Command c)
         {
             cmd = c;
         }
