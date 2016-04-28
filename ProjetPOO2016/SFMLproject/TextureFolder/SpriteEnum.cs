@@ -132,6 +132,11 @@ namespace SFMLproject.TextureFolder
             return new Sprite(save);
         }
 
+        public Texture getTextBackTexture()
+        {
+            return textBack;
+        }
+
         public void Dispose()
         {
             back?.Dispose();

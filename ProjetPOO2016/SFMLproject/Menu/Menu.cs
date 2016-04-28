@@ -13,7 +13,7 @@ namespace SFMLproject.Menu
     {		
         private View menuView;		
         private Sprite menuSprite;
-        private Sprite sprite;
+        internal Sprite sprite;
 
         public Menu(Sprite sprite)
         {
