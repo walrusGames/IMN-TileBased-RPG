@@ -16,6 +16,7 @@ using SFMLproject.Map;
 
 using SFMLproject.StaticFields;
 using SFMLproject.Menu;
+using SFMLproject.Command;
 
 namespace SFMLproject
 {
@@ -46,6 +47,7 @@ namespace SFMLproject
 
         static void initWindow()
         {
+            window.Position = new Vector2i(0, 0);
             window.Closed += window_Closed;
             window.GainedFocus += window_GainedFocus;
             window.LostFocus += window_LostFocus;
@@ -97,27 +99,35 @@ namespace SFMLproject
             loadMenuIntro();
             loadMenu();
             initWindow();
-
+            menuInGame.visible = false;
             while (window.IsOpen)
             {
+                MouseAction();
                 window.DispatchEvents();
                 if (keypressed)
                 {
-                    if(swapFlag) swapMap();
-                    window.Clear();
-                    window.SetView(map.getMapview());
-                    //if (controller.ControllerPlugged)
-                    //    charc.changePostureCharacter(controller.getMovementLeftJoystick() / 20);
-
-                    map.draw(window);
-                    menuInGame.draw(window);
-                    window.Display();
-                    keypressed = false;
+                    drawEverything();
                 }
-
+                if (Mouse.IsButtonPressed(Mouse.Button.Right))
+                {
+                    menuInGame.visible = true;
+                    drawEverything();
+                }
             }
         }
-
+        public static void drawEverything()
+        {
+            if (swapFlag) swapMap();
+            window.Clear();
+            window.SetView(map.getMapview());
+            map.draw(window);
+            if (menuInGame.visible)
+            {
+                menuInGame.draw(window);
+            }
+            window.Display();
+            keypressed = false;
+        }
         /*Map swap*/
 
         static void swapMap()
@@ -171,20 +181,25 @@ namespace SFMLproject
 
         public static void window_ButtonPressed(object sender, MouseButtonEvent e)
         {
-            Vector2f mousePos = window.MapPixelToCoords(Mouse.GetPosition(window), map.getMapview());
-
-            switch (e.Button)
+            //Nothing
+        }
+        public static void MouseAction()
+        {
+            Vector2f mousePos = new Vector2f(Mouse.GetPosition().X, Mouse.GetPosition().Y) - (new Vector2f(window.Position.X, window.Position.Y) + new Vector2f(6,26));
+            if (Mouse.IsButtonPressed(Mouse.Button.Left))
             {
-                case Mouse.Button.Left:
-                    if (menuInGame.visible) menuInGame.activate(mousePos);
-                    break;
-                default: break;
+                if (menuInGame.visible)
+                {
+                    menuInGame.activate(mousePos);
+                    menuInGame.visible = false;
+                    window_Resized();
+                }
+
             }
         }
-
         /*Window Fonctions*/
         //Call when the window is resized
-        static void window_Resized(object sender, SizeEventArgs e)
+        static void window_Resized(object sender = null, SizeEventArgs e = null)
         {
             window.Clear();
             window.SetView(map.getMapview());
@@ -225,11 +240,11 @@ namespace SFMLproject
 
         static public void loadMenu()
         {
-            Command.StartGameCommand startCommand = new Command.StartGameCommand();
-            menuInGame.addButton("Sauver", startCommand);
-            menuInGame.addButton("Attaques", startCommand);
-            menuInGame.addButton("Stats", startCommand);
-            menuInGame.addButton("Combat", startCommand);
+            //TestCommand testCommand = new TestCommand();
+            menuInGame.addButton("Sauver", new TestCommand("Sauver"));
+            menuInGame.addButton("Attaques", new TestCommand("Attaques"));
+            menuInGame.addButton("Stats", new TestCommand("Stats"));
+            menuInGame.addButton("Combat", new TestCommand("Combat"));
             menuInGame.show();
         }
 

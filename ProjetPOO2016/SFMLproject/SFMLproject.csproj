@@ -87,6 +87,7 @@
     <Compile Include="Command\Command.cs" />
     <Compile Include="Command\Invoker.cs" />
     <Compile Include="Command\StartGameCommand.cs" />
+    <Compile Include="Command\TestCommand.cs" />
     <Compile Include="Encounter ENV\MenuEncounter.cs" />
     <Compile Include="Events\ActionEvent.cs" />
     <Compile Include="Events\ActionEventAddStress.cs" />
