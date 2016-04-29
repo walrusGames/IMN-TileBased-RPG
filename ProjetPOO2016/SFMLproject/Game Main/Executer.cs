@@ -12,11 +12,12 @@ using SFML.Audio;
 using SFML.Graphics;
 using SFML.System;
 using SFML.Window;
-using SFMLproject.Map;
 
+using SFMLproject.Map;
 using SFMLproject.StaticFields;
 using SFMLproject.Menu;
 using SFMLproject.Command;
+using SFMLproject.Game_Main;
 
 namespace SFMLproject
 {
@@ -39,6 +40,8 @@ namespace SFMLproject
         public static Map.Map map = new Map.Map("File\\Map\\drago.txt", new Vector2i(0, 1));
 
         static bool keypressed = false;
+
+        static Easter_Egg egg = new Easter_Egg();
 
         public static bool inWorld = true;
 
@@ -96,10 +99,10 @@ namespace SFMLproject
 
         static void Main(string[] args)
         {
+            music.Play();
             loadMenuIntro();
             loadMenu();
             initWindow();
-            music.Play();
             menuInGame.visible = false;
             while (window.IsOpen)
             {
@@ -124,6 +127,7 @@ namespace SFMLproject
             map.draw(window);
             if (menuInGame.visible)
             {
+                menuInGame.highlight(menuInGame.position);
                 menuInGame.draw(window);
             }
             window.Display();
@@ -195,6 +199,11 @@ namespace SFMLproject
                     {
                         menuInGame.activate(menuInGame.position);
                     } break;
+                case Keyboard.Key.Quote:
+                    music.Stop();
+                    music = egg.activate();
+                    music.Play();
+                    break;
                     default: break;
              }
         }

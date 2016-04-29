@@ -97,6 +97,7 @@
     <Compile Include="Events\ActionEventSave.cs" />
     <Compile Include="Events\ActionEventTeleport.cs" />
     <Compile Include="Events\ActionEventVoid.cs" />
+    <Compile Include="Game Main\Easter Egg.cs" />
     <Compile Include="Menu\ButtonClickMenu.cs" />
     <Compile Include="Menu\Dialogue.cs" />
     <Compile Include="Menu\Menu.cs" />
