@@ -172,27 +172,43 @@ namespace SFMLproject
                     }
                     break;
                 case Keyboard.Key.Space:
-                    menuInGame.activate(3);
-                                        break;
-                    
+                    menuInGame.visible =! menuInGame.visible;
+                    drawEverything();
+                    break;
+                case Keyboard.Key.Up:
+                    if (menuInGame.visible)
+                    {
+                        menuInGame.setPosition(menuInGame.position - 1);
+                        menuInGame.highlight(menuInGame.position);
+                        drawEverything();
+                    }break;
+                case Keyboard.Key.Down:
+                    if (menuInGame.visible)
+                    {
+                        menuInGame.setPosition(menuInGame.position + 1);
+                        menuInGame.highlight(menuInGame.position);
+                        drawEverything();
+                    } break;
+                case Keyboard.Key.LShift:
+                    if (menuInGame.visible)
+                    {
+                        menuInGame.activate(menuInGame.position);
+                    } break;
                     default: break;
-                                }
-                    }
-
-        public static void window_ButtonPressed(object sender, MouseButtonEvent e)
-        {
-            //Nothing
+             }
         }
+
         public static void MouseAction()
         {
             Vector2f mousePos = new Vector2f(Mouse.GetPosition().X, Mouse.GetPosition().Y) - (new Vector2f(window.Position.X, window.Position.Y) + new Vector2f(6,26));
-            if (Mouse.IsButtonPressed(Mouse.Button.Left))
+
+            if (menuInGame.visible)
             {
-                if (menuInGame.visible)
+                if (Mouse.IsButtonPressed(Mouse.Button.Left))
                 {
                     menuInGame.activate(mousePos);
                     menuInGame.visible = false;
-                    window_Resized();
+                    drawEverything();
                 }
 
             }
@@ -246,6 +262,7 @@ namespace SFMLproject
             menuInGame.addButton("Stats", new TestCommand("Stats"));
             menuInGame.addButton("Combat", new TestCommand("Combat"));
             menuInGame.show();
+            menuInGame.highlight(menuInGame.position);
         }
 
 
