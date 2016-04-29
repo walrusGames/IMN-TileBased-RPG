@@ -35,8 +35,6 @@ namespace SFMLproject
         static bool swapFlag = false;
         private static string swapPath;
 
-        static Controller controller = new Controller();
-
         public static Map.Map map = new Map.Map("File\\Map\\drago.txt", new Vector2i(0, 1));
 
         static bool keypressed = false;
@@ -107,8 +105,9 @@ namespace SFMLproject
             while (window.IsOpen)
             {
                 MouseAction();
+                ControllerAction();
                 window.DispatchEvents();
-                if (keypressed)
+                if (keypressed || map.moveCharacController() || map.actionButtonController())
                 {
                     drawEverything();
                 }
@@ -153,7 +152,62 @@ namespace SFMLproject
                 default: break;
             }
         }
-
+        static public void ControllerAction()
+        {
+            if (map.controller.isJoystickConnect())
+            {
+                Vector2f pos = map.controller.getMovementRightJoystick();
+                if (pos.Y > 5)
+                {
+                    menuInGame.setPosition(menuInGame.position - 1);
+                    menuInGame.highlight(menuInGame.position);
+                    drawEverything();
+                    return;
+                }
+                else if (pos.Y < -5)
+                {
+                    menuInGame.setPosition(menuInGame.position + 1);
+                    menuInGame.highlight(menuInGame.position);
+                    drawEverything();
+                    return;
+                }
+                else
+                {
+                    uint butt = map.controller.buttonPressed();
+                    switch (butt)
+                    {
+                        case 2: 
+                            if (Playing)
+                            {
+                                music.Pause();
+                                Playing = false;
+                            }
+                            else
+                            {
+                                music.Play();
+                                Playing = true;
+                            }
+                            break;
+                        case 9:
+                            menuInGame.visible =! menuInGame.visible;
+                            drawEverything();
+                            break;
+                        case 8:
+                            if (menuInGame.visible)
+                            {
+                                menuInGame.activate(menuInGame.position);
+                             } break;
+                        case 7:
+                            music.Stop();
+                            music = egg.activate();
+                            music.Play();
+                            drawEverything();
+                            break;
+                        default: break;
+                    }
+                }
+            }
+        }
         //Call when a key is pressed
         public static void window_KeyPressed(object sender, KeyEventArgs e)
         {

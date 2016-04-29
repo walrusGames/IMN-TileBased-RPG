@@ -15,6 +15,7 @@ using SFMLproject.StaticFields;
 using SFML.Window;
 using SFMLproject.Object;
 using System.Runtime.InteropServices;
+using SFMLproject.Input;
 
 namespace SFMLproject.Map
 {
@@ -28,7 +29,7 @@ namespace SFMLproject.Map
         private static View mapView = new View(new FloatRect(0, 0, Constants.tileSize * Constants.camRow, Constants.tileSize * Constants.camCol));
         private Vector2i characState;
         private bool disposeFlag = false;
-
+        public Controller controller = new Controller();
         /*
             Load map from textfile
             EntryX, EntryY are character initial position
@@ -146,11 +147,43 @@ namespace SFMLproject.Map
         }
 
         /*
-           Move character WASD
+           Move character
         */
+        public bool moveCharacController()
+        {
+            if (controller.isJoystickConnect())
+            {
+                Vector2f pos = controller.getMovementLeftJoystick();
+                if (pos.X > 5)
+                {
+                    characState = new Vector2i(-1, 0);
+                    notify(characState);
+                    return true;
+                }
+                else if (pos.X < -5)
+                {
+                    characState = new Vector2i(1, 0);
+                    notify(characState);
+                    return true;
+                }
+                else if (pos.Y > 5)
+                {
+                    characState = new Vector2i(0, -1);
+                    notify(characState);
+                    return true;
+                }
+                else if (pos.Y < -5)
+                {
+                    characState = new Vector2i(0, 1);
+                    notify(characState);
+                    return true;
+                }
+            }
+            return false;
+        }
         public bool moveCharac(Keyboard.Key e)
         {
-
+            
             switch (e)
             {
                 case Keyboard.Key.D:
@@ -192,9 +225,32 @@ namespace SFMLproject.Map
                 }
             }
         }
-
+        public bool actionButtonController()
+        {
+            if (controller.isJoystickConnect())
+            {
+                uint button = controller.buttonPressed();
+                if (button == 0)
+                {
+                    notifyAction(characState);
+                    return true;
+                }
+                else if (button == 1)
+                {
+                    Console.WriteLine("Stop the action/exit menu.");
+                    return true;
+                }
+                else if (button == 3)
+                {
+                    Console.WriteLine("MENU");
+                    return true;
+                }
+            }
+            return false;
+        }
         public bool actionButton(Keyboard.Key e)
         {
+
             switch (e)
             {
                 case Keyboard.Key.E:

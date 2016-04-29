@@ -29,13 +29,11 @@ namespace SFMLproject.Input
     class Controller
     {
         //Controller stat
-        public bool ControllerPlugged = true;
         static uint buttonCount;
         static uint controllerIndice;
 
         public Controller()
         {
-            ControllerPlugged = isJoystickConnect();
         }
 
 
