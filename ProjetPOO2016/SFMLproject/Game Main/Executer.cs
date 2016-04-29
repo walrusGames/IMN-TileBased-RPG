@@ -43,6 +43,8 @@ namespace SFMLproject
 
         public static bool inWorld = true;
 
+        public static int counter = 0;
+
         static Menu.MenuPrincipal menuInGame = new Menu.MenuPrincipal(new Vector2f(175, 50), 4, 1, map.getMapview());
         static Menu.MenuPrincipal menuIntro = new Menu.MenuPrincipal(new Vector2f(175, 100), 4, 1, map.getMapview());
 
@@ -107,7 +109,7 @@ namespace SFMLproject
                 MouseAction();
                 ControllerAction();
                 window.DispatchEvents();
-                if (keypressed || map.moveCharacController() || map.actionButtonController())
+                if (keypressed || map.moveCharacController(counter) || map.actionButtonController(counter))
                 {
                     drawEverything();
                 }
@@ -115,6 +117,11 @@ namespace SFMLproject
                 {
                     menuInGame.visible = true;
                     drawEverything();
+                }
+                counter++;
+                if (counter > 2000)
+                {
+                    counter = 0;
                 }
             }
         }
@@ -154,17 +161,17 @@ namespace SFMLproject
         }
         static public void ControllerAction()
         {
-            if (map.controller.isJoystickConnect())
+            if (map.controller.isJoystickConnect() && counter == 0)
             {
                 Vector2f pos = map.controller.getMovementRightJoystick();
-                if (pos.Y > 5)
+                if (pos.Y < -5)
                 {
                     menuInGame.setPosition(menuInGame.position - 1);
                     menuInGame.highlight(menuInGame.position);
                     drawEverything();
                     return;
                 }
-                else if (pos.Y < -5)
+                else if (pos.Y > 5)
                 {
                     menuInGame.setPosition(menuInGame.position + 1);
                     menuInGame.highlight(menuInGame.position);

@@ -149,30 +149,30 @@ namespace SFMLproject.Map
         /*
            Move character
         */
-        public bool moveCharacController()
+        public bool moveCharacController(int counter)
         {
-            if (controller.isJoystickConnect())
+            if (controller.isJoystickConnect() && counter == 0)
             {
                 Vector2f pos = controller.getMovementLeftJoystick();
-                if (pos.X > 5)
+                if (pos.X < -5)
                 {
                     characState = new Vector2i(-1, 0);
                     notify(characState);
                     return true;
                 }
-                else if (pos.X < -5)
+                else if (pos.X > 5)
                 {
                     characState = new Vector2i(1, 0);
                     notify(characState);
                     return true;
                 }
-                else if (pos.Y > 5)
+                else if (pos.Y < -5)
                 {
                     characState = new Vector2i(0, -1);
                     notify(characState);
                     return true;
                 }
-                else if (pos.Y < -5)
+                else if (pos.Y > 5)
                 {
                     characState = new Vector2i(0, 1);
                     notify(characState);
@@ -225,9 +225,9 @@ namespace SFMLproject.Map
                 }
             }
         }
-        public bool actionButtonController()
+        public bool actionButtonController(int counter)
         {
-            if (controller.isJoystickConnect())
+            if (controller.isJoystickConnect() && counter == 0)
             {
                 uint button = controller.buttonPressed();
                 if (button == 0)
