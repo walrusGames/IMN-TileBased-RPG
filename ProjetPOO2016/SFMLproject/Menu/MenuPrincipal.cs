@@ -28,6 +28,7 @@ namespace SFMLproject.Menu
         public bool visible = false;
         public RectangleShape shape;
         public View view;
+        public int position;
 
         public MenuPrincipal(Vector2f dim, int pad, float bordS, View v)
         {
@@ -35,6 +36,7 @@ namespace SFMLproject.Menu
             padding = pad;
             borderSize = bordS;
             view = v;
+            position = 0;
 
             //Background
             shape = new RectangleShape(dimensions);
@@ -51,9 +53,11 @@ namespace SFMLproject.Menu
             entries.Add(button);
         }
 
-        public void setPosition(Vector2f p)
+        public void setPosition(int p)
         {
-
+            if (p >= entries.Count) position = 0;
+            else if (p < 0) position = entries.Count - 1;
+            else position = p;
         }
 
         public void addButton(ButtonClickMenu b)

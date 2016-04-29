@@ -12,10 +12,12 @@ using SFML.Audio;
 using SFML.Graphics;
 using SFML.System;
 using SFML.Window;
-using SFMLproject.Map;
 
+using SFMLproject.Map;
 using SFMLproject.StaticFields;
 using SFMLproject.Menu;
+using SFMLproject.Command;
+using SFMLproject.Game_Main;
 
 namespace SFMLproject
 {
@@ -33,19 +35,22 @@ namespace SFMLproject
         static bool swapFlag = false;
         private static string swapPath;
 
-        static Controller controller = new Controller();
-
         public static Map.Map map = new Map.Map("File\\Map\\drago.txt", new Vector2i(0, 1));
 
         static bool keypressed = false;
 
+        static Easter_Egg egg = new Easter_Egg();
+
         public static bool inWorld = true;
+
+        public static int counter = 0;
 
         static Menu.MenuPrincipal menuInGame = new Menu.MenuPrincipal(new Vector2f(175, 50), 4, 1, map.getMapview());
         static Menu.MenuPrincipal menuIntro = new Menu.MenuPrincipal(new Vector2f(175, 100), 4, 1, map.getMapview());
 
         static void initWindow()
         {
+            window.Position = new Vector2i(0, 0);
             window.Closed += window_Closed;
             window.GainedFocus += window_GainedFocus;
             window.LostFocus += window_LostFocus;
@@ -60,7 +65,7 @@ namespace SFMLproject
             generateIntroMessage();
             menuIntro.draw(window);
         }
-
+        
         static void generateIntroMessage()
         {
             List<Character.characDialogueStruc> tex = new List<Character.characDialogueStruc>();
@@ -94,30 +99,46 @@ namespace SFMLproject
 
         static void Main(string[] args)
         {
+            music.Play();
             loadMenuIntro();
             loadMenu();
             initWindow();
-
+            menuInGame.visible = false;
             while (window.IsOpen)
             {
+                MouseAction();
+                ControllerAction();
                 window.DispatchEvents();
-                if (keypressed)
+                if (keypressed || map.moveCharacController(counter) || map.actionButtonController(counter))
                 {
-                    if(swapFlag) swapMap();
-                    window.Clear();
-                    window.SetView(map.getMapview());
-                    //if (controller.ControllerPlugged)
-                    //    charc.changePostureCharacter(controller.getMovementLeftJoystick() / 20);
-
-                    map.draw(window);
-                    menuInGame.draw(window);
-                    window.Display();
-                    keypressed = false;
+                    drawEverything();
                 }
-
+                if (Mouse.IsButtonPressed(Mouse.Button.Right))
+                {
+                    menuInGame.visible = true;
+                    drawEverything();
+                }
+                counter++;
+                if (counter > 2000)
+                {
+                    counter = 0;
+                }
             }
         }
-
+        public static void drawEverything()
+        {
+            if (swapFlag) swapMap();
+            window.Clear();
+            window.SetView(map.getMapview());
+            map.draw(window);
+            if (menuInGame.visible)
+            {
+                menuInGame.highlight(menuInGame.position);
+                menuInGame.draw(window);
+            }
+            window.Display();
+            keypressed = false;
+        }
         /*Map swap*/
 
         static void swapMap()
@@ -138,7 +159,62 @@ namespace SFMLproject
                 default: break;
             }
         }
-
+        static public void ControllerAction()
+        {
+            if (map.controller.isJoystickConnect() && counter == 0)
+            {
+                Vector2f pos = map.controller.getMovementRightJoystick();
+                if (pos.Y < -5)
+                {
+                    menuInGame.setPosition(menuInGame.position - 1);
+                    menuInGame.highlight(menuInGame.position);
+                    drawEverything();
+                    return;
+                }
+                else if (pos.Y > 5)
+                {
+                    menuInGame.setPosition(menuInGame.position + 1);
+                    menuInGame.highlight(menuInGame.position);
+                    drawEverything();
+                    return;
+                }
+                else
+                {
+                    uint butt = map.controller.buttonPressed();
+                    switch (butt)
+                    {
+                        case 2: 
+                            if (Playing)
+                            {
+                                music.Pause();
+                                Playing = false;
+                            }
+                            else
+                            {
+                                music.Play();
+                                Playing = true;
+                            }
+                            break;
+                        case 9:
+                            menuInGame.visible =! menuInGame.visible;
+                            drawEverything();
+                            break;
+                        case 8:
+                            if (menuInGame.visible)
+                            {
+                                menuInGame.activate(menuInGame.position);
+                             } break;
+                        case 7:
+                            music.Stop();
+                            music = egg.activate();
+                            music.Play();
+                            drawEverything();
+                            break;
+                        default: break;
+                    }
+                }
+            }
+        }
         //Call when a key is pressed
         public static void window_KeyPressed(object sender, KeyEventArgs e)
         {
@@ -162,29 +238,56 @@ namespace SFMLproject
                     }
                     break;
                 case Keyboard.Key.Space:
-                    menuInGame.activate(3);
-                                        break;
-                    
-                    default: break;
-                                }
-                    }
-
-        public static void window_ButtonPressed(object sender, MouseButtonEvent e)
-        {
-            Vector2f mousePos = window.MapPixelToCoords(Mouse.GetPosition(window), map.getMapview());
-
-            switch (e.Button)
-            {
-                case Mouse.Button.Left:
-                    if (menuInGame.visible) menuInGame.activate(mousePos);
+                    menuInGame.visible =! menuInGame.visible;
+                    drawEverything();
                     break;
-                default: break;
-            }
+                case Keyboard.Key.Up:
+                    if (menuInGame.visible)
+                    {
+                        menuInGame.setPosition(menuInGame.position - 1);
+                        menuInGame.highlight(menuInGame.position);
+                        drawEverything();
+                    }break;
+                case Keyboard.Key.Down:
+                    if (menuInGame.visible)
+                    {
+                        menuInGame.setPosition(menuInGame.position + 1);
+                        menuInGame.highlight(menuInGame.position);
+                        drawEverything();
+                    } break;
+                case Keyboard.Key.LShift:
+                    if (menuInGame.visible)
+                    {
+                        menuInGame.activate(menuInGame.position);
+                    } break;
+                case Keyboard.Key.Quote:
+                    music.Stop();
+                    music = egg.activate();
+                    music.Play();
+                    drawEverything();
+                    break;
+                    default: break;
+             }
         }
 
+        public static void MouseAction()
+        {
+            Vector2f mousePos = new Vector2f(Mouse.GetPosition().X, Mouse.GetPosition().Y) - (new Vector2f(window.Position.X, window.Position.Y) + new Vector2f(6,26));
+
+            if (menuInGame.visible)
+            {
+                if (Mouse.IsButtonPressed(Mouse.Button.Left))
+                {
+                    menuInGame.activate(mousePos);
+                    menuInGame.visible = false;
+                    drawEverything();
+                }
+
+            }
+        }
         /*Window Fonctions*/
         //Call when the window is resized
-        static void window_Resized(object sender, SizeEventArgs e)
+        static void window_Resized(object sender = null, SizeEventArgs e = null)
         {
             window.Clear();
             window.SetView(map.getMapview());
@@ -225,12 +328,13 @@ namespace SFMLproject
 
         static public void loadMenu()
         {
-            Command.StartGameCommand startCommand = new Command.StartGameCommand();
-            menuInGame.addButton("Sauver", startCommand);
-            menuInGame.addButton("Attaques", startCommand);
-            menuInGame.addButton("Stats", startCommand);
-            menuInGame.addButton("Combat", startCommand);
+            //TestCommand testCommand = new TestCommand();
+            menuInGame.addButton("Sauver", new TestCommand("Sauver"));
+            menuInGame.addButton("Attaques", new TestCommand("Attaques"));
+            menuInGame.addButton("Stats", new TestCommand("Stats"));
+            menuInGame.addButton("Combat", new TestCommand("Combat"));
             menuInGame.show();
+            menuInGame.highlight(menuInGame.position);
         }
 
 

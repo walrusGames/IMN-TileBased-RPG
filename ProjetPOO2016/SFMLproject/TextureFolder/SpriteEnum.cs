@@ -139,7 +139,7 @@ namespace SFMLproject.TextureFolder
 
         public void Dispose()
         {
-            back?.Dispose();
+            /*back?.Dispose();
             ob?.Dispose();
             blank?.Dispose();
             encounterBkgr?.Dispose();
@@ -154,7 +154,7 @@ namespace SFMLproject.TextureFolder
             chairG?.Dispose();
             chairC?.Dispose();
             textBack?.Dispose();
-            save?.Dispose();
+            save?.Dispose();*/
         }
 }
 }
