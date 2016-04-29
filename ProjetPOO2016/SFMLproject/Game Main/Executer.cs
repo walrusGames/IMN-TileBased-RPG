@@ -88,6 +88,11 @@ namespace SFMLproject
 
             line.dialogue = "Press WASD to move around.";
             line.id = 3;
+            line.nextIdList = new List<int>() { 4 };
+            tex.Add(line);
+
+            line.dialogue = "Press space to open the menu.";
+            line.id = 4;
             line.nextIdList = new List<int>() { -1 };
             tex.Add(line);
 

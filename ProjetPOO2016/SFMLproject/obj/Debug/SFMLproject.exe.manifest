@@ -90,14 +90,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SFMLproject.exe" size="37376">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SFMLproject.exe" size="36864">
       <assemblyIdentity name="SFMLproject" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>np2zM7Vo6/rrMdrp+hjoS6bIHzniUAu3kEmgKWkUYzM=</dsig:DigestValue>
+        <dsig:DigestValue>dU75sdf58YyBoDESqp0Y49tDkzmA/xEp3F7hKn7gOjQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
