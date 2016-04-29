@@ -99,6 +99,7 @@ namespace SFMLproject
             loadMenuIntro();
             loadMenu();
             initWindow();
+            music.Play();
             menuInGame.visible = false;
             while (window.IsOpen)
             {
