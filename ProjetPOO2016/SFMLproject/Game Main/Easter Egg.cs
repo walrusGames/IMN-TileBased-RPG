@@ -9,11 +9,14 @@ using SFML.Graphics;
 using SFML.System;
 using SFML.Window;
 
+using SFMLproject.Menu;
+using SFMLproject.Object;
+
 namespace SFMLproject.Game_Main
 {
     class Easter_Egg
     {
-        bool actif = false;
+        static bool actif = false;
         public Music activate()
         {
             actif = !actif;

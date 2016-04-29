@@ -65,7 +65,7 @@ namespace SFMLproject
             generateIntroMessage();
             menuIntro.draw(window);
         }
-
+        
         static void generateIntroMessage()
         {
             List<Character.characDialogueStruc> tex = new List<Character.characDialogueStruc>();
@@ -203,6 +203,7 @@ namespace SFMLproject
                     music.Stop();
                     music = egg.activate();
                     music.Play();
+                    drawEverything();
                     break;
                     default: break;
              }
