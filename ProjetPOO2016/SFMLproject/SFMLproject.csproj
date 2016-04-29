@@ -86,6 +86,7 @@
     <Compile Include="Command\AttackMenuCommand.cs" />
     <Compile Include="Command\Command.cs" />
     <Compile Include="Command\Invoker.cs" />
+    <Compile Include="Command\SaveCommand.cs" />
     <Compile Include="Command\StartGameCommand.cs" />
     <Compile Include="Encounter ENV\MenuEncounter.cs" />
     <Compile Include="Events\ActionEvent.cs" />
